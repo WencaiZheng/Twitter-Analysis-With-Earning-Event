@@ -9,7 +9,7 @@ The analysis include three parts:
 2. The sentiments on the release date and the EPS surprise to market
 3. The Twitter sentiments after the earning release, whether or not it reached the expectation
 
-## Preparation before running:
+## User Instructions:
 
 **Prerequisite package:**
 
