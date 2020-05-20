@@ -19,7 +19,7 @@ The analysis include three parts:
 * Pre downloaded files are:
 
   * The data folder contains the stock's intraday data from wrds TAQ
-    'LoughranMcDonald_MasterDictionary_2018.csv' is a dictionary from paper Loughran and McDonald[2018]
+  * 'LoughranMcDonald_MasterDictionary_2018.csv' is a dictionary from paper Loughran and McDonald[2018]
 
 * How to operate the files
 
