@@ -53,12 +53,12 @@ The analysis include three parts:
 
 * Updated 5.5.2020, version 1.4:
 
-  1.Stored the sentiment files in './result/ticker'
+  1.stored the sentiment files in './result/ticker'
   
-  2.Added the pure sentiment switch, no more stock processing(slow)
+  2.added the pure sentiment switch, no more stock processing(slow)
 
 * Updated 5.17.2020, version 1.5:
 
-  1.Added file named “earning_news_sa.py”, it searched and scraped the news from 'seekingalpha.com/market-news' containing whichever headline one feeds. It also allows searching earnings news for specific companies.
+  1.added file named “earning_news_sa.py”, it searched and scraped the news from 'seekingalpha.com/market-news' containing whichever headline one feeds. It also allows searching earnings news for specific companies.
   
-  2.Optimized twitter time processing
+  2.optimized twitter scraping process
