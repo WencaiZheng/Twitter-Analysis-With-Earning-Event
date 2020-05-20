@@ -1,3 +1,4 @@
+![](examples/SBUX.png)
 
 # TwitterAnalysisWithEarning
 
