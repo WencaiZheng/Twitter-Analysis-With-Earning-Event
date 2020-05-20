@@ -29,7 +29,7 @@ The analysis include three parts:
     get a folder contains all the twitters one can scrape eg. standard account means 7 days, 140 length twitter
 
   2.Then run "twitter_analysis.py"
-    parameters are ticker to analyze, and the follower threshold, defaut = 1000
+    parameters are ticker to analyze, and the follower threshold, defaut = 100
 
 ## Updates
 
