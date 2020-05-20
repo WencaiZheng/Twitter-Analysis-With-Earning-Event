@@ -12,9 +12,10 @@ The analysis include three parts:
 
 ## User Instructions:
 
-* Prerequisite package:
+* Prerequisite tool:
 
-  * tweepy
+  * tweepy (Python package)
+  * a Twitter standard development api (free)
 
 * Pre downloaded files are:
 
@@ -35,23 +36,28 @@ The analysis include three parts:
 * Updated 5.1.2020, version 1.1:
 
   1.revised the time zone issue(from UTC to EST)
+  
   2.changed from twitter to tweepy library
 
 * Updated 5.1.2020, version 1.2:
 
   1.added the “net sentiment” feature, which is positive count minus negative
+  
   2.optimized the data processing to cut the time by 50% 
 
 * Updated 5.3.2020, version 1.3:
 
   1.scraped earning date time, estimated EPS, reported EPS, EPS surprise(%)
+  
   2.plot the EPS surprise(%) in the twitter net-sentiment graph
 
 * Updated 5.5.2020, version 1.4:
 
   1.Stored the sentiment files in './result/ticker'
+  
   2.Added the pure sentiment switch, no more stock processing(slow)
 
 * Updated 5.17.2020, version 1.5:
   1.Added file named “earning_news_sa.py”, it searched and scraped the news from 'seekingalpha.com/market-news' containing whichever headline one feeds. It also allows searching earnings news for specific companies.
+  
   2.Optimized twitter time processing
