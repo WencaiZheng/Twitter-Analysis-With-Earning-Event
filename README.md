@@ -31,7 +31,7 @@ The analysis include three parts:
   2.Then run "twitter_analysis.py"
     parameters are ticker to analyze, and the follower threshold, defaut = 1000
 
-## Some updates
+## Updates
 
 * Updated 5.1.2020, version 1.1:
 
