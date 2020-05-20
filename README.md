@@ -58,6 +58,7 @@ The analysis include three parts:
   2.Added the pure sentiment switch, no more stock processing(slow)
 
 * Updated 5.17.2020, version 1.5:
+
   1.Added file named “earning_news_sa.py”, it searched and scraped the news from 'seekingalpha.com/market-news' containing whichever headline one feeds. It also allows searching earnings news for specific companies.
   
   2.Optimized twitter time processing
