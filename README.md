@@ -24,11 +24,11 @@ The analysis include three parts:
 
 * How to operate the files
 
- * First run "twitter_scaper.py"
+  * First run "twitter_scaper.py"
     the parameters are tickers one want to search
     get a folder contains all the twitters one can scrape eg. standard account means 7 days, 140 length twitter
 
- * Then run "twitter_analysis.py"
+  * Then run "twitter_analysis.py"
     parameters are ticker to analyze, and the follower threshold, defaut = 100
 
 ## Updates
