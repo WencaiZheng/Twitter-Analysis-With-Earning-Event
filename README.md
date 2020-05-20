@@ -1,5 +1,5 @@
 ![](examples/SBUX.png)
-
+![](examples/BILI.png)
 # TwitterAnalysisWithEarning
 
 Analyze twitter sentiments towards key works related one company that are near earnings events
