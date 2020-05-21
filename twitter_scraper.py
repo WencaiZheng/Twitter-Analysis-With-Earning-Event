@@ -11,18 +11,15 @@ today_date = datetime.date.today()
 
 ############          Parameters setting       ###################
 # the dates I want to get, below says 7 days look back from today
-tics = ["BILI"] #"HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",
-most_recent_days = 6 # max is  8 for standard account
+tics = ["$BABA"] #"HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
+most_recent_days = 1 # max is  8 for standard account
 user_language = "en"# "zh-cn","en"
 #####################################################################
 
 
 # twitter api
-consumer_key='*******************'
-consumer_secret='*******************'
-access_token_key='*******************'
-access_token_secret='*******************'
-
+TOKEN = pd.read_csv("TOKEN.txt",sep=" ").columns.values
+consumer_key, consumer_secret,access_token_key, access_token_secret=TOKEN
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token_key, access_token_secret)
 

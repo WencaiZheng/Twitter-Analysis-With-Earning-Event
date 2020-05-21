@@ -12,13 +12,13 @@ import os
 
 ################################## parameters needed
 
-key_word ="BILI" #"SBUX" #TTWO, "TGT","WMT",
-ticker = 'BILI'
+key_word ="$BABA" #"SBUX" #TTWO, "TGT","WMT",
+ticker = 'BABA'
 influencer_threshold = 100 # define influencer with follower
 log_scale_flag= 1 # log-scale or not
 show_stock_flag = 1 # no stock processing would be much faster
 save_senti_flag = 1 # if 1, it saves the sentiment text files by date and positivity 
-earning_release_flag = 0 # scrape earning data or not
+earning_release_flag = 0
 #################################
 
 
