@@ -8,10 +8,12 @@ from collections import Counter
 import datetime
 import requests
 import re
+import os
 from bs4 import BeautifulSoup
 ##########################################
 head_url_sa ="https://seekingalpha.com/"
 # fake a header of a browser
+os.chdir("Twitter-Analysis-With-Earning-Event\\")
 headers = {'User-Agent': 'Chrome/39.0.2171.95'}
 ################################################
 
@@ -107,8 +109,8 @@ if __name__ == "__main__":
     # key_dict_e = get_earning_news_sa(ticker,key_word)
     # key_dict = get_position_adjustment_news_sa(key_word)
 
-    x = get_earning_names_sa(recent_day = 3,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
-    print(x)
+    x = get_earning_names_sa(recent_day = 5,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
+    x.to_csv("examples\\MAY25_30.csv")
     
     # if key_dict:
     #     i=0

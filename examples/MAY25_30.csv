@@ -1,0 +1,86 @@
+Ticker,Ticker,Name,Date,Time,Company
+RRGB,RRGB,"Red Robin Gourmet Burgers, Inc.",2020-05-24,Estimated,RED ROBIN GOURMET BURGER
+AFMD,AFMD,Affimed N.V.,2020-05-24,Estimated,AFFIMED NV
+THR,THR,"Thermon Group Holdings, Inc.",2020-05-24,Estimated,THERMON GROUP HLDGS INC
+AZO,AZO,"AutoZone, Inc.",2020-05-26,Estimated,AUTOZONE INC
+HIBB,HIBB,"Hibbett Sports, Inc.",2020-05-26,Estimated,HIBBETT SPORTS INC
+HEI,HEI,HEICO Corporation,2020-05-26,Estimated,HEICO CORP COMMON
+BAH,BAH,Booz Allen Hamilton Holding Corporation,2020-05-26,Estimated,BOOZ ALLEN HAMILTON HLDG
+AMWD,AMWD,American Woodmark Corporation,2020-05-26,Estimated,AMERICAN WOODMARK CORP
+CVCO,CVCO,"Cavco Industries, Inc.",2020-05-26,Estimated,CAVCO INDUSTRIES INC
+CBL,CBL,"CBL & Associates Properties, Inc.",2020-05-26,Estimated,CBL & ASSOC PPTYS INC
+STRS,STRS,Stratus Properties Inc.,2020-05-26,Estimated,STRATUS PPTYS INC
+PLAN,PLAN,"Anaplan, Inc.",2020-05-26,Estimated,ANAPLAN
+OOMA,OOMA,"Ooma, Inc.",2020-05-26,Estimated,OOMA INC
+KEYS,KEYS,"Keysight Technologies, Inc.",2020-05-26,Estimated,KEYSIGHT TECHNOLOGIES
+VSAT,VSAT,"Viasat, Inc.",2020-05-26,Estimated,VIASAT INC
+NTAP,NTAP,"NetApp, Inc.",2020-05-27,Estimated,NETAPP INC
+USAT,USAT,"USA Technologies, Inc.",2020-05-27,Estimated,USA TECHNOLOGIES INC
+UHAL,UHAL,AMERCO,2020-05-27,Estimated,AMERCO
+COHR,COHR,"Coherent, Inc.",2020-05-27,Estimated,COHERENT INC
+SMTC,SMTC,Semtech Corporation,2020-05-27,Estimated,SEMTECH CORP
+PLT,PLT,"Plantronics, Inc.",2020-05-27,Estimated,PLANTRONICS INC
+ADSK,ADSK,"Autodesk, Inc.",2020-05-27,Estimated,AUTODESK INC
+SPTN,SPTN,SpartanNash Company,2020-05-27,Estimated,SPARTANNASH COMPANY
+PLAB,PLAB,"Photronics, Inc.",2020-05-27,Estimated,PHOTRONICS INC
+TOL,TOL,"Toll Brothers, Inc.",2020-05-27,Estimated,TOLL BROTHERS INC
+DAKT,DAKT,"Daktronics, Inc.",2020-05-27,Estimated,DAKTRONICS INC
+QADA,QADA,QAD Inc.,2020-05-27,Estimated,QAD INC
+NTNX,NTNX,"Nutanix, Inc.",2020-05-27,Estimated,NUTANIX INC
+HPQ,HPQ,HP Inc.,2020-05-27,Estimated,HP INC
+RTW,RTW,"RTW Retailwinds, Inc.",2020-05-27,Estimated,RTW RETAILWINDS INC
+BOX,BOX,"Box, Inc.",2020-05-27,Estimated,BOX INC
+ATEX,ATEX,Anterix Inc.,2020-05-27,Estimated,PDVWIRELESS INC
+DBI,DBI,Designer Brands Inc.,2020-05-27,Estimated,DESIGNER BRANDS INC
+RL,RL,Ralph Lauren Corporation,2020-05-27,Pre-Market,RALPH LAUREN CORP
+CMCO,CMCO,Columbus McKinnon Corporation,2020-05-27,Pre-Market,COLUMBUS MCKINNON CORP
+GEN,GEN,"Genesis Healthcare, Inc.",2020-05-27,Pre-Market,GENESIS HEALTHCARE INC
+LPG,LPG,Dorian LPG Ltd.,2020-05-27,Pre-Market,DORIAN LPG LTD
+WDAY,WDAY,"Workday, Inc.",2020-05-27,Post-Market,WORKDAY INC
+UVV,UVV,Universal Corporation,2020-05-27,Post-Market,UNIVERSAL CORP
+CACC,CACC,Credit Acceptance Corporation,2020-05-27,Post-Market,CREDIT ACCEP CORP MICH
+BURL,BURL,"Burlington Stores, Inc.",2020-05-28,Estimated,BURLINGTON STORES INC
+MRVL,MRVL,Marvell Technology Group Ltd.,2020-05-28,Estimated,MARVELL TECHNOLOGY GROUP
+DLTR,DLTR,"Dollar Tree, Inc.",2020-05-28,Estimated,DOLLAR TREE INC
+SHOO,SHOO,"Steven Madden, Ltd.",2020-05-28,Estimated,MADDEN STEVEN LTD
+MNRO,MNRO,"Monro, Inc.",2020-05-28,Estimated,MONRO INC
+HWKN,HWKN,"Hawkins, Inc.",2020-05-28,Estimated,HAWKINS INC
+JWN,JWN,"Nordstrom, Inc.",2020-05-28,Estimated,NORDSTROM INC
+ULTA,ULTA,"Ulta Beauty, Inc.",2020-05-28,Estimated,ULTA BEAUTY INC
+COST,COST,Costco Wholesale Corporation,2020-05-28,Estimated,COSTCO WHOLESALE CORP
+CRM,CRM,"salesforce.com, inc.",2020-05-28,Estimated,SALESFORCE COM INC
+VMW,VMW,"VMware, Inc.",2020-05-28,Estimated,VMWARE INC
+DELL,DELL,Dell Technologies Inc.,2020-05-28,Estimated,DELL TECHNOLOGIES
+DG,DG,Dollar General Corporation,2020-05-28,Estimated,DOLLAR GENERAL CORP
+MOD,MOD,Modine Manufacturing Company,2020-05-28,Estimated,MODINE MANUFACTURING CO
+MOV,MOV,"Movado Group, Inc.",2020-05-28,Estimated,MOVADO GROUP INC
+GES,GES,"Guess', Inc.",2020-05-28,Estimated,GUESS INC
+HLNE,HLNE,Hamilton Lane Incorporated,2020-05-28,Estimated,HAMILTON LANE INC
+CTRN,CTRN,"Citi Trends, Inc.",2020-05-28,Estimated,CITI TRENDS INC
+ZS,ZS,"Zscaler, Inc.",2020-05-28,Estimated,ZSCALER
+PSTG,PSTG,"Pure Storage, Inc.",2020-05-28,Estimated,PURE STORAGE INC
+ADVM,ADVM,"Adverum Biotechnologies, Inc.",2020-05-28,Estimated,ADVERUM BIOTECH INC
+TH,TH,Target Hospitality Corp.,2020-05-28,Estimated,TARGET HOSPITALITY (A)
+SAFM,SAFM,"Sanderson Farms, Inc.",2020-05-28,Estimated,SANDERSON FARMS INC
+VEEV,VEEV,Veeva Systems Inc.,2020-05-28,Estimated,VEEVA SYSTEMS INC
+OKTA,OKTA,"Okta, Inc.",2020-05-28,Estimated,OKTA INC
+OLLI,OLLI,"Ollie's Bargain Outlet Holdings, Inc.",2020-05-28,Estimated,OLLIES BARGAIN OUTLET
+SIEB,SIEB,Siebert Financial Corp.,2020-05-28,Estimated,SIEBERT FINANCIAL CORP
+TGI,TGI,"Triumph Group, Inc.",2020-05-28,Pre-Market,TRIUMPH GROUP INC
+LL,LL,"Lumber Liquidators Holdings, Inc.",2020-05-28,Pre-Market,LUMBER LIQUIDATORS HLDGS
+TITN,TITN,Titan Machinery Inc.,2020-05-28,Pre-Market,TITAN MACHINERY INC
+ANF,ANF,Abercrombie & Fitch Co.,2020-05-28,Pre-Market,ABERCROMBIE & FITCH
+REX,REX,REX American Resources Corporation,2020-05-28,Pre-Market,REX AMERICAN RESOURCES
+GLNG,GLNG,Golar LNG Limited,2020-05-28,Pre-Market,GOLAR LNG LTD BERMUDA
+TECD,TECD,Tech Data Corporation,2020-05-28,Pre-Market,TECH DATA CORP
+DXC,DXC,DXC Technology Company,2020-05-28,Post-Market,DXC TECHNOLOGY COMPANY
+GERN,GERN,Geron Corporation,2020-05-28,Post-Market,GERON CORP
+WSM,WSM,"Williams-Sonoma, Inc.",2020-05-28,Post-Market,WILLIAMS SONOMA INC
+MJCO,MJCO,Majesco,2020-05-28,Post-Market,MAJESCO
+KLXE,KLXE,"KLX Energy Services Holdings, Inc.",2020-05-29,Estimated,KLX ENERGY SERVICES
+CPRI,CPRI,Capri Holdings Limited,2020-05-29,Estimated,CAPRI HOLDINGS LIMITED
+VRNT,VRNT,Verint Systems Inc.,2020-05-29,Estimated,VERINT SYS INC
+SENEA,SENEA,Seneca Foods Corporation,2020-05-29,Estimated,SENECA FOODS CORP
+CIR,CIR,"CIRCOR International, Inc.",2020-05-29,Estimated,CIRCOR INTERNATIONAL INC
+HFFG,HFFG,HF Foods Group Inc.,2020-05-29,Estimated,HF FOODS GROUP INC
+BIG,BIG,"Big Lots, Inc.",2020-05-29,Pre-Market,BIG LOTS INC

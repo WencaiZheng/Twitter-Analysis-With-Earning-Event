@@ -9,18 +9,20 @@ from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 import earnings_scraper
 import os
+from collections import Counter
 
+os.chdir(os.getcwd()+"\\Twitter-Analysis-With-Earning-Event")
 ################################## parameters needed
 
-key_word ="$BABA" #"SBUX" #TTWO, "TGT","WMT",
-ticker = 'BABA'
+key_word ="WDAY" #"SBUX" #TTWO, "TGT","WMT",
+ticker = 'WDAY'
 influencer_threshold = 100 # define influencer with follower
 log_scale_flag= 1 # log-scale or not
-show_stock_flag = 1 # no stock processing would be much faster
 save_senti_flag = 1 # if 1, it saves the sentiment text files by date and positivity 
-earning_release_flag = 0
+show_top_words =1;topn=50
 #################################
-
+earning_release_flag = 0
+show_stock_flag = 0 # no stock processing would be much faster
 
 def effective_ttr(xfile):
     if len(xfile)==0:return None
@@ -173,12 +175,43 @@ def plot_pure_senti(all_sentis,earning_release_within):
                     title_text="{0} intraday twitter sentiment".format(key_word))
     fig.show()
 
+def give_top_words(result_path,topn=50):
+    """ get top word
+    """
+    stopword = pd.read_csv("dictionary\\twitter_stopwords.txt",index_col=0).iloc[:,0].values
+    pos_files=glob(result_path+"*pos*")
+    neg_files=glob(result_path+"*neg*")
+    pos_words,neg_words = "",""
+    for i in range(len(pos_files)):
+        pos_words+= pd.read_csv(pos_files[i]).Text.sum().upper()
+        neg_words+= pd.read_csv(neg_files[i]).Text.sum().upper()
+
+    pos_dic = Counter(pos_words.split())
+    neg_dic = Counter(neg_words.split())
+
+    for w in pos_dic.keys():
+        if w in stopword:
+            pos_dic[w] = -1
+
+    for w in pos_dic.keys():
+        if w in stopword:
+            neg_dic[w] = -1
+
+    
+    pos_df = pd.DataFrame(pos_dic.most_common())
+    neg_df = pd.DataFrame(neg_dic.most_common())
+
+    word_df = pd.concat([pos_df,neg_df],axis=1,join="outer")
+    word_df.columns = ["positive_word","positive_count","negative_word","negative_count"]
+
+    return word_df
 
 if __name__ == "__main__":
     ####set path
-    result_path = "twitters\\"+key_word+"\\"
+    keyword_path = f"twitters\\{key_word}\\"
+    result_path = f"results\\{key_word}\\"
     # read all files
-    files=glob(result_path+"*"+key_word+"*")
+    files=glob(keyword_path+"*"+key_word+"*")
     # see all files'dates
     dates = [i[-14:-4] for i in files]
     print("We are observing data from {0} to {1} for {2}".format(dates[0],dates[-1],key_word))
@@ -202,3 +235,9 @@ if __name__ == "__main__":
         plot_senti(hourly_ohlc,all_sentiments,earning_release_within)
     else:
         plot_pure_senti(all_sentiments,earning_release_within)
+
+        ###########################################################
+    if show_top_words:
+        top_word = give_top_words(result_path)
+        top_word.to_csv(f'{result_path}{key_word}_topwords.csv')
+        print(top_word.iloc[:topn,:])
