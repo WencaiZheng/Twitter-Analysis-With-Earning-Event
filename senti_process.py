@@ -4,6 +4,12 @@ import numpy as np
 import os
 
 
+def my_dict():
+    LM_dic = pd.read_csv("dictionary\\LoughranMcDonald_MasterDictionary_2018.csv")
+    pos_dic = LM_dic[LM_dic.Positive!=0].Word.values
+    neg_dic = LM_dic[LM_dic.Negative!=0].Word.values
+    return pos_dic,neg_dic
+
 def effective_ttr(xfile):
     if len(xfile)==0:return None
     xfile["Datetime"] =pd.to_datetime(xfile.Created)
@@ -65,10 +71,12 @@ def senti_count(e_file,log_flag):
     return hour_count,pos_tweets,neg_tweets
 
 def get_all_senti(key_word,files,pos_dic_,neg_dic_,influencer_threshold_,log_flag_,save_senti_flag):
-
+    #make other functions use these variables
     global pos_dic,neg_dic,log_flag,influencer_threshold
     # define
-    pos_dic,neg_dic,log_flag,influencer_threshold=pos_dic_,neg_dic_,log_flag_,influencer_threshold_
+    pos_dic,neg_dic = pos_dic_,neg_dic_
+    log_flag,influencer_threshold = log_flag_,influencer_threshold_
+
     dates = [i[-14:-4] for i in files]
     # count sentiments
     all_sentis = pd.DataFrame()
