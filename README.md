@@ -60,5 +60,11 @@ The analysis include three parts:
 * Updated 5.17.2020, version 1.5:
 
   1.added file named “earning_news_sa.py”, it searched and scraped the news from 'seekingalpha.com/market-news' containing whichever headline one feeds. It also allows searching earnings news for specific companies.
-  
+
   2.optimized twitter scraping process
+
+- Updated 5.29.2020, version 1.6:
+
+  1.broke down the functions into different files to get better management
+
+  2.add "top_word" function to get the top frequency words for each keyword analysis
