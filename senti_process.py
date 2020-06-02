@@ -4,11 +4,7 @@ import numpy as np
 import os
 
 
-def my_dict():
-    LM_dic = pd.read_csv("dictionary\\LoughranMcDonald_MasterDictionary_2018.csv")
-    pos_dic = LM_dic[LM_dic.Positive!=0].Word.values
-    neg_dic = LM_dic[LM_dic.Negative!=0].Word.values
-    return pos_dic,neg_dic
+
 
 def effective_ttr(xfile):
     if len(xfile)==0:return None
