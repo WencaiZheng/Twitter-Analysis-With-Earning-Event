@@ -26,7 +26,7 @@ def get_earning_news_sa(ticker,key_word):
     return news_result_dict(key_url)
 
 
-def get_position_adjustment_news_sa(key_word):
+def get_general_news_sa(key_word):
     the_url = "https://seekingalpha.com/market-news"
     # fake a header of a browser
     headers = {'User-Agent': 'Chrome/39.0.2171.95'}
@@ -54,8 +54,9 @@ def news_result_dict(key_url):
         response = requests.get(head_url_sa+iurl, headers=headers)
         soup = BeautifulSoup(response.text, features='lxml')
         info = soup.find_all("div",id="bullets_ul")
+        time  = soup.find_all("time",itemprop="datePublished")
         # print(eps_info[0].text)
-        news_dic[key_url[i]] = info[0].text
+        news_dic[key_url[i]] = [time[0].text,info[0].text]
     return news_dic
 
 def get_earning_names_sa(recent_day,index_code):
@@ -101,14 +102,13 @@ def get_earning_names_sa(recent_day,index_code):
 
 if __name__ == "__main__":
 
-    # ticker = "ATVI"
-    key_word = "appaloosa.*management.*buy" # choose from [eps,revenue],"buy" # choose from ["buy","exit","cut"]
+    ticker = "CHNG"
+    key_word = "eps" # choose from [eps,revenue],"buy" # choose from ["buy","exit","cut"]
 
-    # key_dict_e = get_earning_news_sa(ticker,key_word)
+    key_dict_e = get_earning_news_sa(ticker,key_word)
     # key_dict = get_position_adjustment_news_sa(key_word)
-
-    x = get_earning_names_sa(recent_day = 3,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
-    print(x)
+    # x = get_general_news_sa(recent_day = 3,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
+    print(key_dict_e)
     
     # if key_dict:
     #     i=0

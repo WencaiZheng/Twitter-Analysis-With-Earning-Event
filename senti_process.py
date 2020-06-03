@@ -92,9 +92,12 @@ def get_all_senti(key_word,files,pos_dic_,neg_dic_,influencer_threshold_,log_fla
         # save the divided files if necessary
         if save_senti_flag:
             senti_path = "results\\{0}".format(key_word)
-            if not os.path.exists(senti_path):os.makedirs(senti_path)
-            pos_tweets.to_csv(senti_path+"\\{0}_{1}_pos.csv".format(key_word,idate))
-            neg_tweets.to_csv(senti_path+"\\{0}_{1}_neg.csv".format(key_word,idate))
+            if not os.path.exists(senti_path):
+                os.makedirs(senti_path)
+            if len(pos_tweets) !=0 :
+                pos_tweets.to_csv(senti_path+"\\{0}_{1}_pos.csv".format(key_word,idate))
+            if len(neg_tweets) !=0 :
+                neg_tweets.to_csv(senti_path+"\\{0}_{1}_neg.csv".format(key_word,idate))
         
     print("sentiment files are saved successfully")
     all_sentis = all_sentis.replace([np.inf,-np.inf],[np.nan,np.nan])

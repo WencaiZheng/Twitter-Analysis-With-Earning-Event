@@ -1,21 +1,22 @@
 import tweepy
-import twitter 
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import time
 import datetime
 import os
-import tweepy
 today_date = datetime.date.today()
 os.chdir(os.getcwd()+"\\Twitter-Analysis-With-Earning-Event")
 
-############          Parameters setting       ###################
+############               PARAMETERS             ###################
 # the dates I want to get, below says 7 days look back from today
-key_word = ["DKS","ZM"] #"HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
+key_word = ["$CHNG"] #"HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
 most_recent_days = 7 # max is  8 for standard account
 user_language = "en"# "zh-cn","en"
 #####################################################################
+
+
+
 
 
 # twitter api

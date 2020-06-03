@@ -5,27 +5,30 @@ import numpy as np
 import re
 from glob import glob
 import os
-import earnings_scraper
+import earnings_scraper_yh
 import senti_ploter as myPloter
 import top_words
 import senti_process
 import twitter_stats
 import my_dictionary
-
 os.chdir(os.getcwd()+"\\Twitter-Analysis-With-Earning-Event")
-################################## parameters
-key_word ="ZM" #"SBUX" #TTWO, "TGT","WMT",
-ticker = 'ZM'
+
+
+####################          PARAMETERS        #######################
+key_word ="$CHNG" #"SBUX" #TTWO, "TGT","WMT",
+ticker = 'CHNG'
 # 
-save_senti_flag = 1 # if 1, it saves the sentiment text files by date and positivity 
+save_senti_flag = 0 # if 1, it saves the sentiment text files by date and positivity 
 is_show_top_words = 1 ; topn = 50 # show the top words for key words
 influencer_threshold = 20 # define influencer with follower
 # plot flags
 is_plot = 1 # plot the graph
 log_scale_flag= 0 # log-scale or not
-is_earning_release = 0
-is_show_stock_price = 1 # no stock processing would be much faster
-#################################
+is_earning_release = 1
+is_show_stock_price = 0 # no stock processing would be much faster
+#########################################################################
+
+
 
 
 if __name__ == "__main__":

@@ -1,8 +1,9 @@
 
 from plotly.subplots import make_subplots
+from datetime import timedelta
 import plotly.graph_objects as go
 import load_intraday as ghp
-import earnings_scraper
+import earnings_scraper_yh
 import pandas as pd
 
 
@@ -25,7 +26,7 @@ class TwitterPlot:
                     row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.NetSentiment,name="Net Sentiment",marker_color="brown"),
                 row=2, col=1)
-        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Surprise(%)",marker_color="grey"),
+        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.EstimatedEPS,name="Earning Event",marker_color="grey"),
                 row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive count",marker_color="green"),
                     row=3, col=1)
@@ -43,8 +44,8 @@ class TwitterPlot:
                             vertical_spacing=0,row_heights=[3, 1.5, 1])
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.All_counts,name="Publication count",marker_color="lightslategray"),
                     row=1, col=1)
-        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Surprise(%)",marker_color="grey"),
-                row=1, col=1)
+        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.EstimatedEPS,name="Earning Event",marker_color="grey"),
+                row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.NetSentiment,name="Net Sentiment",marker_color="brown"),
                 row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive count",marker_color="green"),
@@ -95,29 +96,35 @@ class TwitterPlot:
                         title_text="{0} intraday twitter sentiment".format(self.key_word))
         fig.show()
 
-def plotit(key_word,ticker,all_sentiments,show_stock_flag,earning_release_flag):
 
+def get_earning_within(ticker,all_sentiments):
+    """search the earning events within the analysis date and 1 week after
+    """
+    earning_release_within = pd.DataFrame(columns=["EstimatedEPS","ReportedEPS","Surprise"])
+    # add earnings date
+    earning_release = earnings_scraper_yh.get_earnings_info(ticker)
+    ## get the range date
+    for edate in earning_release.index:
+        if edate < (all_sentiments.index[-1] + timedelta(days = 7))  and edate > all_sentiments.index[0]:
+            earning_release_within.loc[edate,:] = earning_release.loc[edate,:].values
+            break
+    return earning_release_within
+
+
+def plotit(key_word,ticker,all_sentiments,show_stock_flag,earning_release_flag):
+    
     if earning_release_flag and show_stock_flag:
-        # add earnings date
-        earning_release = earnings_scraper.get_earnings_info(key_word)
-        ## get the range date
-        earning_release_within= earning_release.join(all_sentiments).dropna()
-        
+        earning_release_within = get_earning_within(ticker,all_sentiments)
         ### read stock data, predownloaded from wrds
         hourly_ohlc = ghp.get_hourly_price(ticker)
         ### plot the graph
         TwitterPlot(key_word).plot_senti1(hourly_ohlc,all_sentiments,earning_release_within)
 
     elif earning_release_flag and not show_stock_flag:
-        # add earnings date
-        earning_release = earnings_scraper.get_earnings_info(key_word)
-        ## get the range date
-        earning_release_within= earning_release.join(all_sentiments).dropna()
+        earning_release_within = get_earning_within(ticker,all_sentiments)
         TwitterPlot(key_word).plot_senti2(all_sentiments,earning_release_within)
         
     elif show_stock_flag and not earning_release_flag:
-
-        earning_release_within = pd.DataFrame(columns=["Surprise"])
         ### read stock data, predownloaded from wrds
         hourly_ohlc = ghp.get_hourly_price(ticker)
         ### plot the graph

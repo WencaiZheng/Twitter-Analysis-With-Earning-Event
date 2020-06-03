@@ -72,3 +72,5 @@ The analysis include three parts:
 - Updated 5.30.2020, version 1.7:
 
   1.added 'twitter_stats.py' files that gives basic twitter statistics in a simple digit form instead of a graph, such as daily tweets numbers and daily unique twitter accounts
+  
+  2.show estimated earning report coming in a week or in the past week in the praph
