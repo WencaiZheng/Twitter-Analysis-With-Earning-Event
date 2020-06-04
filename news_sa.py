@@ -15,7 +15,7 @@ head_url_sa ="https://seekingalpha.com/"
 headers = {'User-Agent': 'Chrome/39.0.2171.95'}
 ################################################
 
-def get_earning_news_sa(ticker,key_word):
+def get_earning_news(ticker,key_word):
     the_url = "https://seekingalpha.com/symbol/{0}".format(ticker)
     response = requests.get(the_url, headers=headers)
     # beatifulsoup find all the right tags
@@ -23,10 +23,10 @@ def get_earning_news_sa(ticker,key_word):
     inews=soup.find_all(attrs={"sasource": re.compile("qp_latest")})
     # if key word is in the website address
     key_url= [i.get('href') for i in inews if key_word in i.get('href')]
-    return news_result_dict(key_url)
+    return news_result_dict_sa(key_url)
 
 
-def get_general_news_sa(key_word):
+def get_market_news(key_word):
     the_url = "https://seekingalpha.com/market-news"
     # fake a header of a browser
     headers = {'User-Agent': 'Chrome/39.0.2171.95'}
@@ -37,10 +37,11 @@ def get_general_news_sa(key_word):
     # if key word is in the website address
     key_url = [i.get('href') for i in inews]
 
-    return news_result_dict(key_url)
+    return news_result_dict_sa(key_url)
 
 
-def news_result_dict(key_url):
+
+def news_result_dict_sa(key_url):
     
     if len(key_url) == 0:
         print("No headline is currenly containing key word you are searching")
@@ -59,7 +60,7 @@ def news_result_dict(key_url):
         news_dic[key_url[i]] = [time[0].text,info[0].text]
     return news_dic
 
-def get_earning_names_sa(recent_day,index_code):
+def get_earning_names(recent_day,index_code):
     target_date = pd.to_datetime(datetime.date.today()+datetime.timedelta(days = recent_day))
     all_df =  pd.DataFrame()
     for i in range(1,30):
@@ -103,10 +104,10 @@ def get_earning_names_sa(recent_day,index_code):
 if __name__ == "__main__":
 
     ticker = "CHNG"
-    key_word = "eps" # choose from [eps,revenue],"buy" # choose from ["buy","exit","cut"]
+    key_word = "bili" # choose from [eps,revenue],"buy" # choose from ["buy","exit","cut"]
 
-    key_dict_e = get_earning_news_sa(ticker,key_word)
-    # key_dict = get_position_adjustment_news_sa(key_word)
+    key_dict_e = get_market_news(key_word)
+
     # x = get_general_news_sa(recent_day = 3,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
     print(key_dict_e)
     

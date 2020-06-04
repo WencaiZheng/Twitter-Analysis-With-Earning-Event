@@ -3,7 +3,7 @@ from plotly.subplots import make_subplots
 from datetime import timedelta
 import plotly.graph_objects as go
 import load_intraday as ghp
-import earnings_scraper_yh
+import news_yh
 import pandas as pd
 
 
@@ -26,7 +26,7 @@ class TwitterPlot:
                     row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.NetSentiment,name="Net Sentiment",marker_color="brown"),
                 row=2, col=1)
-        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.EstimatedEPS,name="Earning Event",marker_color="grey"),
+        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Event",marker_color="grey"),
                 row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive count",marker_color="green"),
                     row=3, col=1)
@@ -44,7 +44,7 @@ class TwitterPlot:
                             vertical_spacing=0,row_heights=[3, 1.5, 1])
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.All_counts,name="Publication count",marker_color="lightslategray"),
                     row=1, col=1)
-        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.EstimatedEPS,name="Earning Event",marker_color="grey"),
+        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Event",marker_color="grey"),
                 row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.NetSentiment,name="Net Sentiment",marker_color="brown"),
                 row=2, col=1)
@@ -102,12 +102,13 @@ def get_earning_within(ticker,all_sentiments):
     """
     earning_release_within = pd.DataFrame(columns=["EstimatedEPS","ReportedEPS","Surprise"])
     # add earnings date
-    earning_release = earnings_scraper_yh.get_earnings_info(ticker)
+    earning_release = news_yh.get_earnings_info(ticker)
     ## get the range date
     for edate in earning_release.index:
         if edate < (all_sentiments.index[-1] + timedelta(days = 7))  and edate > all_sentiments.index[0]:
-            earning_release_within.loc[edate,:] = earning_release.loc[edate,:].values
+            earning_release_within.loc[edate,:] = [0,0,0]
             break
+
     return earning_release_within
 
 

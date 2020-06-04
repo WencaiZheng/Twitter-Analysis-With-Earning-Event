@@ -5,7 +5,7 @@ import numpy as np
 import re
 from glob import glob
 import os
-import earnings_scraper_yh
+import news_yh
 import senti_ploter as myPloter
 import top_words
 import senti_process
@@ -15,12 +15,12 @@ os.chdir(os.getcwd()+"\\Twitter-Analysis-With-Earning-Event")
 
 
 ####################          PARAMETERS        #######################
-key_word ="$CHNG" #"SBUX" #TTWO, "TGT","WMT",
-ticker = 'CHNG'
+key_word ="$WORK" #"SBUX" #TTWO, "TGT","WMT",
+ticker = 'WORK'
 # 
-save_senti_flag = 0 # if 1, it saves the sentiment text files by date and positivity 
+save_senti_flag = 1 # if 1, it saves the sentiment text files by date and positivity 
 is_show_top_words = 1 ; topn = 50 # show the top words for key words
-influencer_threshold = 20 # define influencer with follower
+influencer_threshold = 10 # define influencer with follower
 # plot flags
 is_plot = 1 # plot the graph
 log_scale_flag= 0 # log-scale or not
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     print(f'We are observing data from {dates[0]} to {dates[-1]} for {key_word}')
 
     # read the sentiment dictionary, predownloaded
-    pos_dic,neg_dic = my_dictionary.my_dict()
+    pos_dic,neg_dic = my_dictionary.TwitterDict().new_dict()
     # get all sentiment from all files, each file represent a day
     all_sentiments  = senti_process.get_all_senti(key_word,files,pos_dic,neg_dic,influencer_threshold,log_scale_flag,save_senti_flag)
     ###########################################################

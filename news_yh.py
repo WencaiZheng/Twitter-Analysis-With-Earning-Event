@@ -8,9 +8,11 @@ from bs4 import BeautifulSoup
 import time
 from collections import Counter
 
+head_url ="https://finance.yahoo.com"
+
 def get_earnings_info(ticker):
 
-    the_url = "https://finance.yahoo.com/calendar/earnings?symbol={0}".format(ticker)
+    the_url = head_url+f'/calendar/earnings?symbol={ticker}'
     # fake a header of a browser
     headers = {'User-Agent': 'Chrome/39.0.2171.95'}
     response = requests.get(the_url, headers=headers)
@@ -37,8 +39,23 @@ def get_earnings_info(ticker):
     print("Earning dates scraped successfully")   
     return earning_release
 
+def get_general_news(ticker):
+    the_url = f'{head_url}/quote/{ticker}/news?p={ticker}'
+    # fake a header of a browser
+    headers = {'User-Agent': 'Chrome/39.0.2171.95'}
+    response = requests.get(the_url, headers=headers)
+    # beatifulsoup find all the right tags
+    soup = BeautifulSoup(response.text, features='lxml')
+    inews = soup.find_all(href=re.compile("news.*"+ticker.lower()))
+    # if key word is in the website address
+    key_url = [(i.text,i.get('href')) if ".com" in i.get('href') else (i.text,head_url+i.get('href')) for i in inews]
+    key_url_df = pd.DataFrame(key_url,columns=["Headlines","Newslink"])
+
+    return key_url_df
+
 if __name__ == "__main__":
     start_date="2020-04-26"
     end_date="2020-05-02"
-    ticker = "chng"
-    print(get_earnings_info(ticker))
+    ticker = "BILI"
+    key_dict_e = get_general_news(ticker)
+    print(key_dict_e)

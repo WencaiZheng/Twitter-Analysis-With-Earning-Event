@@ -14,11 +14,12 @@ def calculate_top_words(result_path,topn):
 
     for i in range(len(pos_files)):
         ipos = pd.read_csv(pos_files[i])
+        pos_words+= ipos.Text.sum().upper()
+
+    for i in range(len(neg_files)):
         ineg = pd.read_csv(neg_files[i])
-        if len(ipos) !=0:
-            pos_words+= ipos.Text.sum().upper()
-        if len(ineg) !=0:
-            neg_words+= ineg.Text.sum().upper()
+        neg_words+= ineg.Text.sum().upper()
+            
 
     pos_dic = Counter(re.split('[^a-zA-Z]+', pos_words))
     neg_dic = Counter(re.split('[^a-zA-Z]+', neg_words))

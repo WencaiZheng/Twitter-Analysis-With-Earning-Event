@@ -10,7 +10,7 @@ os.chdir(os.getcwd()+"\\Twitter-Analysis-With-Earning-Event")
 
 ############               PARAMETERS             ###################
 # the dates I want to get, below says 7 days look back from today
-key_word = ["$CHNG"] #"HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
+key_word = ["$WORK"] #"SFIX","AVGO","HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
 most_recent_days = 7 # max is  8 for standard account
 user_language = "en"# "zh-cn","en"
 #####################################################################
