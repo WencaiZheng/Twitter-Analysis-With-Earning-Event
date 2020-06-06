@@ -1,7 +1,9 @@
 
 import pandas as pd
 import numpy as np
+from glob import glob
 import os
+import senti_process
 
 class TwitterDict:
 
@@ -28,5 +30,14 @@ class TwitterDict:
 if __name__ == "__main__":
     os.chdir("Twitter-Analysis-With-Earning-Event\\")
     x,y=TwitterDict().new_dict()
-    print(x)
+    
+
+    key_word = "$RH"
+    keyword_path = f"twitters\\{key_word}\\" # where the raw twitters are stored
+    # read all files
+    files=glob(f'{keyword_path}*{key_word}*')
+    ifile=files[-1]
+    xfile=pd.read_csv(ifile)
+    e_file = senti_process.effective_ttr(xfile)
+    isenti,pos_tweets,neg_tweets = senti_process.senti_count(e_file,0)
     pass

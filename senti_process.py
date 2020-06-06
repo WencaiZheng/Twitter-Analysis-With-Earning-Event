@@ -6,7 +6,7 @@ import os
 
 
 
-def effective_ttr(xfile):
+def effective_ttr(xfile,influencer_threshold=20):
     if len(xfile)==0:return None
     xfile["Datetime"] =pd.to_datetime(xfile.Created)
     xfile["Hour"] = xfile.Datetime.dt.hour

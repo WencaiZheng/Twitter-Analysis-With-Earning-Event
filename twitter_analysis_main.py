@@ -15,8 +15,8 @@ os.chdir(os.getcwd()+"\\Twitter-Analysis-With-Earning-Event")
 
 
 ####################          PARAMETERS        #######################
-key_word ="$WORK" #"SBUX" #TTWO, "TGT","WMT",
-ticker = 'WORK'
+key_word = '$RH' #"SBUX" #TTWO, "TGT","WMT",
+ticker = 'RH'
 # 
 save_senti_flag = 1 # if 1, it saves the sentiment text files by date and positivity 
 is_show_top_words = 1 ; topn = 50 # show the top words for key words
@@ -25,7 +25,7 @@ influencer_threshold = 10 # define influencer with follower
 is_plot = 1 # plot the graph
 log_scale_flag= 0 # log-scale or not
 is_earning_release = 1
-is_show_stock_price = 0 # no stock processing would be much faster
+is_show_stock_price = 1 # no stock processing would be much faster
 #########################################################################
 
 
