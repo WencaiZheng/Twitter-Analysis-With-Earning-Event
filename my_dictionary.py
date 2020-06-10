@@ -4,11 +4,13 @@ import numpy as np
 from glob import glob
 import os
 import senti_process
+os.chdir("Twitter-Analysis-With-Earning-Event\\")
 
 class TwitterDict:
 
-    my_pos = ["BELIEVER"]
-    my_neg = []
+    my_dict = pd.read_csv('dictionary\\MyDict.csv')
+    my_pos = my_dict.Positive.values
+    my_neg = my_dict.Negtive.values
 
     @staticmethod
     def origin_dict():
@@ -19,7 +21,7 @@ class TwitterDict:
 
     @classmethod
     def new_dict(cls):
-        my_pos,my_neg = np.array(cls.my_pos),np.array(cls.my_neg)
+        my_pos,my_neg = cls.my_pos,cls.my_neg
         pos_dic,neg_dic = cls.origin_dict()
         new_pos = np.append(pos_dic,my_pos)
         new_neg = np.append(neg_dic,my_neg)
@@ -28,9 +30,8 @@ class TwitterDict:
 
 
 if __name__ == "__main__":
-    os.chdir("Twitter-Analysis-With-Earning-Event\\")
-    x,y=TwitterDict().new_dict()
     
+    pos,neg = TwitterDict().new_dict()
 
     key_word = "$RH"
     keyword_path = f"twitters\\{key_word}\\" # where the raw twitters are stored
@@ -38,6 +39,8 @@ if __name__ == "__main__":
     files=glob(f'{keyword_path}*{key_word}*')
     ifile=files[-1]
     xfile=pd.read_csv(ifile)
-    e_file = senti_process.effective_ttr(xfile)
-    isenti,pos_tweets,neg_tweets = senti_process.senti_count(e_file,0)
-    pass
+    e_file = senti_process.SentiProcess(pos,neg).effective_ttr(xfile,thd=10)
+    isenti,pos_tweets,neg_tweets = senti_process.SentiProcess(pos,neg).senti_count(e_file,log_flag=0)
+    
+    
+    print(pos_tweets,neg_tweets)

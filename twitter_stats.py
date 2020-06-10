@@ -11,6 +11,9 @@ def daily_tweets(files):
         idate = dates[i]
         ifile = files[i]
         xfile=pd.read_csv(ifile)
-        stats.append((idate,len(xfile),len(xfile.User_id.unique())))
+        if len(xfile) != 0:
+            stats.append((idate,len(xfile),len(xfile.User_id.unique())))
+        else:
+            stats.append((idate,0,0))
     stats_pd = pd.DataFrame(stats,columns=["date","twi_num","uniq_user"])
     return stats_pd

@@ -56,6 +56,10 @@ def get_general_news(ticker):
 if __name__ == "__main__":
     start_date="2020-04-26"
     end_date="2020-05-02"
-    ticker = "BILI"
-    key_dict_e = get_general_news(ticker)
-    print(key_dict_e)
+    ticker = "IQ"
+    tics=["BILI","IQ","HUYA","MOMO","DOYU","NFLX","WB"]
+    alls=pd.DataFrame()
+    for ticker in tics:
+        key_dict_e = get_earnings_info(ticker)
+        alls = pd.concat([alls,key_dict_e])
+    alls.to_csv("C:\\Users\\wenca\\Desktop\\epss.csv")

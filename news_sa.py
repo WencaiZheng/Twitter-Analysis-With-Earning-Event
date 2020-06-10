@@ -9,6 +9,7 @@ import datetime
 import requests
 import re
 from bs4 import BeautifulSoup
+import os
 ##########################################
 head_url_sa ="https://seekingalpha.com/"
 # fake a header of a browser
@@ -23,7 +24,7 @@ def get_earning_news(ticker,key_word):
     inews=soup.find_all(attrs={"sasource": re.compile("qp_latest")})
     # if key word is in the website address
     key_url= [i.get('href') for i in inews if key_word in i.get('href')]
-    return news_result_dict_sa(key_url)
+    return news_result_dict(key_url)
 
 
 def get_market_news(key_word):
@@ -37,11 +38,11 @@ def get_market_news(key_word):
     # if key word is in the website address
     key_url = [i.get('href') for i in inews]
 
-    return news_result_dict_sa(key_url)
+    return news_result_dict(key_url)
 
 
 
-def news_result_dict_sa(key_url):
+def news_result_dict(key_url):
     
     if len(key_url) == 0:
         print("No headline is currenly containing key word you are searching")
@@ -103,13 +104,16 @@ def get_earning_names(recent_day,index_code):
 
 if __name__ == "__main__":
 
+    os.chdir("Twitter-Analysis-With-Earning-Event\\")
     ticker = "CHNG"
     key_word = "bili" # choose from [eps,revenue],"buy" # choose from ["buy","exit","cut"]
 
     key_dict_e = get_market_news(key_word)
 
-    # x = get_general_news_sa(recent_day = 3,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
-    print(key_dict_e)
+    
+    x = get_earning_names(recent_day = 4,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
+    
+    print(x)
     
     # if key_dict:
     #     i=0
