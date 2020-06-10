@@ -4,7 +4,7 @@ import numpy as np
 from glob import glob
 import os
 import senti_process
-os.chdir("Twitter-Analysis-With-Earning-Event\\")
+os.chdir(os.getcwd()+"\\Twitter-Analysis-With-Earning-Event")
 
 class TwitterDict:
 
@@ -33,14 +33,15 @@ if __name__ == "__main__":
     
     pos,neg = TwitterDict().new_dict()
 
-    key_word = "$RH"
+    key_word = "$WORK"
     keyword_path = f"twitters\\{key_word}\\" # where the raw twitters are stored
     # read all files
     files=glob(f'{keyword_path}*{key_word}*')
     ifile=files[-1]
     xfile=pd.read_csv(ifile)
-    e_file = senti_process.SentiProcess(pos,neg).effective_ttr(xfile,thd=10)
-    isenti,pos_tweets,neg_tweets = senti_process.SentiProcess(pos,neg).senti_count(e_file,log_flag=0)
+    e_file = senti_process.SentiProcess(key_word,pos,neg).effective_ttr(xfile,thd=10)
+    isenti,pos_tweets,neg_tweets = senti_process.SentiProcess(key_word,pos,neg).senti_count(e_file,log_flag=0)
     
-    
-    print(pos_tweets,neg_tweets)
+    print(pos_tweets)
+
+    print(neg_tweets)

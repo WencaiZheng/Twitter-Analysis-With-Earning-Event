@@ -15,8 +15,8 @@ import warnings
 warnings.simplefilter("ignore")
 os.chdir(os.getcwd())
 ####################          PARAMETERS        #######################
-key_word = '$JW.A' # PLCE $LULU $PLAY $JW.A 
-ticker = 'LULU'
+key_word = '$WORK' # PLCE $LULU $PLAY $JW.A 
+ticker = 'WORK'
 # 
 save_senti_flag = 0 # if 1, it saves the sentiment text files by date and positivity 
 is_show_topwds = 1 ; topn = 50 # show the top words for key words
