@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import datetime
 import pandas as pd
 import numpy as np
@@ -6,7 +5,7 @@ import re
 from glob import glob
 import os
 import news_yh
-import senti_ploter as myPloter
+import senti_ploter
 import top_words
 import senti_process
 import twitter_stats
@@ -15,8 +14,8 @@ import warnings
 warnings.simplefilter("ignore")
 os.chdir(os.getcwd())
 ####################          PARAMETERS        #######################
-key_word = '$WORK' # PLCE $LULU $PLAY $JW.A 
-ticker = 'WORK'
+key_word = '$LULU' # PLCE $LULU $PLAY $JW.A 
+ticker = 'LULU'
 # 
 save_senti_flag = 0 # if 1, it saves the sentiment text files by date and positivity 
 is_show_topwds = 1 ; topn = 50 # show the top words for key words
@@ -24,7 +23,7 @@ flr_thres = 20 # define influencer with follower
 # plot flags
 is_plot = 1 # plot the graph
 log_flag= 0 # log-scale or not
-is_earning_release = 1
+is_earning_release = 0
 is_show_stock = 0 # no stock processing would be much faster
 #########################################################################
 
@@ -49,7 +48,7 @@ if __name__ == "__main__":
     #########################
     top_words.show_top(result_path,key_word,topn,is_show_topwds)
     #plot #####################################################
-    if is_plot:myPloter.plotit(key_word,ticker,all_sentiments,is_show_stock,is_earning_release)
+    if is_plot:senti_ploter.plotit(key_word,ticker,all_sentiments,is_show_stock,is_earning_release)
     # statits
     twi_daily = twitter_stats.daily_tweets(files)
     print(twi_daily)

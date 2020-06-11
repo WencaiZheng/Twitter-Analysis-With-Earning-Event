@@ -73,4 +73,8 @@ The analysis include three parts:
 
   1.added 'twitter_stats.py' files that gives basic twitter statistics in a simple digit form instead of a graph, such as daily tweets numbers and daily unique twitter accounts
   
-  2.show estimated earning report coming in a week or in the past week in the praph
+  2.show estimated earning report coming in a week or in the past week in the graph
+
+- Updated 6.10.2020, version 1.8:
+
+  1.added new filter method as frequency of user tweets, stored as myfilter.py

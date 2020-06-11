@@ -4,13 +4,13 @@ import numpy as np
 from glob import glob
 import os
 import senti_process
-os.chdir(os.getcwd()+"\\Twitter-Analysis-With-Earning-Event")
+os.chdir(os.getcwd())
 
 class TwitterDict:
 
     my_dict = pd.read_csv('dictionary\\MyDict.csv')
     my_pos = my_dict.Positive.values
-    my_neg = my_dict.Negtive.values
+    my_neg = my_dict.Negative.values
 
     @staticmethod
     def origin_dict():
@@ -43,5 +43,4 @@ if __name__ == "__main__":
     isenti,pos_tweets,neg_tweets = senti_process.SentiProcess(key_word,pos,neg).senti_count(e_file,log_flag=0)
     
     print(pos_tweets)
-
     print(neg_tweets)

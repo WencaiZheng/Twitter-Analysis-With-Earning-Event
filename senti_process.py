@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import os
+import myfilter
 
 class SentiProcess:
     def __init__(self,key_w,pos,neg):
@@ -9,21 +10,26 @@ class SentiProcess:
         self.pos_dic = pos
         self.neg_dic = neg
     
-    def special_filter(self,txt):
+    def spliter(self,txt):
         spliter = self.key_word.upper()
         txt = spliter+txt.upper().split(spliter)[-1].split("$")[0]
         return txt
     
+
     def effective_ttr(self,xfile,thd):
-        if len(xfile)==0:return None
+        if len(xfile)==0:return []
         xfile["Datetime"] =pd.to_datetime(xfile.Created)
         xfile["Hour"] = xfile.Datetime.dt.hour
         xfile=xfile.sort_values(by="Datetime")
         # filter the effective user twitter
-        x_effc = xfile[xfile.User_flr>=thd]
+        # is_effec = xfile.User_flr>=thd #using follower number to filter
+        # use frequency twitter
+        is_effec = list(map(myfilter.Filter.freq_filter,xfile.User_id))
+        x_effc = xfile[is_effec]
+
         x_effc.index = range(len(x_effc))
         # split the $ sign and get only the key word
-        x_effc["fText"] = list(map(self.special_filter,x_effc.Text))
+        x_effc["fText"] = list(map(self.spliter,x_effc.Text))
         return x_effc
 
     @staticmethod
@@ -43,7 +49,9 @@ class SentiProcess:
         """count how many positive or negative in a file named e_file
             log_flag: whether or not scale the count into log
         """
-        if e_file is None:return None
+        if len(e_file)==0:
+            print("file is empty")
+            return None
         
         sentis = list(map(lambda x:self.get_senti(x,self.pos_dic,self.neg_dic),e_file.fText))
         e_file["Sentiment"] = sentis
@@ -54,11 +62,9 @@ class SentiProcess:
         sentis_df.columns=["Negative","Unknown","Positive"]
         # s_file gives each ttr sentiment
         s_file = e_file.join(sentis_df)
-
         # change time zone from utc to est
         s_file["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in s_file.Datetime]
         s_file.index = list(map(lambda x:x.replace(tzinfo=None),s_file["EST"]))
-
         # add all sentis get a count 
         s_file["All_counts"] = [1]*len(s_file)
         # count the hourly negative or positive ttr 
@@ -74,6 +80,9 @@ class SentiProcess:
         save_file = s_file.loc[:,["EST","User_name","Text","Sentiment","Created","User_flr",]]
         pos_tweets = save_file[save_file.Sentiment==1]
         neg_tweets = save_file[save_file.Sentiment==-1]
+        # standard  datetime
+        idate = e_file.Created[0][:11]
+        hour_count.index = list(map(lambda x:pd.to_datetime(f'{idate}{x}:00:00'),hour_count.index))
         return hour_count,pos_tweets,neg_tweets
 
     
@@ -88,14 +97,15 @@ class SentiProcess:
             idate = dates[i]
             ifile = files[i]
             xfile=pd.read_csv(ifile)
+            # step 1 filter out all the unqualified ones, if empty return none
+            e_file = self.effective_ttr(xfile,thres)
             # if empty, goes to next date file
-            if len(xfile)==0:
+            if len(e_file)==0:
                 print("file is empty for {0}".format(idate))
                 continue 
-
-            e_file = self.effective_ttr(xfile,thres)
+            # step 2
             isenti,pos_tweets,neg_tweets = self.senti_count(e_file,is_log)
-            isenti.index = list(map(lambda x:pd.to_datetime(idate+" "+str(x)+":00:00"),isenti.index))
+            # add today's senti to all
             all_sentis = pd.concat([all_sentis,isenti])
             # save the divided files if necessary
             if is_save_senti:
@@ -112,7 +122,7 @@ class SentiProcess:
         # convert all_sentis from UTC time to EST time
         all_sentis["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in all_sentis.index]
         all_sentis.index = list(map(lambda x:x.replace(tzinfo=None),all_sentis["EST"]))
+        if len(all_sentis)==0:return []
         # add net sentiment
         all_sentis["NetSentiment"] = all_sentis.Positive + all_sentis.Negative
-
         return all_sentis
