@@ -111,7 +111,7 @@ if __name__ == "__main__":
     key_dict_e = get_market_news(key_word)
 
     
-    x = get_earning_names(recent_day = 4,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
+    x = get_earning_names(recent_day = 5,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
     
     print(x)
     

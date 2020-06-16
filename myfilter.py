@@ -27,9 +27,11 @@ class Filter:
             # limit reached
             if cls.request_counter >= 179:
                 myhelper.countdown(16*60)
+                cls.request_counter = 0
 
         freq = sum(np.array(result)>(datetime.datetime.today()-datetime.timedelta(period)))
         return freq>=freq_thres
 
 if __name__ == "__main__":
+    # hello world
     pass

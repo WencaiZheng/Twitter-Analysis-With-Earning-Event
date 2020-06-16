@@ -14,17 +14,17 @@ import warnings
 warnings.simplefilter("ignore")
 os.chdir(os.getcwd())
 ####################          PARAMETERS        #######################
-key_word = '$LULU' # PLCE $LULU $PLAY $JW.A 
-ticker = 'LULU'
+key_word = '$HRB' # PLCE $LULU $PLAY $JW.A 
+ticker = 'HRB'
 # 
-save_senti_flag = 0 # if 1, it saves the sentiment text files by date and positivity 
-is_show_topwds = 1 ; topn = 50 # show the top words for key words
-flr_thres = 20 # define influencer with follower
+save_senti_flag = 1 # if 1, it saves the sentiment text files by date and positivity 
+is_show_topwds = 1 ; topn = 20 # show the top words for key words
+flr_thres = 10 # define influencer with follower
 # plot flags
 is_plot = 1 # plot the graph
 log_flag= 0 # log-scale or not
-is_earning_release = 0
-is_show_stock = 0 # no stock processing would be much faster
+is_earning_release = 1
+is_show_stock = 1 # no stock processing would be much faster
 #########################################################################
 
 

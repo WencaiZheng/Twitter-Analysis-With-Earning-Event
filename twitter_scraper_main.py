@@ -11,8 +11,8 @@ today_date = datetime.date.today()
 api = myhelper.api_load()
 ############               PARAMETERS             ###################
 # the dates I want to get, below says 7 days look back from today
-key_word = ['LULU'] #"SFIX","AVGO","HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
-most_recent_days = 2 # max is  8 for standard account
+key_word = ['$HRB'] #"SFIX","AVGO","HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
+most_recent_days = 7 # max is  8 for standard account
 user_language = "en"# "zh-cn","en"
 #####################################################################
 
@@ -64,7 +64,7 @@ def get_oneday_twitter(idate:str,key_word:str,max_rqst:int):
 
 
         except:
-            print("Rate limit exceed! wait for another 16min...if you believe this is abnormal, check code")
+            
             myhelper.countdown(16*60)
             
     print("{0} requests have been finished for date {1} with {2}".format(i,actual_date,key_word))

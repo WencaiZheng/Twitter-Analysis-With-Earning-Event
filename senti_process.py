@@ -22,9 +22,9 @@ class SentiProcess:
         xfile["Hour"] = xfile.Datetime.dt.hour
         xfile=xfile.sort_values(by="Datetime")
         # filter the effective user twitter
-        # is_effec = xfile.User_flr>=thd #using follower number to filter
+        is_effec = xfile.User_flr>=thd #using follower number to filter
         # use frequency twitter
-        is_effec = list(map(myfilter.Filter.freq_filter,xfile.User_id))
+        # is_effec = list(map(myfilter.Filter.freq_filter,xfile.User_id))
         x_effc = xfile[is_effec]
 
         x_effc.index = range(len(x_effc))
