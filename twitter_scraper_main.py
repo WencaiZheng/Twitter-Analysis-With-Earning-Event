@@ -11,8 +11,8 @@ today_date = datetime.date.today()
 api = myhelper.api_load()
 ############               PARAMETERS             ###################
 # the dates I want to get, below says 7 days look back from today
-key_word = ['$ORCL'] #"SFIX","AVGO","HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
-most_recent_days = 1 # max is  8 for standard account
+key_word = ['$GRPN'] #"SFIX","AVGO","HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
+most_recent_days = 7 # max is  8 for standard account
 user_language = "en"# "zh-cn","en"
 #####################################################################
 

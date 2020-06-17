@@ -1,6 +1,6 @@
 
 from plotly.subplots import make_subplots
-from datetime import timedelta
+from datetime import timedelta,datetime
 import plotly.graph_objects as go
 import load_intraday as ghp
 import news_yh
@@ -26,7 +26,7 @@ class TwitterPlot:
                     row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.NetSentiment,name="Net Sentiment",marker_color="brown"),
                 row=2, col=1)
-        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Event",marker_color="grey"),
+        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Event",marker_color="green"),
                 row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive count",marker_color="green"),
                     row=3, col=1)
@@ -44,7 +44,7 @@ class TwitterPlot:
                             vertical_spacing=0,row_heights=[3, 1.5, 1])
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.All_counts,name="Publication count",marker_color="lightslategray"),
                     row=1, col=1)
-        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Event",marker_color="grey"),
+        fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Event",marker_color="green"),
                 row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.NetSentiment,name="Net Sentiment",marker_color="brown"),
                 row=2, col=1)
@@ -106,6 +106,7 @@ def get_earning_within(ticker,all_sentiments):
     ## get the range date
     for edate in earning_release.index:
         if edate < (all_sentiments.index[-1] + timedelta(days = 7))  and edate > all_sentiments.index[0]:
+            edate = pd.to_datetime(str(edate.date())+' 16:00:00')
             earning_release_within.loc[edate,:] = [0,0,0]
             break
 

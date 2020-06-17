@@ -77,7 +77,7 @@ class SentiProcess:
         # show negative times in nagative
         hour_count.Negative = -hour_count.Negative
         # save negative or positive tweets v5/5/20:
-        save_file = s_file.loc[:,["User_name","Text","Sentiment","User_flr",]]
+        save_file = s_file.loc[:,["User_name","Sentiment","User_flr","Text",]]
         pos_tweets = save_file[save_file.Sentiment==1]
         neg_tweets = save_file[save_file.Sentiment==-1]
         # standard  datetime
@@ -114,8 +114,8 @@ class SentiProcess:
             all_neg = pd.concat([all_neg,neg_tweets],axis=0,sort=False)
 
         if is_save_senti ==1:
-            all_pos.to_csv(f'{senti_path}\\{key_word}_pos.csv')
-            all_neg.to_csv(f'{senti_path}\\{key_word}_neg.csv')
+            all_df = pd.concat([all_pos,all_neg],axis=0,sort=False).sort_index()
+            all_df.to_csv(f'{senti_path}\\{key_word}_{thres}.csv')
             print("sentiment files are saved successfully")
 
         all_sentis = all_sentis.replace([np.inf,-np.inf],[np.nan,np.nan])
