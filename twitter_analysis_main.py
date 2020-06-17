@@ -9,22 +9,22 @@ import senti_ploter
 import top_words
 import senti_process
 import twitter_stats
-import my_dictionary
+import mydictionary
 import warnings
 warnings.simplefilter("ignore")
 os.chdir(os.getcwd())
 ####################          PARAMETERS        #######################
-key_word = '$HRB' # PLCE $LULU $PLAY $JW.A 
-ticker = 'HRB'
+key_word = '$ORCL' # PLCE $LULU $PLAY $JW.A 
+ticker = 'ORCL'
 # 
 save_senti_flag = 1 # if 1, it saves the sentiment text files by date and positivity 
 is_show_topwds = 1 ; topn = 20 # show the top words for key words
-flr_thres = 10 # define influencer with follower
+flr_thres = 20 # define influencer with follower
 # plot flags
 is_plot = 1 # plot the graph
 log_flag= 0 # log-scale or not
 is_earning_release = 1
-is_show_stock = 1 # no stock processing would be much faster
+is_show_stock = 0 # no stock processing would be much faster
 #########################################################################
 
 
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     print(f'We are observing data from {dates[0]} to {dates[-1]} for {key_word}')
 
     # read the sentiment dictionary, predownloaded
-    pos_dic,neg_dic = my_dictionary.TwitterDict().new_dict()
+    pos_dic,neg_dic = mydictionary.TwitterDict().new_dict()
     # get all sentiment from all files, each file represent a day
     all_sentiments  = senti_process.SentiProcess(key_word,pos_dic,neg_dic).get_all_senti(files,flr_thres,log_flag,save_senti_flag)
     ###################################

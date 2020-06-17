@@ -11,6 +11,7 @@ import re
 from bs4 import BeautifulSoup
 import os
 ##########################################
+os.chdir("Twitter-Analysis-With-Earning-Event\\")
 head_url_sa ="https://seekingalpha.com/"
 # fake a header of a browser
 headers = {'User-Agent': 'Chrome/39.0.2171.95'}
@@ -104,14 +105,13 @@ def get_earning_names(recent_day,index_code):
 
 if __name__ == "__main__":
 
-    os.chdir("Twitter-Analysis-With-Earning-Event\\")
-    ticker = "CHNG"
+
+    ticker = "ORCL"
     key_word = "bili" # choose from [eps,revenue],"buy" # choose from ["buy","exit","cut"]
 
-    key_dict_e = get_market_news(key_word)
-
-    
-    x = get_earning_names(recent_day = 5,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
+    # key_dict_e = get_market_news(key_word)
+    x= get_earning_news('ORCL','revenue')
+    # x = get_earning_names(recent_day = 5,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
     
     print(x)
     

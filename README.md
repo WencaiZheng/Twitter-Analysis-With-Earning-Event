@@ -78,3 +78,7 @@ The analysis include three parts:
 - Updated 6.10.2020, version 1.8:
 
   1.added new filter method as frequency of user tweets, stored as myfilter.py
+
+- Updated 6.10.2020, version 1.9：
+
+  1.changed the save sentiment file together for one ticker instead of one file for one date

@@ -77,7 +77,7 @@ class SentiProcess:
         # show negative times in nagative
         hour_count.Negative = -hour_count.Negative
         # save negative or positive tweets v5/5/20:
-        save_file = s_file.loc[:,["EST","User_name","Text","Sentiment","Created","User_flr",]]
+        save_file = s_file.loc[:,["User_name","Text","Sentiment","User_flr",]]
         pos_tweets = save_file[save_file.Sentiment==1]
         neg_tweets = save_file[save_file.Sentiment==-1]
         # standard  datetime
@@ -90,9 +90,8 @@ class SentiProcess:
         key_word = self.key_word
         #make other functions use these variables
         dates = [i[-14:-4] for i in files]
-        # count sentiments
-        all_sentis = pd.DataFrame()
-
+        # count sentiments 
+        all_sentis,all_pos,all_neg = pd.DataFrame(),pd.DataFrame(),pd.DataFrame()
         for i in range(len(dates)):
             idate = dates[i]
             ifile = files[i]
@@ -108,16 +107,17 @@ class SentiProcess:
             # add today's senti to all
             all_sentis = pd.concat([all_sentis,isenti])
             # save the divided files if necessary
-            if is_save_senti:
-                senti_path = "results\\{0}".format(key_word)
-                if not os.path.exists(senti_path):
-                    os.makedirs(senti_path)
-                if len(pos_tweets) != 0 :
-                    pos_tweets.to_csv(senti_path+"\\{0}_{1}_pos.csv".format(key_word,idate))
-                if len(neg_tweets) != 0 :
-                    neg_tweets.to_csv(senti_path+"\\{0}_{1}_neg.csv".format(key_word,idate))
-            
-        print("sentiment files are saved successfully")
+
+            senti_path = f'results\\{key_word}'
+            if not os.path.exists(senti_path):os.makedirs(senti_path)
+            all_pos = pd.concat([all_pos,pos_tweets],axis=0,sort=False)
+            all_neg = pd.concat([all_neg,neg_tweets],axis=0,sort=False)
+
+        if is_save_senti ==1:
+            all_pos.to_csv(f'{senti_path}\\{key_word}_pos.csv')
+            all_neg.to_csv(f'{senti_path}\\{key_word}_neg.csv')
+            print("sentiment files are saved successfully")
+
         all_sentis = all_sentis.replace([np.inf,-np.inf],[np.nan,np.nan])
         # convert all_sentis from UTC time to EST time
         all_sentis["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in all_sentis.index]
