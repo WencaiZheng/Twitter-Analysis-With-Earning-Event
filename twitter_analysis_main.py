@@ -44,11 +44,9 @@ if __name__ == "__main__":
     # get all sentiment from all files, each file represent a day
     all_sentiments  = senti_process.SentiProcess(key_word,pos_dic,neg_dic).get_all_senti(files,flr_thres,log_flag,save_senti_flag)
     ###################################
-
     top_words.show_top(result_path,key_word,topn,is_show_topwds)
     #plot #####################################################
     if is_plot:senti_ploter.plotit(key_word,ticker,all_sentiments,is_show_stock,is_earning_release)
-    
     twitter_stats.observe_annoucement(ticker,all_sentiments)
     # statits
     twi_daily = twitter_stats.daily_tweets(all_sentiments)

@@ -29,7 +29,7 @@ class SentiProcess:
 
         x_effc.index = range(len(x_effc))
         # split the $ sign and get only the key word
-        x_effc["fText"] = list(map(self.spliter,x_effc.Text))
+        x_effc["sText"] = list(map(self.spliter,x_effc.Text))
         return x_effc
 
     @staticmethod
@@ -45,7 +45,7 @@ class SentiProcess:
         else: senti = 0
         return senti
     
-    def senti_count(self,e_file,log_flag):
+    def senti_count(self,idate,e_file,log_flag):
         """count how many positive or negative in a file named e_file
             log_flag: whether or not scale the count into log
         """
@@ -53,7 +53,7 @@ class SentiProcess:
             print("file is empty")
             return None
         
-        sentis = list(map(lambda x:self.get_senti(x,self.pos_dic,self.neg_dic),e_file.fText))
+        sentis = list(map(lambda x:self.get_senti(x,self.pos_dic,self.neg_dic),e_file.sText))
         e_file["Sentiment"] = sentis
         # one hot encoding
         sentis_df = pd.get_dummies(sentis)
@@ -77,13 +77,10 @@ class SentiProcess:
         # show negative times in nagative
         hour_count.Negative = -hour_count.Negative
         # save negative or positive tweets v5/5/20:
-        save_file = s_file.loc[:,["User_name","Sentiment","User_flr","Text",]]
-        pos_tweets = save_file[save_file.Sentiment==1]
-        neg_tweets = save_file[save_file.Sentiment==-1]
+        save_file = s_file.loc[:,["User_name","Sentiment","User_flr","sText",]]
         # standard  datetime
-        idate = e_file.Created[0][:11]
-        hour_count.index = list(map(lambda x:pd.to_datetime(f'{idate}{x}:00:00'),hour_count.index))
-        return hour_count,pos_tweets,neg_tweets
+        hour_count.index = list(map(lambda x:pd.to_datetime(f'{idate} {x}:00:00'),hour_count.index))
+        return hour_count,save_file
 
     
     def get_all_senti(self,files,thres,is_log,is_save_senti):
@@ -91,7 +88,7 @@ class SentiProcess:
         #make other functions use these variables
         dates = [i[-14:-4] for i in files]
         # count sentiments 
-        all_sentis,all_pos,all_neg = pd.DataFrame(),pd.DataFrame(),pd.DataFrame()
+        all_sentis,all_tweets = pd.DataFrame(),pd.DataFrame()
         for i in range(len(dates)):
             idate = dates[i]
             ifile = files[i]
@@ -103,19 +100,16 @@ class SentiProcess:
                 print("file is empty for {0}".format(idate))
                 continue 
             # step 2
-            isenti,pos_tweets,neg_tweets = self.senti_count(e_file,is_log)
+            isenti_hourly,itweets_single = self.senti_count(idate,e_file,is_log)
             # add today's senti to all
-            all_sentis = pd.concat([all_sentis,isenti])
-            # save the divided files if necessary
-
-            senti_path = f'results\\{key_word}'
-            if not os.path.exists(senti_path):os.makedirs(senti_path)
-            all_pos = pd.concat([all_pos,pos_tweets],axis=0,sort=False)
-            all_neg = pd.concat([all_neg,neg_tweets],axis=0,sort=False)
+            all_sentis = pd.concat([all_sentis,isenti_hourly])
+            # save the divided files if necessary 'results/tickername/file.csv'
+            all_tweets = pd.concat([all_tweets,itweets_single],axis=0,sort=False)
+ 
 
         if is_save_senti ==1:
-            all_df = pd.concat([all_pos,all_neg],axis=0,sort=False).sort_index()
-            all_df.to_csv(f'{senti_path}\\{key_word}_{thres}.csv')
+            all_df = all_tweets.sort_index()
+            all_df.to_csv(f'results\\{key_word}\\{key_word}_{thres}.csv')
             print("sentiment files are saved successfully")
 
         all_sentis = all_sentis.replace([np.inf,-np.inf],[np.nan,np.nan])
