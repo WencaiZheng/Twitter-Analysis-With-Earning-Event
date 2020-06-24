@@ -1,4 +1,6 @@
-TOKEN.txt
-data/
-
 __pycache__/
+
+TOKEN.txt
+data/raw_twitters/
+data/senti_results/
+data/stock_data/
