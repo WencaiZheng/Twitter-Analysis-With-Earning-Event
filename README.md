@@ -63,35 +63,28 @@ The analysis include three parts:
 
   2.optimized twitter scraping process
 
-1. Updated 5.29.2020, version 1.6:
+- Updated 5.29.2020, version 1.6:
 
-  1.broke down the functions into different files to get better management
+   1.broke down the functions into different files to get better management
 
-  2.add "top_word" function to get the top frequency words for each keyword analysis
+   2.add "top_word" function to get the top frequency words for each keyword analysis
 
-2. Updated 5.30.2020, version 1.7:
+- Updated 5.30.2020, version 1.7:
 
-  1.added 'twitter_stats.py' files that gives basic twitter statistics in a simple digit form instead of a graph, such as daily tweets numbers and daily unique twitter accounts
+    1.added 'twitter_stats.py' files that gives basic twitter statistics in a simple digit form instead of a graph, such as daily tweets numbers and daily unique twitter accounts
 
-  2.show estimated earning report coming in a week or in the past week in the graph
+    2.show estimated earning report coming in a week or in the past week in the graph
 
-3. Updated 6.10.2020, version 1.8:
+- Updated 6.10.2020, version 1.8:
 
-  1.added new filter method as frequency of user tweets, stored as myfilter.py
+    1.added new filter method as frequency of user tweets, stored as myfilter.py
 
-4. Updated 6.16.2020, version 1.9：
+- Updated 6.16.2020, version 1.9：
 
-  1.changed the save sentiment file together for one ticker instead of one file for one date
+    1.changed the save sentiment file together for one ticker instead of one file for one date
 
-  2.twitter_stats.py have function that separate the net sentiment to 5 parts and calculated the net sentiment divided by the total amount of tweets: 
+    2.twitter_stats.py have function that separate the net sentiment to 5 parts and calculated the net sentiment divided by the total amount of tweets
 
-  ​	1.predate: days before announcement date. 
-
-  ​	2.pretime: date at announcement date but before earning time (from yahoo finance) 
-
-  ​	3.attime: one hour after earning release. 
-
-  ​	4.posttime: date at announcement date and 1 hour after the earning release. 
-
-  ​	5.postdate: days after the earning date.
+- Updated 6.16.2020, version 2.0：
+  1. redesigned the code structure: keep the non-main function in separate files
 
