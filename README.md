@@ -24,12 +24,12 @@ The analysis include three parts:
 
 * How to operate the files
 
-  * First run "twitter_scaper.py"
-    the parameters are tickers one want to search
-    get a folder contains all the twitters one can scrape eg. standard account means 7 days, 140 length twitter
-
-  * Then run "twitter_analysis.py"
-    parameters are ticker to analyze, and the follower threshold, defaut = 100
+  * open menu.py
+  * choose functions you want to run, there are 4 major functions to choose from
+    * Function 1: get raw tweets related to one keyword and store the files by date
+  * Function 2: analyze the stored files from function 1 and plot graph as above
+    * Function 3: get news from specific 30 major new press twitter accounts and analyze keywords and its trend
+    * Function 4: get ticker names which have earning event in next few days
 
 ## Updates
 
@@ -86,7 +86,8 @@ The analysis include three parts:
     2.twitter_stats.py have function that separate the net sentiment to 5 parts and calculated the net sentiment divided by the total amount of tweets
 
 - Updated 6.16.2020, version 2.0：
-  
-  1. redesigned the code structure: keep the non-main function in separate files
-  2. added new features that allows to get news from specific major press twitter account and analyze keyword volume (e.g. COVID), and compare it with index intraday price, then visualize it.
+
+  1.redesigned the code structure: keep the non-main function in separate files
+
+  2.added new features that allows to get news from specific major press twitter account and analyze keyword volume (e.g. COVID), and compare it with index intraday price, then visualize it.
 
