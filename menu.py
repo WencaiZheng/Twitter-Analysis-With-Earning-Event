@@ -19,14 +19,19 @@ flag_paras = {
 }
 
 if __name__ == "__main__":
-    # get raw tweets and save them
-    scraper_main.RawTweet(key_words,recent_days,"en").get_multiple_dates()
-    # analyze them
+    """ Function 1: get raw tweets and save them
+    """
+    # scraper_main.RawTweet(key_words,recent_days,"en").get_multiple_dates()
+
+    """ Function 2: analyze them
+    """
     analysis_main.analysis_ticker(key_word,ticker,flr_thres,**flag_paras)
 
+    """ Less used funtion
     # news main
     # news_main.get_news(3) # get recent 3 days news from all 30 press
     # news_main.analysis_news()
 
     # get names have earnings next week
     # news_sa.get_earning_names(recent_day = 5,index_code = "RU3") # next 5 days
+    """

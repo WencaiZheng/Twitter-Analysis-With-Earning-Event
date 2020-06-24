@@ -10,7 +10,7 @@ import processor.news_yh as news_yh
 import visualization.senti_ploter as senti_ploter
 import processor.senti_process as senti_process
 import statistics.twitter_stats as twitter_stats
-import processor.dictionary_fix as  mydictionary
+import processor.fix_dictionary as  mydictionary
 
 
 warnings.simplefilter("ignore")
