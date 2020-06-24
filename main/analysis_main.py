@@ -6,7 +6,7 @@ import numpy as np
 from glob import glob
 import warnings
 
-import processor.news_yh as news_yh
+import news.news_yh as news_yh
 import visualization.senti_ploter as senti_ploter
 import processor.senti_process as senti_process
 import statistics.twitter_stats as twitter_stats
@@ -16,8 +16,7 @@ import processor.fix_dictionary as  mydictionary
 warnings.simplefilter("ignore")
 os.chdir(os.getcwd())
 
-
-def analysis_ticker(key_word,ticker,flr_thres,is_save_senti,is_plot,log_flag,is_earning_release,is_show_stock):
+def analysis_ticker(key_word,ticker,flr_thres,is_save_senti,is_plot,is_log,is_earning_release,is_show_stock):
     ####set path
     keyword_path = f"data\\raw_twitters\\{key_word}\\" # where the raw twitters are stored
     # read all files
@@ -30,7 +29,7 @@ def analysis_ticker(key_word,ticker,flr_thres,is_save_senti,is_plot,log_flag,is_
     # read the sentiment dictionary, predownloaded
     pos_dic,neg_dic = mydictionary.TwitterDict().new_dict()
     # get all sentiment from all files, each file represent a day
-    all_sentiments  = senti_process.SentiProcess(key_word,pos_dic,neg_dic).get_all_senti(files,flr_thres,log_flag,is_save_senti)
+    all_sentiments  = senti_process.SentiProcess(key_word,pos_dic,neg_dic).get_all_senti(files,flr_thres,is_log,is_save_senti)
     ###################################
     #twitter_stats.show_top(result_path,key_word,topn,is_show_topwds)
     #plot #####################################################
@@ -51,7 +50,7 @@ if __name__ == "__main__":
     flag_paras = {
         'is_save_senti' : 1 ,
         'is_plot' : 1, # plot the graph
-        'log_flag': 0, # log-scale or not
+        'is_log': 0, # log-scale or not
         'is_earning_release' : 1,
         'is_show_stock' : 1 # no stock processing would be much faster
     }

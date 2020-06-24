@@ -86,5 +86,7 @@ The analysis include three parts:
     2.twitter_stats.py have function that separate the net sentiment to 5 parts and calculated the net sentiment divided by the total amount of tweets
 
 - Updated 6.16.2020, version 2.0：
+  
   1. redesigned the code structure: keep the non-main function in separate files
+  2. added new features that allows to get news from specific major press twitter account and analyze keyword volume (e.g. COVID), and compare it with index intraday price, then visualize it.
 

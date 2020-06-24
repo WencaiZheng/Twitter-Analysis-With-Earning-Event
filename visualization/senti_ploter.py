@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 
 import processor.load_intraday as ghp
-import processor.news_yh as news_yh
+import news.news_yh as news_yh
 
 
 
