@@ -15,7 +15,7 @@ This file get tweets from specific news press accounts from most recent n days
 
 warnings.simplefilter("ignore")
 now_time = datetime.datetime.today()
-save_path = 'data\\raw_twitters\\news\\' 
+save_path = 'data\\news\\' 
 
 
 def get_news(period):
@@ -55,12 +55,10 @@ def get_news(period):
     if not os.path.exists(save_path):os.makedirs(save_path)
     full_df.to_csv(f'{save_path}\\corona-{str(now_time.date())}.csv')
 
-def analysis_news():
+def analysis_news(kw_list,ticker,filename):
 
-    the_file = pd.read_csv(f'{save_path}corona-{str(now_time.date())}.csv',index_col = 0)
+    the_file = pd.read_csv(f'{save_path}{filename}',index_col = 0)
     all_pd = pd.DataFrame()
-    key_word= 'CORONA'
-    key_word2 = 'COVID'
 
     for n in range(np.shape(the_file)[1]//2):
         ifile = the_file.iloc[:,n*2:(n+1)*2].dropna()
@@ -70,13 +68,12 @@ def analysis_news():
         ifile["datehour"] = list(map(lambda x:f'{x.date()} {x.hour}',ifile.index))
         hourly_data =  ifile.groupby(by="datehour").sum().sort_values('datehour')
         # count news numbers
-        hourly_data[key_word] = list(map(lambda x:x.upper().count(key_word),hourly_data.loc[:,press_name]))
-        hourly_data[key_word2] = list(map(lambda x:x.upper().count(key_word2),hourly_data.loc[:,press_name]))
-
-        hourly_data_num = hourly_data[key_word] + hourly_data[key_word2]
-        hourly_data_num.name = press_name
-
-        all_pd = pd.concat([all_pd,hourly_data_num],axis=1,join='outer',sort=False)
+        count = np.zeros(len(hourly_data))
+        for kw in kw_list:
+            count += np.array(list(map(lambda x:x.upper().count(kw),hourly_data.loc[:,press_name])))
+        count_series = pd.Series(count,index=hourly_data.index.copy())
+        count_series.name = press_name
+        all_pd = pd.concat([all_pd,count_series],axis=1,join='outer',sort=False)
 
     all_sentis = all_pd.fillna(0).sum(axis=1)
     all_sentis.index = pd.to_datetime(list(map(lambda x:x+':00:00',all_sentis.index)))
@@ -87,7 +84,7 @@ def analysis_news():
     senti_ploter.TwitterPlot.plot_news(hourly_ohlc,all_sentis)
 
 if __name__ == "__main__":
-
+    os.chdir(os.getcwd()+'\\')
     #get_news()
-    analysis_news()
+    analysis_news(['COVID','CORONA'],'SPY','corona-2020-06-24.csv')
     

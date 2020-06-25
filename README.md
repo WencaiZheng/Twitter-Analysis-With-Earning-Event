@@ -16,20 +16,22 @@ The analysis include three parts:
 
   * tweepy (Python package)
   * a Twitter standard development api (free)
+  * store the consumer_key, consumer_secret, access_token_key, access_token_secret in a file named TOKEN.TXT in root path separated by space
 
 * Pre downloaded files are:
 
-  * The data folder contains the stock's intraday data from wrds TAQ
-  * 'LoughranMcDonald_MasterDictionary_2018.csv' is a dictionary from paper Loughran and McDonald[2018]
+  * The data folder contains the stock's intraday data from *wrds* TAQ database
+  * *LoughranMcDonald_MasterDictionary_2018.csv* is a dictionary from paper Loughran and McDonald[2018]
 
 * How to operate the files
 
-  * open menu.py
-  * choose functions you want to run, there are 4 major functions to choose from
+  * open *menu.py*
+  * choose functions you want to run, there are 5 major functions to choose from
     * Function 1: get raw tweets related to one keyword and store the files by date
     * Function 2: analyze the stored files from function 1 and plot graph as above
-    * Function 3: get news from specific 30 major new press twitter accounts and analyze keywords and its trend
-    * Function 4: get ticker names which have earning event in next few days
+    * Function 3: get news from specific 30 major new press twitter accounts 
+    * Function 4: analyze keywords and its trend result from function 3
+    * Function 5: get ticker names which have earning event in next n days
 
 ## Updates
 
