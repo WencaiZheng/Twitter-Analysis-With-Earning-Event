@@ -2,8 +2,9 @@ import pandas as pd
 import numpy as np
 import datetime
 import os
-import processor.helper as myhelper
-api = myhelper.api_load()
+import processor.load_api as load_api
+import processor.count_down as count_down
+api = load_api.api_load()
 
 class Filter:
 
@@ -26,7 +27,7 @@ class Filter:
             day_gap = (datetime.datetime.today() - time_line[-1].created_at).days
             # limit reached
             if cls.request_counter >= 179:
-                myhelper.countdown(16*60)
+                count_down.countdown(16*60)
                 cls.request_counter = 0
 
         freq = sum(np.array(result)>(datetime.datetime.today()-datetime.timedelta(period)))

@@ -4,7 +4,7 @@ import numpy as np
 import time
 import datetime
 import os
-os.chdir(os.getcwd()+'\\Twitter-Analysis-With-Earning-Event')
+os.chdir(os.getcwd()+'\\Twitter-Analysis-With-Earning-Event\\')
 
 def api_load():
     
@@ -22,11 +22,3 @@ def api_load():
         print("Failed to access Twitter API!")
         return 0
 
-def countdown(t):
-    print("Rate limit exceed! wait for another 16min...if you believe this is abnormal, check code")
-    while t:
-        mins, secs = divmod(t, 60)
-        timeformat = '{:02d}:{:02d}'.format(mins, secs)
-        print(timeformat, end='\r')
-        time.sleep(1)
-        t -= 1

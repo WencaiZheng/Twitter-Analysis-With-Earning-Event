@@ -5,7 +5,8 @@ import warnings
 import os 
 
 import processor.load_intraday as load_intraday
-import processor.helper as myhelper
+import processor.load_api as load_api
+import processor.count_down as count_down
 import visualization.senti_ploter as senti_ploter
 """
 This file get tweets from specific news press accounts from most recent n days
@@ -21,7 +22,7 @@ def get_news(period):
 
     full_df = pd.DataFrame()
     request_counter = 0
-    api = myhelper.api_load()
+    api = load_api.api_load()
     names = pd.read_csv('dictionary\\PressName.csv').iloc[:,-1].values
 
     for iname in names:
@@ -43,7 +44,7 @@ def get_news(period):
             
             # reach limit
             if request_counter >= 179:
-                myhelper.countdown(16*60)
+                count_down.countdown(16*60)
                 request_counter = 0
 
         result_df = pd.DataFrame(result,columns=['Time',iname])

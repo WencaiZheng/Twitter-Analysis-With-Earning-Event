@@ -101,6 +101,7 @@ def get_earning_names(recent_day,index_code):
         pass
     all_df.sort_values(by="Date",inplace=True)
     all_df.drop(columns=['Ticker','Company'],inplace=True)
+    print(all_df)
     return all_df
 
 
@@ -114,7 +115,7 @@ if __name__ == "__main__":
     # x= get_earning_news('ORCL','revenue')
     x = get_earning_names(recent_day = 5,index_code = "RU3")# All:None,SP500:SP,RS1000:RS,Chinese:CN
     
-    print(x)
+    
     pass
     # if key_dict:
     #     i=0

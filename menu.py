@@ -20,7 +20,7 @@ flag_paras = {
 if __name__ == "__main__":
     """ Function 1: get raw tweets and store them
     """
-    # scraper_main.RawTweet(key_words,recent_days,"en").get_multiple_dates()
+    scraper_main.RawTweet(key_words,recent_days,"en").get_multiple_dates()
 
     """ Function 2: analyze them
     """
@@ -28,9 +28,9 @@ if __name__ == "__main__":
 
     """ Function 3: get news from specific 30 major new press twitter accounts and analyze key word
     """
-    # news_main.get_news(3) # get recent 3 days news from all 30 press
+    # news_main.get_news(3) # get recent 3 days news from all 30 major press
     # news_main.analysis_news()
 
     """ Function 4: get ticker names having earnings next few days
     """
-    # news_sa.get_earning_names(recent_day = 5,index_code = "RU3") # next 5 days
+    # news_sa.get_earning_names(recent_day = 5,index_code = "RU3") # next 5 days RU3000 list name

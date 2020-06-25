@@ -2,7 +2,7 @@
 import pandas as pd
 import numpy as np
 import os
-import processor.filter as myfilter
+
 save_path = 'data\\senti_results\\'
 
 class SentiProcess:

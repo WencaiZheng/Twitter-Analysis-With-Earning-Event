@@ -5,10 +5,11 @@ import numpy as np
 import time
 import datetime
 import os
-import processor.helper as myhelper
-os.chdir(os.getcwd())
+import processor.load_api as load_api
+import processor.count_down as count_down
+
 today_date = datetime.date.today()
-api = myhelper.api_load()
+api = load_api.api_load()
 
 class RawTweet:
     # ############               PARAMETERS             ###################
@@ -65,7 +66,7 @@ class RawTweet:
                     break
 
             except:
-                myhelper.countdown(16*60)
+                count_down.countdown(16*60)
                 
         print("{0} requests have been finished for date {1} with {2}".format(i,actual_date,key_word))
         result_full_df.index= range(len(result_full_df))# Rearrange index
