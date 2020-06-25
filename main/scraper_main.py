@@ -1,10 +1,11 @@
+import time
+import os
+import datetime
 import tweepy
-import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-import time
-import datetime
-import os
+import matplotlib.pyplot as plt
+
 import processor.load_api as load_api
 import processor.count_down as count_down
 

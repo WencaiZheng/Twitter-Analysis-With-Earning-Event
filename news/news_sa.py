@@ -1,20 +1,21 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-from scipy.stats import norm
-from bs4 import BeautifulSoup
-import time
-from collections import Counter
 import datetime
 import requests
 import re
-from bs4 import BeautifulSoup
+import time
 import os
-##########################################
+from scipy.stats import norm
+from bs4 import BeautifulSoup
+from collections import Counter
+from bs4 import BeautifulSoup
+
+##############get info from seeking alpha .com#############
 head_url_sa ="https://seekingalpha.com/"
 # fake a header of a browser
 headers = {'User-Agent': 'Chrome/39.0.2171.95'}
-################################################
+###########################################################
 
 def get_earning_news(ticker,key_word):
     the_url = "https://seekingalpha.com/symbol/{0}".format(ticker)

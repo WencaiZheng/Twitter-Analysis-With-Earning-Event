@@ -1,11 +1,11 @@
+import os
+import re
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import os
 from datetime import timedelta
 from collections import Counter
 from glob import glob
-import re
 
 import visualization.senti_ploter as senti_ploter
 

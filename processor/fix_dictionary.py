@@ -6,10 +6,12 @@ import os
 
 
 import processor.senti_process as senti_process
-os.chdir(os.getcwd())
+
 
 class TwitterDict:
-
+    """This is the dictionary from McDonald's paper
+    But here we added some new words that fit twitter more
+    """
     my_dict = pd.read_csv('dictionary\\MyDict.csv')
     my_pos = my_dict.Positive.values
     my_neg = my_dict.Negative.values

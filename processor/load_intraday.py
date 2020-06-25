@@ -1,6 +1,8 @@
 
 import pandas as pd
 save_path = 'data\\stock_data\\'
+
+
 def get_hourly_price(ticker):
     # intraday data from wrds TAQ
     print(f"Processing intraday price for {ticker}")
