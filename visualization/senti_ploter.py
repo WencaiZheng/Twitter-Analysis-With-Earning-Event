@@ -112,7 +112,7 @@ class TwitterPlot:
 
         fig.update(layout_xaxis_rangeslider_visible=False)
         fig.update_layout(height=800, width=1200,
-                        title_text=f"News intraday twitter sentiment")
+                        title_text=f"News intraday twitter sentiment from mainstream media")
         fig.show()
 
 

@@ -12,7 +12,7 @@ def Function1():
     scraper_main.RawTweet(key_word_list,recent_days,"en").get_multiple_dates()
     
 def Function2():
-    """ Function 2: analyze them
+    """ Function 2: analyze twitter result from function 1
     """
     # analysis parameters
     key_word = '$NKE' # PLCE $LULU $PLAY $JW.A 
@@ -30,13 +30,13 @@ def Function2():
 def Function3():
     """ Function 3: get news from specific 30 major new press twitter accounts and analyze key word
     """
-    news_main.get_news(3) # get recent 3 days news from all 30 major press
+    news_main.get_news(8) # get recent 3 days news from all 30 major press
 
 def Function4():
     """ Function 5: analyze and visualize result from function3
     """
     key_word_list = ['CORONA','COVID','PANDEMIC']
-    news_main.analysis_news(key_word_list,'SPY1','corona.csv')
+    news_main.analysis_news(key_word_list,'SPY','corona-2020-06-26.csv')
 
 def Function5():
     """ Function 4: get ticker names having earnings next few days
@@ -46,7 +46,7 @@ def Function5():
 if __name__ == "__main__":
     # Function1()
     # Function2()
-    # Function3()
+    #Function3()
     Function4()
     # Function5()
 

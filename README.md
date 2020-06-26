@@ -14,9 +14,9 @@ The analysis include three parts:
 
 * Prerequisite tool:
 
-  * tweepy (Python package)
-  * a Twitter standard development api (free)
-  * store the consumer_key, consumer_secret, access_token_key, access_token_secret in a file named TOKEN.TXT in root path separated by space
+  * **tweepy** (Python package)
+  * a Twitter standard development account api (free)
+  * store the consumer_key, consumer_secret, access_token_key, access_token_secret from the account above in a file named *TOKEN.TXT* in root path separated by space
 
 * Pre downloaded files are:
 
@@ -41,7 +41,7 @@ The analysis include three parts:
   
   2.changed from twitter to tweepy library
 
-* Updated 5.1.2020, version 1.2:
+* Updated 5.2.2020, version 1.2:
 
   1.added the “net sentiment” feature, which is positive count minus negative
   
@@ -87,7 +87,7 @@ The analysis include three parts:
 
     2.twitter_stats.py have function that separate the net sentiment to 5 parts and calculated the net sentiment divided by the total amount of tweets
 
-- Updated 6.16.2020, version 2.0：
+- Updated 6.24.2020, version 2.0：
 
   1.redesigned the code structure: keep the non-main function in separate files
 
