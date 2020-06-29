@@ -5,7 +5,7 @@ from datetime import timedelta,datetime
 import plotly.graph_objects as go
 
 
-import processor.load_intraday as ghp
+import processor.load_intraday as load_intraday
 import news.news_yh as news_yh
 
 
@@ -137,7 +137,7 @@ def plotit(key_word,ticker,all_sentiments,show_stock_flag,earning_release_flag):
     if earning_release_flag and show_stock_flag:
         earning_release_within = get_earning_within(ticker,all_sentiments)
         ### read stock data, predownloaded from wrds
-        hourly_ohlc = ghp.get_hourly_price(ticker)
+        hourly_ohlc = load_intraday.get_hourly_price(ticker)
         ### plot the graph
         TwitterPlot(key_word).plot_senti1(hourly_ohlc,all_sentiments,earning_release_within)
 
@@ -147,13 +147,14 @@ def plotit(key_word,ticker,all_sentiments,show_stock_flag,earning_release_flag):
         
     elif show_stock_flag and not earning_release_flag:
         ### read stock data, predownloaded from wrds
-        hourly_ohlc = ghp.get_hourly_price(ticker)
+        hourly_ohlc = load_intraday.get_hourly_price(ticker)
         ### plot the graph
         TwitterPlot(key_word).plot_senti3(hourly_ohlc,all_sentiments)
 
     else:
         TwitterPlot(key_word).plot_senti4(all_sentiments)
 
+    
 
 if __name__ == "__main__":
     pass

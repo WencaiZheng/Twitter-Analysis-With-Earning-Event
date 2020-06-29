@@ -4,7 +4,7 @@ import numpy as np
 import time
 import datetime
 import os
-os.chdir(os.getcwd()+'\\Twitter-Analysis-With-Earning-Event\\')
+#os.chdir(os.getcwd()+'\\Twitter-Analysis-With-Earning-Event\\')
 
 def api_load():
     

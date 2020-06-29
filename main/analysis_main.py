@@ -11,7 +11,7 @@ import visualization.senti_ploter as senti_ploter
 import processor.senti_process as senti_process
 import statistics.twitter_stats as twitter_stats
 import processor.fix_dictionary as  mydictionary
-
+import processor.load_intraday as load_intraday
 
 warnings.simplefilter("ignore")
 os.chdir(os.getcwd())
@@ -33,12 +33,24 @@ def analysis_ticker(key_word,ticker,flr_thres,is_save_senti,is_plot,is_log,is_ea
     ###################################
     #twitter_stats.show_top(result_path,key_word,topn,is_show_topwds)
     #plot #####################################################
-    if is_plot:senti_ploter.plotit(key_word,ticker,all_sentiments,is_show_stock,is_earning_release)
+    if is_plot:
+        senti_ploter.plotit(key_word,ticker,all_sentiments,is_show_stock,is_earning_release)
     twitter_stats.observe_annoucement(ticker,all_sentiments)
     # statits
     twi_daily = twitter_stats.daily_tweets(all_sentiments)
     twitter_stats.daily_plot(twi_daily)
 
+    pass
+
+def analysis_news(kw_list,ticker,readname):
+
+    # read the sentiment dictionary, predownloaded
+    pos_dic,neg_dic = mydictionary.TwitterDict().new_dict()
+    # get all sentiment from all files, each file represent a day
+    all_sentis  = senti_process.SentiProcess(kw_list,pos_dic,neg_dic).analysis_news(kw_list,ticker,readname)
+    #plot #####################################################
+    hourly_ohlc = load_intraday.get_hourly_price('SPY')
+    senti_ploter.TwitterPlot.plot_news(hourly_ohlc,all_sentis)
     pass
 
 if __name__ == "__main__":

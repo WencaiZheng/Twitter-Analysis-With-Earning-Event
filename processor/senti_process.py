@@ -94,7 +94,28 @@ class SentiProcess:
         hour_count.index = list(map(lambda x:pd.to_datetime(f'{idate} {x}:00:00'),hour_count.index))
         return hour_count,save_file
 
-    
+    @staticmethod
+    def analysis_news(kw_list,ticker,filename):
+        save_path = 'data\\news\\'
+        ifile = pd.read_csv(f'{save_path}{filename}',index_col = 0)
+
+        ifile.index = pd.to_datetime(ifile.loc[:,'Created'])
+        ifile["datehour"] = list(map(lambda x:f'{x.date()} {x.hour}',ifile.index))
+        hourly_data =  ifile.groupby("datehour")['Text'].apply(lambda x: x.sum()).sort_index()
+        # count news numbers
+        count = np.zeros(len(hourly_data))
+        for kw in kw_list:
+            count += np.array(list(map(lambda x:x.upper().count(kw),hourly_data.values)))
+        
+        count_series = pd.Series(count,index=hourly_data.index.copy())
+        all_sentis = count_series.fillna(0)
+        all_sentis.index = pd.to_datetime(list(map(lambda x:x+':00:00',all_sentis.index)))
+        temp = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in all_sentis.index]
+        all_sentis.index = list(map(lambda x:x.replace(tzinfo=None),temp))
+        return all_sentis
+        
+        
+
     def get_all_senti(self,files,thres,is_log,is_save_senti):
         key_word = self.key_word
         #make other functions use these variables

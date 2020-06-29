@@ -1,7 +1,10 @@
 __pycache__/
 
-TOKEN.txt
 data/raw_twitters/
 data/senti_results/
 data/stock_data/
 data/news/
+
+dictionary/MyDict.csv
+
+TOKEN.txt
