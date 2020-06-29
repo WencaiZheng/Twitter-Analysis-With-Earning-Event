@@ -1,6 +1,4 @@
-![](examples/SBUX.png)
-![](examples/BILI.png)
-# TwitterAnalysisWithEarning
+# Twitter Analysis With Earning Events
 
 Analyze twitter sentiments towards key works related one company that are near earnings events
 
@@ -10,7 +8,46 @@ The analysis include three parts:
 2. The sentiments on the release date and the EPS surprise to market
 3. The Twitter sentiments after the earning release, whether or not it reached the expectation
 
-## User Instructions:
+## Main Functions
+
+Function 1: get raw tweets related to one keyword and store the files by date
+
+Function 2: analyze the stored files from function 1 and visualize the result
+
+Function 3: get news from specific 30 major new press twitter accounts 
+
+Function 4: analyze the result from function 3 and visualize the result
+
+Function 5: get ticker names which have earning event in next n days
+
+## Demo
+
+**Function 1 & 2 result :**
+
+Key word is SBUX and BILI, searched all tweets for the period when their earning was released, compared to their intraday stock price:
+
+![](examples/SBUX.png)
+![](examples/BILI.png)
+
+**Function 3 & 4 result:**
+
+Get all tweets from certain mainstream press accounts including CNN, Fox News, etc. then count tweets number containing certain key words including Corona, COVID or pandemic, then compare it with SPY intraday graph:  
+
+![](examples/corona_demo1.png)
+
+![](examples/corona_demo2.png)
+
+
+
+**Function 5 result:**
+
+Get all names listed in S&P500 that have earning events in next period of time(from Yahoo Finance).
+
+![](examples/Function5_demo2.png)
+
+
+
+## Instructions
 
 * Prerequisite tool:
 
@@ -27,11 +64,6 @@ The analysis include three parts:
 
   * open *menu.py*
   * choose functions you want to run, there are 5 major functions to choose from
-    * Function 1: get raw tweets related to one keyword and store the files by date
-    * Function 2: analyze the stored files from function 1 and plot graph as above
-    * Function 3: get news from specific 30 major new press twitter accounts 
-    * Function 4: analyze keywords and its trend result from function 3
-    * Function 5: get ticker names which have earning event in next n days
 
 ## Updates
 

@@ -41,14 +41,14 @@ def Function4():
 def Function5():
     """ Function 4: get ticker names having earnings next few days
     """
-    news_sa.get_earning_names(recent_day = 5,index_code = "RU3") # next 5 days RU3000 list name
+    news_sa.get_earning_names(recent_day = 30,index_code = "SP5") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
     # Function1()
     # Function2()
     #Function3()
-    Function4()
-    # Function5()
+    # Function4()
+    Function5()
 
 
 

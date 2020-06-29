@@ -83,7 +83,7 @@ def get_earning_names(recent_day,index_code):
     all_df = all_df[all_df.Date <=  target_date]
     all_df.index = all_df.Ticker
 
-    if index_code=="SP":# S&P 500 company?
+    if index_code=="SP5":# S&P 500 company?
         sp_names = pd.read_csv("dictionary\\SP500.csv",index_col=0)
         all_df = all_df.join(sp_names,how ="inner").iloc[:,[1,2,3,7]].sort_values(by="Date")
         
@@ -94,6 +94,7 @@ def get_earning_names(recent_day,index_code):
     elif index_code =="RU3": #Russel 1000
         rs3000_names = pd.read_csv("dictionary\\RU3000.csv",index_col=0)
         all_df = all_df.join(rs3000_names,how ="inner").iloc[:,:]
+        all_df.drop(columns=['Ticker','Company'],inplace=True)
 
     elif index_code == "CN": #Chinese
         cn_names = pd.read_csv("dictionary\\CN.csv",index_col=0)
@@ -101,7 +102,7 @@ def get_earning_names(recent_day,index_code):
     else:
         pass
     all_df.sort_values(by="Date",inplace=True)
-    all_df.drop(columns=['Ticker','Company'],inplace=True)
+
     print(all_df)
     return all_df
 
