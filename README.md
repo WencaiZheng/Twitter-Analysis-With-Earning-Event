@@ -1,24 +1,18 @@
 # Twitter Analysis With Earning Events
 
-Analyze twitter sentiments towards key works related one company that are near earnings events
-
-The analysis include three parts:
-
-1. The Twitter sentiments before the earning release
-2. The sentiments on the release date and the EPS surprise to market
-3. The Twitter sentiments after the earning release, whether or not it reached the expectation
+Analyze twitter that contains certain keywords then compare it to some prices and study the correlation (Recent example: COVID news and S&P500 index)
 
 ## Main Functions
 
-Function 1: get raw tweets related to one keyword and store the files by date
+**Function 1**: get raw tweets related to keyword (e.g. SBUX) and store the files by date
 
-Function 2: analyze the stored files from function 1 and visualize the result
+**Function 2**: analyze the results from function1 and visualize the sentiment of the tweets with related stock prices
 
-Function 3: get news from specific 30 major new press twitter accounts 
+**Function 3**: get news from specific 30 mainstream news press twitter accounts and store them by date
 
-Function 4: analyze the result from function 3 and visualize the result
+**Function 4**: analyze number of news containing keywords (e.g. COVID) from function3 and visualize the result with related prices (e.g. S&P 500)
 
-Function 5: get ticker names which have earning event in next n days
+**Function 5**: get ticker names which have earning event in next n days
 
 ## Demo
 
@@ -31,7 +25,7 @@ Key word is SBUX and BILI, searched all tweets for the period when their earning
 
 **Function 3 & 4 result:**
 
-Get all tweets from certain mainstream press accounts including CNN, Fox News, etc. then count tweets number containing certain key words including Corona, COVID or pandemic, then compare it with SPY intraday graph:  
+Get all tweets from certain mainstream press accounts including CNN, Fox News, etc. then count tweets number containing certain key words including Corona, COVID or pandemic, then compare it with SPY intraday graph: 
 
 ![](examples/corona_demo1.png)
 
