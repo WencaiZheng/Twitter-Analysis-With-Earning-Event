@@ -6,8 +6,8 @@ import news._news_sa as news_sa
 def Function1():
     """ Function 1: get raw tweets and store them
     """
-    key_word_list = ['$MU','$FDX','$STZ']
-    recent_days = 1
+    key_word_list = ['$M']
+    recent_days = 8
     # scraper
     grt.RawTweet(recent_days).get_multiple_dates(key_word_list)
     
@@ -15,8 +15,8 @@ def Function2():
     """ Function 2: analyze twitter result from function 1
     """
     # analysis parameters
-    key_word = '$FDX' # PLCE $LULU $PLAY $JW.A 
-    ticker = 'FDX'
+    key_word = '$M' # PLCE $LULU $PLAY $JW.A 
+    ticker = 'M'
     flr_thres = 0 # follower threshold
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
@@ -44,10 +44,10 @@ def Function5():
     news_sa.get_earning_names(recent_day = 30,index_code = "SP5") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
-    # Function1()
-    #Function2()
-    Function3()
-    # Function4()
+    #Function1()
+    Function2()
+    #Function3()
+    #Function4()
     # Function5()
     pass
 

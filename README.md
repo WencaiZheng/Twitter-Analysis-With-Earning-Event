@@ -1,6 +1,6 @@
 # Twitter Analysis With Earning Events
 
-Analyze twitter that contains certain keywords then compare it to some prices and study the correlation (Recent example: COVID news and S&P500 index)
+Analyze the positive or negative sentiments of tweets that contains certain keywords then compare it to some prices and study the correlation (Recent example: COVID news and S&P500 index). For single tickers, it is especially used for pre-earning event release.
 
 ## Main Functions
 
