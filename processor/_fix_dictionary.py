@@ -5,7 +5,7 @@ from glob import glob
 import os
 
 
-import processor.senti_process as senti_process
+import processor._senti_process as senti_process
 
 
 class TwitterDict:

@@ -6,8 +6,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-import processor.load_api as load_api
-import processor.count_down as count_down
+import processor._load_api as load_api
+import processor._count_down as count_down
 
 today_date = datetime.date.today()
 api = load_api.api_load()

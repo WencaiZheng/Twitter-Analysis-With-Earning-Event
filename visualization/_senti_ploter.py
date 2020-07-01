@@ -5,8 +5,8 @@ from datetime import timedelta,datetime
 import plotly.graph_objects as go
 
 
-import processor.load_intraday as load_intraday
-import news.news_yh as news_yh
+import processor._load_intraday as load_intraday
+import news._news_yh as news_yh
 
 
 
@@ -125,7 +125,10 @@ def get_earning_within(ticker,all_sentiments):
     ## get the range date
     for edate in earning_release.index:
         if edate < (all_sentiments.index[-1] + timedelta(days = 7))  and edate > all_sentiments.index[0]:
-            edate = pd.to_datetime(str(edate.date())+' 16:00:00')
+            if edate.hour==0:
+                edate = pd.to_datetime(str(edate.date()-timedelta(days = 1))+' 16:00:00')
+            else:
+                edate = pd.to_datetime(str(edate.date())+' 16:00:00')
             earning_release_within.loc[edate,:] = [0,0,0]
             break
 

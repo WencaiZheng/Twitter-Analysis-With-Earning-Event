@@ -6,12 +6,12 @@ import numpy as np
 from glob import glob
 import warnings
 
-import news.news_yh as news_yh
-import visualization.senti_ploter as senti_ploter
-import processor.senti_process as senti_process
-import statistics.twitter_stats as twitter_stats
-import processor.fix_dictionary as  mydictionary
-import processor.load_intraday as load_intraday
+import news._news_yh as news_yh
+import visualization._senti_ploter as senti_ploter
+import processor._senti_process as senti_process
+import statistics._twitter_stats as twitter_stats
+import processor._fix_dictionary as  mydictionary
+import processor._load_intraday as load_intraday
 
 warnings.simplefilter("ignore")
 os.chdir(os.getcwd())

@@ -7,7 +7,7 @@ from datetime import timedelta
 from collections import Counter
 from glob import glob
 
-import visualization.senti_ploter as senti_ploter
+import visualization._senti_ploter as senti_ploter
 
 
 def calculate_top_words(result_path,topn):
