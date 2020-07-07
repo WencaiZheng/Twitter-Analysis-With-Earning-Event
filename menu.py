@@ -1,5 +1,5 @@
-import processor.get_raw_tweets as grt
-import processor.analysis_main as analysis
+import main.get_raw_tweets as grt
+import main.analysis_main as analysis
 # import main.news_main as news_main
 import news._news_sa as news_sa
 
