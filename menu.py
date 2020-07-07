@@ -6,18 +6,17 @@ import news._news_sa as news_sa
 def Function1():
     """ Function 1: get raw tweets and store them
     """
-    key_word_list = ['$M']
-    recent_days = 8
+    key_word_list = ['$BBBY','$DAL','$STM']
     # scraper
-    grt.RawTweet(recent_days).get_multiple_dates(key_word_list)
+    grt.RawTweet(recent_days = 1).get_multiple_dates(key_word_list)
     
 def Function2():
     """ Function 2: analyze twitter result from function 1
     """
     # analysis parameters
-    key_word = '$M' # PLCE $LULU $PLAY $JW.A 
-    ticker = 'M'
-    flr_thres = 0 # follower threshold
+    key_word = '$BBBY' # PLCE $LULU $PLAY $JW.A 
+    ticker = 'BBBY'
+    flr_thres = 1 # follower threshold
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
         'is_plot' : 1, # plot the graph or not
@@ -30,25 +29,26 @@ def Function2():
 def Function3():
     """ Function 3: get news from specific 30 major new press twitter accounts and analyze key word
     """
-    grt.RawTweet(recent_days=1).get_from_news(savename='corona-2020-06-30.csv') # get recent 3 days news from all 30 major press
+    grt.RawTweet(recent_days=7).get_from_news(savename='corona-2020-07-04') # get recent 3 days news from all 30 major press
 
 def Function4():
     """ Function 5: analyze and visualize result from function3
     """
     key_word_list = ['CORONA','COVID','PANDEMIC']
-    analysis.analysis_news(key_word_list,'SPY',readname='corona-2020-06-29.csv')
+    analysis.analysis_news(key_word_list,'SPY2',readname='corona-2020-07-04')
 
 def Function5():
+    
     """ Function 4: get ticker names having earnings next few days
     """
-    news_sa.get_earning_names(recent_day = 30,index_code = "SP5") # next 5 days RU3000/SP500 list name
+    news_sa.get_earning_names(recent_day = 7,index_code = "RU3") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
     #Function1()
     Function2()
-    #Function3()
+    # Function3()
     #Function4()
-    # Function5()
+    #Function5()
     pass
 
 

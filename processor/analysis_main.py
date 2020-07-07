@@ -44,12 +44,10 @@ def analysis_ticker(key_word,ticker,flr_thres,is_save_senti,is_plot,is_log,is_ea
 
 def analysis_news(kw_list,ticker,readname):
 
-    # read the sentiment dictionary, predownloaded
-    pos_dic,neg_dic = mydictionary.TwitterDict().new_dict()
     # get all sentiment from all files, each file represent a day
-    all_sentis  = senti_process.SentiProcess(kw_list,pos_dic,neg_dic).analysis_news(kw_list,ticker,readname)
+    all_sentis  = senti_process.SentiProcess.analysis_news(kw_list,readname)
     #plot #####################################################
-    hourly_ohlc = load_intraday.get_hourly_price('SPY')
+    hourly_ohlc = load_intraday.get_hourly_price(ticker)
     senti_ploter.TwitterPlot.plot_news(hourly_ohlc,all_sentis)
     pass
 

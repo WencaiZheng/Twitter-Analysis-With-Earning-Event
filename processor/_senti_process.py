@@ -95,9 +95,9 @@ class SentiProcess:
         return hour_count,save_file
 
     @staticmethod
-    def analysis_news(kw_list,ticker,filename):
+    def analysis_news(kw_list,filename):
         save_path = 'data\\news\\'
-        ifile = pd.read_csv(f'{save_path}{filename}',index_col = 0)
+        ifile = pd.read_csv(f'{save_path}{filename}.csv',index_col = 0)
 
         ifile.index = pd.to_datetime(ifile.loc[:,'Created'])
         ifile["datehour"] = list(map(lambda x:f'{x.date()} {x.hour}',ifile.index))
