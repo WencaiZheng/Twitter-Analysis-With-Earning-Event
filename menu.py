@@ -32,14 +32,14 @@ def Function3():
     grt.RawTweet(recent_days=7).get_from_news(savename='corona-2020-07-04') # get recent 3 days news from all 30 major press
 
 def Function4():
-    """ Function 5: analyze and visualize result from function3
+    """ Function 4: analyze and visualize result from function3
     """
     key_word_list = ['CORONA','COVID','PANDEMIC']
     analysis.analysis_news(key_word_list,'SPY2',readname='corona-2020-07-04')
 
 def Function5():
     
-    """ Function 4: get ticker names having earnings next few days
+    """ Function 5: get ticker names having earnings next few days
     """
     news_sa.get_earning_names(recent_day = 7,index_code = "RU3") # next 5 days RU3000/SP500 list name
 
