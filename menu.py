@@ -2,29 +2,31 @@ import main.get_raw_tweets as grt
 import main.analysis_main as analysis
 # import main.news_main as news_main
 import news._news_sa as news_sa
+import statistics._twitter_stats as twitter_stats
 
 def Function1():
     """ Function 1: get raw tweets and store them
     """
-    key_word_list = ['$BBBY','$DAL','$STM']
+    keyword_list = ['$WBA','$BDX','$FCX','$MCD','$MSFT','$SWBI','$SQ','$ROKU','$TSLA','$DIS','$BABA','$WMT']#
     # scraper
-    grt.RawTweet(recent_days = 1).get_multiple_dates(key_word_list)
+    grt.RawTweet(recent_days = 1).get_multiple_dates(keyword_list)
     
 def Function2():
     """ Function 2: analyze twitter result from function 1
     """
     # analysis parameters
-    key_word = '$BBBY' # PLCE $LULU $PLAY $JW.A 
-    ticker = 'BBBY'
+    keyword_list = ['$WBA','$BDX','$FCX','$MCD','$MSFT','$SWBI','$SQ','$ROKU','$TSLA','$DIS','$BABA','$WMT']
+    ticker = 'DAL'
     flr_thres = 1 # follower threshold
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
-        'is_plot' : 1, # plot the graph or not
+        'is_plot' : 0, # plot the graph or not
         'is_log': 0, # log-scale or not
-        'is_earning_release' : 1,
-        'is_show_stock' : 1 #is_ no stock processing would be much faster
+        'is_earning_release' : 0,
+        'is_show_stock' : 0 # no stock processing would be much faster
     }
-    analysis.analysis_ticker(key_word,ticker,flr_thres,**flag_paras)
+    analysis.analysis_ticker(keyword_list,ticker,flr_thres,**flag_paras)
+    twitter_stats.pre_opening_analysis(keyword_list,flr_thres)
 
 def Function3():
     """ Function 3: get news from specific 30 major new press twitter accounts and analyze key word
@@ -44,7 +46,7 @@ def Function5():
     news_sa.get_earning_names(recent_day = 7,index_code = "RU3") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
-    #Function1()
+    Function1()
     Function2()
     # Function3()
     #Function4()

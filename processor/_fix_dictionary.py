@@ -13,8 +13,8 @@ class TwitterDict:
     But here we added some new words that fit twitter more
     """
     my_dict = pd.read_csv('dictionary\\MyDict.csv')
-    my_pos = my_dict.Positive.values
-    my_neg = my_dict.Negative.values
+    my_pos = my_dict.Positive.dropna().values
+    my_neg = my_dict.Negative.dropna().values
 
     @staticmethod
     def origin_dict():

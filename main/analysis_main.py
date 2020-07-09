@@ -16,29 +16,30 @@ import processor._load_intraday as load_intraday
 warnings.simplefilter("ignore")
 os.chdir(os.getcwd())
 
-def analysis_ticker(key_word,ticker,flr_thres,is_save_senti,is_plot,is_log,is_earning_release,is_show_stock):
-    ####set path
-    keyword_path = f"data\\raw_twitters\\{key_word}\\" # where the raw twitters are stored
-    # read all files
-    files=glob(f'{keyword_path}*{key_word}*')
-    # see all files'dates
-    dates = [i[-14:-4] for i in files]
+def analysis_ticker(keyword_list,ticker,flr_thres,is_save_senti,is_plot,is_log,is_earning_release,is_show_stock):
+    for key_word in keyword_list:
+        ####set path
+        keyword_path = f"data\\raw_twitters\\{key_word}\\" # where the raw twitters are stored
+        # read all files
+        files=glob(f'{keyword_path}*{key_word}*')
+        # see all files'dates
+        dates = [i[-14:-4] for i in files]
 
-    print(f'We are observing data from {dates[0]} to {dates[-1]} for {key_word}')
+        print(f'We are observing data from {dates[0]} to {dates[-1]} for {key_word}')
 
-    # read the sentiment dictionary, predownloaded
-    pos_dic,neg_dic = mydictionary.TwitterDict().new_dict()
-    # get all sentiment from all files, each file represent a day
-    all_sentiments  = senti_process.SentiProcess(key_word,pos_dic,neg_dic).get_all_senti(files,flr_thres,is_log,is_save_senti)
-    ###################################
-    #twitter_stats.show_top(result_path,key_word,topn,is_show_topwds)
-    #plot #####################################################
-    if is_plot:
-        senti_ploter.plotit(key_word,ticker,all_sentiments,is_show_stock,is_earning_release)
-    twitter_stats.observe_annoucement(ticker,all_sentiments)
-    # statits
-    twi_daily = twitter_stats.daily_tweets(all_sentiments)
-    twitter_stats.daily_plot(twi_daily)
+        # read the sentiment dictionary, predownloaded
+        pos_dic,neg_dic = mydictionary.TwitterDict().new_dict()
+        # get all sentiment from all files, each file represent a day
+        all_sentiments  = senti_process.SentiProcess(key_word,pos_dic,neg_dic).get_all_senti(files,flr_thres,is_log,is_save_senti)
+        ###################################
+        #twitter_stats.show_top(result_path,key_word,topn,is_show_topwds)
+        #plot #####################################################
+        if is_plot:
+            senti_ploter.plotit(key_word,ticker,all_sentiments,is_show_stock,is_earning_release)
+        twitter_stats.observe_annoucement(ticker,all_sentiments)
+        # statits
+        twi_daily = twitter_stats.daily_tweets(all_sentiments)
+        print(twi_daily)
 
     pass
 

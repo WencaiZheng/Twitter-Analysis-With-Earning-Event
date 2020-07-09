@@ -1,5 +1,6 @@
 import os
 import re
+import datetime
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -91,13 +92,13 @@ def daily_plot(daily_senti):
     ax2.set_ylabel('net sentiment/daily tweets (%)', color='r',fontsize=20)
     ax1.set_ylabel('daily tweets number', color='b',fontsize=20)
 
-    print(daily_senti)
+    
     #plt.show()
 
 
 def observe_annoucement(ticker,all_sentiments):
 
-    earning_release = senti_ploter.get_earning_within(ticker,all_sentiments).index[0]
+    earning_release = senti_ploter.TwitterPlot.get_earning_within(ticker,all_sentiments).index[0]
 
     pre_earn = all_sentiments[all_sentiments.index<earning_release]
     at_earn = all_sentiments[all_sentiments.index==earning_release]
@@ -122,15 +123,17 @@ def observe_annoucement(ticker,all_sentiments):
     y_pd.columns = ["predate","pretime","attime","posttime","postdate"]
     print(y_pd)
 
-
-
-    # whole_list = daily_pre.Avg_senti.to_list()+daily_at.Avg_senti.to_list()+daily_post.Avg_senti.to_list()
-    # whole_list_idx = list(range(-len(daily_pre),0)) + [0] + list(range(1,len(daily_post)+1))
+def pre_opening_analysis(keyword_list,flr_thres):
+    for key_word in keyword_list:
+        file_name = f'data\\senti_results\\{key_word}\\{key_word}_{flr_thres}.csv'
+        result = pd.read_csv(file_name,index_col=0)
+        result['user_score'] = result.User_flr * result.Sentiment
+        result.index = pd.to_datetime(result.index)
+        since_when =  pd.to_datetime(result.index[-1] - timedelta(days=1))
+        result = result[result.index > since_when]
+        aggregated_result = result.loc[:,['Sentiment','user_score']].resample('5T').sum()
+        senti_ploter.TwitterPlot(key_word).plot_preopen_senti(aggregated_result)
     
-    # plt.title("Observe the annoucement one-hour sentiment change")
-    # plt.plot(whole_list_idx,whole_list)
-    # plt.show()
-
 
 if __name__ == "__main__":
     
