@@ -4,26 +4,22 @@ Analyze the positive or negative sentiments of tweets that contains certain keyw
 
 ## Main Functions
 
-**Function 1**: get raw tweets related to keyword (e.g. SBUX) and store the files by date
+**Function 1**: get raw tweets related to keyword (e.g. SBUX) and store the files by date and analyze the results then visualize the sentiment of the tweets with related stock prices
 
-**Function 2**: analyze the results from function1 and visualize the sentiment of the tweets with related stock prices
+**Function 2**: get news from specific 30 mainstream news press twitter accounts and store them by date and analyze number of news containing keywords (e.g. COVID) then visualize the result with related prices (e.g. S&P 500)
 
-**Function 3**: get news from specific 30 mainstream news press twitter accounts and store them by date
-
-**Function 4**: analyze number of news containing keywords (e.g. COVID) from function3 and visualize the result with related prices (e.g. S&P 500)
-
-**Function 5**: get ticker names which have earning event in next n days
+**Function 3**: get ticker names which have earning event in next n days
 
 ## Demo
 
-**Function 1 & 2 result :**
+**Function 1 result :**
 
 Key word is SBUX and BILI, searched all tweets for the period when their earning was released, compared to their intraday stock price:
 
 ![](examples/SBUX.png)
 ![](examples/BILI.png)
 
-**Function 3 & 4 result:**
+**Function 2 result:**
 
 Get all tweets from certain mainstream press accounts including CNN, Fox News, etc. then count tweets number containing certain key words including Corona, COVID or pandemic, then compare it with SPY intraday graph: 
 
@@ -33,7 +29,7 @@ Get all tweets from certain mainstream press accounts including CNN, Fox News, e
 
 
 
-**Function 5 result:**
+**Function 3 result:**
 
 Get all names listed in S&P500 that have earning events in next period of time(from Yahoo Finance).
 
@@ -57,7 +53,7 @@ Get all names listed in S&P500 that have earning events in next period of time(f
 * How to operate the files
 
   * open *menu.py*
-  * choose functions you want to run, there are 5 major functions to choose from
+  * choose functions you want to run, there are 3 major functions to choose from
 
 ## Updates
 
@@ -119,3 +115,6 @@ Get all names listed in S&P500 that have earning events in next period of time(f
 
   2.added new features that allows to get news from specific major press twitter account and analyze keyword volume (e.g. COVID), and compare it with index intraday price, then visualize it.
 
+- Updated 6.24.2020, version 2.1：
+
+  1.add auto email system that enable running the program at any given time automatically and at the same time the email would be sent to specific email address.

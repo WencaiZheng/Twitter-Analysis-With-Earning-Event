@@ -8,17 +8,12 @@ import os
 os.chdir('C:\\Users\\wenca\\Desktop\\GitRepo\\Twitter-Analysis-With-Earning-Event\\')
 
 def Function1():
-    """ Function 1: get raw tweets and store them
+    """ Function 1: get raw tweets and store them analyze twitter sentiment result
     """
     keyword_list = ['$WBA','$BDX','$FCX','$MCD','$MSFT','$SWBI','$SQ','$ROKU','$TSLA','$DIS','$BABA','$WMT']#
     # scraper
     grt.RawTweet(recent_days = 1).get_multiple_dates(keyword_list)
-    
-def Function2():
-    """ Function 2: analyze twitter result from function 1
-    """
     # analysis parameters
-    keyword_list = ['$WBA','$BDX','$FCX','$MCD','$MSFT','$SWBI','$SQ','$ROKU','$TSLA','$DIS','$BABA','$WMT']
     ticker = 'DAL'
     flr_thres = 1 # follower threshold
     flag_paras = {
@@ -30,9 +25,9 @@ def Function2():
     }
     analysis.analysis_ticker(keyword_list,ticker,flr_thres,**flag_paras)
     twitter_stats.pre_opening_analysis(keyword_list,flr_thres)
-    automail.send_preopen_email(toaddr = "rangerrod1@gmail.com")
+    automail.send_preopen_email(toaddr = "xxx@gmail.com")
 
-def Function3():
+def Function2():
     """ Function 3: get news from specific 30 major new press twitter accounts and analyze key word
     analyze and visualize result from function3
     """
@@ -41,17 +36,17 @@ def Function3():
     analysis.analysis_news(key_word_list,'SPY2',readname='corona-2020-07-04')
     
 
-def Function4():
+def Function3():
     
     """ Function 4: get ticker names having earnings next few days
     """
     news_sa.get_earning_names(recent_day = 7,index_code = "RU3") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
-    #Function1()
-    Function2()
+    Function1()
+    #Function2()
     # Function3()
-    #Function4()
+
 
     pass
 

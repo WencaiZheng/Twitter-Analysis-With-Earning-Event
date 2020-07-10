@@ -4,7 +4,7 @@ data/raw_twitters/
 data/senti_results/
 data/stock_data/
 data/news/
-
+data/preopen/
 
 dictionary/MyDict.csv
 
