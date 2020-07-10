@@ -4,9 +4,8 @@ import numpy as np
 from glob import glob
 import os
 
-
 import processor._senti_process as senti_process
-
+os.chdir('C:\\Users\\wenca\\Desktop\\GitRepo\\Twitter-Analysis-With-Earning-Event\\')
 
 class TwitterDict:
     """This is the dictionary from McDonald's paper

@@ -10,7 +10,7 @@ import processor._load_api as load_api
 import processor._count_down as count_down
 
 today_date = datetime.date.today()
-api = load_api.api_load()
+
 
 class RawTweet:
     # ############               PARAMETERS             ###################
@@ -23,6 +23,7 @@ class RawTweet:
 
         self.most_recent_days = recent_days # max is  8 for standard account
         self.user_language = user_language
+        self.api = load_api.api_load()
 
     # idate is the until date of search
     def get_oneday_twitter(self,idate:str,key_word:str,max_rqst:int):
@@ -41,7 +42,7 @@ class RawTweet:
             actual_date = str((pd.to_datetime(idate) - datetime.timedelta(days = 1)).date())
             # get a request
             try:
-                result_1qst = api.search(q=key_word,until=idate,count=100,result_type="recent",
+                result_1qst = self.api.search(q=key_word,until=idate,count=100,result_type="recent",
                     max_id=last_min_id,lang=self.user_language,tweet_mode="extended")
                         
                 if len(result_1qst) == 0:
@@ -106,7 +107,7 @@ class RawTweet:
             while time_gap < period:
 
                 request_counter += 1
-                time_line = api.user_timeline(iname,max_id=last_maxid,tweet_mode="extended")
+                time_line = self.api.user_timeline(iname,max_id=last_maxid,tweet_mode="extended")
                 time_gap = (today_date - time_line[-1].created_at.date()).days
                 if len(time_line) == 0:
                     time_gap = period+1

@@ -89,7 +89,7 @@ class SentiProcess:
         # show negative times in nagative
         hour_count.Negative = -hour_count.Negative
         # save negative or positive tweets v5/5/20:
-        save_file = s_file.loc[:,["User_name","Sentiment","User_flr","sText","Text"]]
+        save_file = s_file.loc[:,["Sentiment","User_flr","Text","User_name"]]
         # standard  datetime
         hour_count.index = list(map(lambda x:pd.to_datetime(f'{idate} {x}:00:00'),hour_count.index))
         return hour_count,save_file

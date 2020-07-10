@@ -4,12 +4,12 @@ import datetime
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from datetime import timedelta
+from datetime import timedelta,date
 from collections import Counter
 from glob import glob
 
 import visualization._senti_ploter as senti_ploter
-
+today= str(date.today())
 
 def calculate_top_words(result_path,topn):
     """ get top word
@@ -129,10 +129,14 @@ def pre_opening_analysis(keyword_list,flr_thres):
         result = pd.read_csv(file_name,index_col=0)
         result['user_score'] = result.User_flr * result.Sentiment
         result.index = pd.to_datetime(result.index)
-        since_when =  pd.to_datetime(result.index[-1] - timedelta(days=1))
+        since_when =  pd.to_datetime(result.index[-1] - timedelta(hours=18))
         result = result[result.index > since_when]
         aggregated_result = result.loc[:,['Sentiment','user_score']].resample('5T').sum()
+        #plot the graph
         senti_ploter.TwitterPlot(key_word).plot_preopen_senti(aggregated_result)
+        # simple file to email
+        sresult = result[result.Sentiment !=0 ].loc[:,['Sentiment','User_flr','Text']]
+        sresult.to_csv(f"data\\preopen\\{today}\\{key_word}.csv")
     
 
 if __name__ == "__main__":

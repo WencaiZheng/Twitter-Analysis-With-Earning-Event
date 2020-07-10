@@ -4,11 +4,11 @@ import numpy as np
 import time
 import datetime
 import os
-#os.chdir(os.getcwd()+'\\Twitter-Analysis-With-Earning-Event\\')
+os.chdir('C:\\Users\\wenca\\Desktop\\GitRepo\\Twitter-Analysis-With-Earning-Event\\')
 
 def api_load():
     
-    TOKEN = pd.read_csv("TOKEN.txt",sep=" ").columns.values
+    TOKEN = pd.read_csv("TOKENS\\TOKEN.txt",sep=" ").columns.values
     consumer_key, consumer_secret,access_token_key, access_token_secret = TOKEN
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token_key, access_token_secret)

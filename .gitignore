@@ -5,10 +5,11 @@ data/senti_results/
 data/stock_data/
 data/news/
 
+
 dictionary/MyDict.csv
 
 lab/
 
-TOKEN.txt
-
 LICENSE
+
+TOKENS/

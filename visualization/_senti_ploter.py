@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from plotly.subplots import make_subplots
-from datetime import timedelta,datetime
+from datetime import timedelta,datetime,date
 import plotly.graph_objects as go
 
 
@@ -14,7 +14,7 @@ class TwitterPlot:
 
     def __init__(self,key_word_):
         self.key_word =  key_word_
-
+        self.today = str(date.today())
 
     def plot_senti1(self,hourly_ohlc,all_sentis,earning_release_within):
         # plot it with plotly
@@ -114,7 +114,11 @@ class TwitterPlot:
 
         fig.update_layout(height=600, width=1200,
                         title_text=f"{self.key_word} pre-opening twitter sentiment")
-        fig.show()
+        #fig.show()
+        #save the graph
+        saveaddr = f'data\\preopen\\{self.today}'
+        if not os.path.exists(saveaddr):os.mkdir(saveaddr)
+        fig.write_image(f'{saveaddr}\\{self.key_word}.png')
 
     @staticmethod
     def plot_news(hourly_ohlc,all_sentis):
