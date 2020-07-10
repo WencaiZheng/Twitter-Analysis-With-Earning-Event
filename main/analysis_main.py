@@ -8,20 +8,23 @@ import warnings
 
 import news._news_yh as news_yh
 import visualization._senti_ploter as senti_ploter
+import visualization._automail as automail
 import processor._senti_process as senti_process
 import statistics._twitter_stats as twitter_stats
 import processor._fix_dictionary as  mydictionary
 import processor._load_intraday as load_intraday
 
-warnings.simplefilter("ignore")
-os.chdir(os.getcwd())
 
-def analysis_ticker(keyword_list,ticker,flr_thres,is_save_senti,is_plot,is_log,is_earning_release,is_show_stock):
+warnings.simplefilter("ignore")
+
+def analysis_ticker(keyword_list,is_save_senti,is_plot,is_log,is_earning_release,is_stockprice,is_preopen,is_sendemail,email_addrs,ticker,flr_thres):
     for key_word in keyword_list:
         ####set path
         keyword_path = f"data\\raw_twitters\\{key_word}\\" # where the raw twitters are stored
         # read all files
         files=glob(f'{keyword_path}*{key_word}*')
+        if is_preopen:
+            files = files[-2:]
         # see all files'dates
         dates = [i[-14:-4] for i in files]
 
@@ -35,11 +38,14 @@ def analysis_ticker(keyword_list,ticker,flr_thres,is_save_senti,is_plot,is_log,i
         #twitter_stats.show_top(result_path,key_word,topn,is_show_topwds)
         #plot #####################################################
         if is_plot:
-            senti_ploter.plotit(key_word,ticker,all_sentiments,is_show_stock,is_earning_release)
-        twitter_stats.observe_annoucement(ticker,all_sentiments)
+            senti_ploter.plotit(key_word,ticker,all_sentiments,is_stockprice,is_earning_release)
+        
         # statits
-        twi_daily = twitter_stats.daily_tweets(all_sentiments)
-        print(twi_daily)
+        #twitter_stats.observe_annoucement(ticker,all_sentiments)
+        #twi_daily = twitter_stats.daily_tweets(all_sentiments)
+        if is_preopen:
+            twitter_stats.pre_opening_analysis(keyword_list,flr_thres)
+            automail.send_preopen_email(toaddr = email_addrs)
 
     pass
 
@@ -65,5 +71,4 @@ if __name__ == "__main__":
         'is_earning_release' : 1,
         'is_show_stock' : 1 # no stock processing would be much faster
     }
-    analysis_ticker(key_word,ticker,flr_thres,**flag_paras)
     pass

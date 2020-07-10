@@ -1,31 +1,32 @@
 import main.get_raw_tweets as grt
 import main.analysis_main as analysis
-# import main.news_main as news_main
 import news._news_sa as news_sa
-import statistics._twitter_stats as twitter_stats
-import visualization._automail as automail
 import os
+
 os.chdir('C:\\Users\\wenca\\Desktop\\GitRepo\\Twitter-Analysis-With-Earning-Event\\')
 
 def Function1():
-    """ Function 1: get raw tweets and store them analyze twitter sentiment result
+    """ Function 1: get raw tweets about keywords and store them analyze twitter sentiment result
     """
     keyword_list = ['$WBA','$BDX','$FCX','$MCD','$MSFT','$SWBI','$SQ','$ROKU','$TSLA','$DIS','$BABA','$WMT']#
     # scraper
-    grt.RawTweet(recent_days = 1).get_multiple_dates(keyword_list)
+    #grt.RawTweet(recent_days = 1).get_multiple_dates(keyword_list)
     # analysis parameters
-    ticker = 'DAL'
-    flr_thres = 1 # follower threshold
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
         'is_plot' : 0, # plot the graph or not
         'is_log': 0, # log-scale or not
-        'is_earning_release' : 0,
-        'is_show_stock' : 0 # no stock processing would be much faster
+        'is_earning_release' : 0, #get earning relearse date and plot it
+        'is_stockprice' : 0, # no stock processing would be much faster
+        'is_preopen': 1,
+        'is_sendemail': 1,
+
+        'email_addrs': 'wz1298@nyu.edu',
+        'ticker' : 'DAL',
+        'flr_thres' : 5 # follower threshold
     }
-    analysis.analysis_ticker(keyword_list,ticker,flr_thres,**flag_paras)
-    twitter_stats.pre_opening_analysis(keyword_list,flr_thres)
-    automail.send_preopen_email(toaddr = "xxx@gmail.com")
+    analysis.analysis_ticker(keyword_list,**flag_paras)
+    
 
 def Function2():
     """ Function 3: get news from specific 30 major new press twitter accounts and analyze key word

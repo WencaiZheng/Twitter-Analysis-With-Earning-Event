@@ -6,10 +6,11 @@ data/stock_data/
 data/news/
 data/preopen/
 
-dictionary/MyDict.csv
-
+TOKENS/
 lab/
 
+dictionary/MyDict.csv
+
+preopen.py
 LICENSE
 
-TOKENS/

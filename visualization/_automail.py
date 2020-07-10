@@ -42,3 +42,4 @@ def send_preopen_email(toaddr):
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.quit()
+    print('Email successfully sent')
