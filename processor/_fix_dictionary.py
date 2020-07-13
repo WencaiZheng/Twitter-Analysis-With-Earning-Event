@@ -5,6 +5,7 @@ from glob import glob
 import os
 
 import processor._senti_process as senti_process
+#change it to the address where the file is located in your computer
 os.chdir('C:\\Users\\wenca\\Desktop\\GitRepo\\Twitter-Analysis-With-Earning-Event\\')
 
 class TwitterDict:

@@ -2,7 +2,7 @@ import main.get_raw_tweets as grt
 import main.analysis_main as analysis
 import news._news_sa as news_sa
 import os
-
+#change it to the address where the file is located in your computer
 os.chdir('C:\\Users\\wenca\\Desktop\\GitRepo\\Twitter-Analysis-With-Earning-Event\\')
 
 def Function1():
@@ -10,7 +10,7 @@ def Function1():
     """
     keyword_list = ['$WBA','$BDX','$FCX','$MCD','$MSFT','$SWBI','$SQ','$ROKU','$TSLA','$DIS','$BABA','$WMT']#
     # scraper
-    #grt.RawTweet(recent_days = 1).get_multiple_dates(keyword_list)
+    grt.RawTweet(recent_days = 1).get_multiple_dates(keyword_list)
     # analysis parameters
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
@@ -18,10 +18,10 @@ def Function1():
         'is_log': 0, # log-scale or not
         'is_earning_release' : 0, #get earning relearse date and plot it
         'is_stockprice' : 0, # no stock processing would be much faster
+
         'is_preopen': 1,
         'is_sendemail': 1,
-
-        'email_addrs': 'wz1298@nyu.edu',
+        'email_addrs_list': ['wz1298@nyu.edu'],
         'ticker' : 'DAL',
         'flr_thres' : 5 # follower threshold
     }

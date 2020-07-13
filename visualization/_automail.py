@@ -19,9 +19,9 @@ def send_preopen_email(toaddr):
     msg = MIMEMultipart()
 
     msg['From'] = fromaddr
-    msg['To'] = toaddr
+    msg['To'] = ", ".join(toaddr)
     msg['Subject'] = "Twitter sentiment pre-open analysis results"
-
+    msg['Cc'] = 'wencai.zheng@hotmail.com'
     body = "Hi Professor, \n This is pre-open analysis result for today. \n\n  - Sent by Python"
     msg.attach(MIMEText(body, 'plain'))
 
@@ -42,4 +42,4 @@ def send_preopen_email(toaddr):
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
     server.quit()
-    print('Email successfully sent')
+    print(f'Email successfully sent to {toaddr}')

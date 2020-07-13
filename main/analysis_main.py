@@ -17,7 +17,7 @@ import processor._load_intraday as load_intraday
 
 warnings.simplefilter("ignore")
 
-def analysis_ticker(keyword_list,is_save_senti,is_plot,is_log,is_earning_release,is_stockprice,is_preopen,is_sendemail,email_addrs,ticker,flr_thres):
+def analysis_ticker(keyword_list,is_save_senti,is_plot,is_log,is_earning_release,is_stockprice,is_preopen,is_sendemail,email_addrs_list,ticker,flr_thres):
     for key_word in keyword_list:
         ####set path
         keyword_path = f"data\\raw_twitters\\{key_word}\\" # where the raw twitters are stored
@@ -43,9 +43,9 @@ def analysis_ticker(keyword_list,is_save_senti,is_plot,is_log,is_earning_release
         # statits
         #twitter_stats.observe_annoucement(ticker,all_sentiments)
         #twi_daily = twitter_stats.daily_tweets(all_sentiments)
-        if is_preopen:
-            twitter_stats.pre_opening_analysis(keyword_list,flr_thres)
-            automail.send_preopen_email(toaddr = email_addrs)
+    if is_preopen:
+        twitter_stats.pre_opening_analysis(keyword_list,flr_thres)
+        automail.send_preopen_email(toaddr = email_addrs_list)
 
     pass
 
