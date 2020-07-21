@@ -1,10 +1,12 @@
-
+import os
 import pandas as pd
 import numpy as np
-import os
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+sid_obj = SentimentIntensityAnalyzer() 
 save_path = 'data\\senti_results\\'
 
+#class
 class SentiProcess:
     """
     The class process the raw tweets and define if one is positive or negative
@@ -64,34 +66,36 @@ class SentiProcess:
         if len(e_file)==0:
             print("file is empty")
             return None
-        
-        sentis = list(map(lambda x:self.get_senti(x,self.pos_dic,self.neg_dic),e_file.sText))
+        # initialize the sentiment list for each tweet
+        sentis =  []
+        for x in e_file.sText:
+            #calculcate the compound score of each tweet first
+            vader_senti = sid_obj.polarity_scores(x)['compound']
+            dict_senti = self.get_senti(x,self.pos_dic,self.neg_dic)
+            if vader_senti==0:
+                sentis.append(dict_senti)
+            else:
+                sentis.append(vader_senti)
+        #return the sentiment number of each tweet to tweet file
         e_file["Sentiment"] = sentis
-        # one hot encoding
-        sentis_df = pd.get_dummies(sentis)
-        temp=pd.DataFrame([[0]*3]*len(sentis_df),columns=[-1,0,1])
-        sentis_df = (temp+sentis_df).fillna(0)
-        sentis_df.columns=["Negative","Unknown","Positive"]
-        # s_file gives each ttr sentiment
-        s_file = e_file.join(sentis_df)
+        s_file = e_file.copy()
+        s_file.index = s_file.Datetime
         # change time zone from utc to est
-        s_file["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in s_file.Datetime]
-        s_file.index = list(map(lambda x:x.replace(tzinfo=None),s_file["EST"]))
+        # s_file["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in s_file.Datetime]
+        # s_file.index = list(map(lambda x:x.replace(tzinfo=None),s_file["EST"]))
         # add all sentis get a count 
         s_file["All_counts"] = [1]*len(s_file)
         # count the hourly negative or positive ttr 
-        partly_count = s_file.groupby(by="Hour").sum().loc[:,["Negative","Positive","All_counts"]]
+        partly_count = s_file.loc[:,['Sentiment','All_counts']].resample('1H').sum()
         #scale it
         if log_flag:partly_count = np.log(partly_count+1)
-        x_zero = pd.Series(24*[0])
-        # fill the non-data zone as nan
-        hour_count = pd.concat([partly_count,x_zero],axis=1).fillna(0).drop(columns=[0])
+        hour_count = partly_count.copy()
         # show negative times in nagative
-        hour_count.Negative = -hour_count.Negative
+        hour_count['Positive'] = hour_count[hour_count.Sentiment>0].Sentiment
+        hour_count['Negative'] = hour_count[hour_count.Sentiment<0].Sentiment
+        hour_count=hour_count.fillna(0)
         # save negative or positive tweets v5/5/20:
         save_file = s_file.loc[:,["Sentiment","User_flr","Text","User_name"]]
-        # standard  datetime
-        hour_count.index = list(map(lambda x:pd.to_datetime(f'{idate} {x}:00:00'),hour_count.index))
         return hour_count,save_file
 
     @staticmethod
@@ -109,12 +113,19 @@ class SentiProcess:
         
         count_series = pd.Series(count,index=hourly_data.index.copy())
         all_sentis = count_series.fillna(0)
+        # change from UTC time to EDT
         all_sentis.index = pd.to_datetime(list(map(lambda x:x+':00:00',all_sentis.index)))
         temp = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in all_sentis.index]
         all_sentis.index = list(map(lambda x:x.replace(tzinfo=None),temp))
         return all_sentis
-        
-        
+    
+    @staticmethod
+    def _utc_to_est(df):
+        """It convert the index of dataframe from utc time zone to est time zone
+        """
+        df["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in df.index]
+        df.index = list(map(lambda x:x.replace(tzinfo=None),df["EST"]))
+        return df
 
     def get_all_senti(self,files,thres,is_log,is_save_senti):
         key_word = self.key_word
@@ -136,22 +147,23 @@ class SentiProcess:
             isenti_hourly,itweets_single = self.senti_count(idate,e_file,is_log)
             # add today's senti to all
             all_sentis = pd.concat([all_sentis,isenti_hourly])
-            # save the divided files if necessary 'results/tickername/file.csv'
+            # all_tweets file is the file contains all individual tweets
             all_tweets = pd.concat([all_tweets,itweets_single],axis=0,sort=False)
- 
-
-        if is_save_senti ==1:
-            tic_path = f'{save_path}{key_word}\\'
-            if not os.path.exists(tic_path):os.makedirs(tic_path)
-            all_df = all_tweets.sort_index()
-            all_df.to_csv(f'{tic_path}{key_word}_{thres}.csv')
-            print("sentiment files are saved successfully")
 
         all_sentis = all_sentis.replace([np.inf,-np.inf],[np.nan,np.nan])
         # convert all_sentis from UTC time to EST time
-        all_sentis["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in all_sentis.index]
-        all_sentis.index = list(map(lambda x:x.replace(tzinfo=None),all_sentis["EST"]))
-        if len(all_sentis)==0:return []
-        # add net sentiment
-        all_sentis["NetSentiment"] = all_sentis.Positive + all_sentis.Negative
+        all_sentis = SentiProcess._utc_to_est(all_sentis)
+        # if the file is empty, then raise exception
+        if len(all_sentis)==0:
+            raise Exception('There are not enough sentiments to show.')
+
+        # save the files if necessary 'results/tickername/file.csv'
+        if is_save_senti ==1:
+            tic_path = f'{save_path}{key_word}\\'
+            if not os.path.exists(tic_path):os.makedirs(tic_path)
+            # transfer the time zone
+            all_df = SentiProcess._utc_to_est(all_tweets.sort_index())
+            all_df.to_csv(f'{tic_path}{key_word}_{thres}.csv')
+            print("sentiment files are saved successfully")
+        # all_sentis is the file that contains all HOURLY sentiment data
         return all_sentis

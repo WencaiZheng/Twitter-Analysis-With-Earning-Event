@@ -7,7 +7,9 @@ import os
 
 
 def countdown(t):
-    print("Rate limit exceed! wait for another 16min...if you believe this is abnormal, check code")
+    #wait for another 15 mins
+    t=t*60+1
+    print("Twitter fetch data rate limit exceeded! Wait for another 15min...")
     while t:
         mins, secs = divmod(t, 60)
         timeformat = '{:02d}:{:02d}'.format(mins, secs)

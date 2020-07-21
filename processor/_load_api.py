@@ -5,7 +5,7 @@ import time
 import datetime
 import os
 #change it to the address where the file is located in your computer
-os.chdir('C:\\Users\\wenca\\Desktop\\GitRepo\\Twitter-Analysis-With-Earning-Event\\')
+#os.chdir('C:\\Users\\wenca\\Desktop\\GitRepo\\Twitter-Analysis-With-Earning-Event\\')
 
 def api_load():
     

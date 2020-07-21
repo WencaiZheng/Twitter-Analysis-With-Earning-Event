@@ -13,12 +13,13 @@ today_date = datetime.date.today()
 
 
 class RawTweet:
-    # ############               PARAMETERS             ###################
-    # # the dates I want to get, below says 7 days look back from today
-    # key_word = ['$NKE'] #'$SWBI','$JBL','$HOME',"SFIX","AVGO","HD","GOOG","SBUX""NBL","NVDA","INTC","AMD","TSM","TGT","WMT",EXPE","TJX","HRL","NVDA","BBY",
-    # most_recent_days = 7 # max is  8 for standard account
+    '''
+    # PARAMETERS     
+    # the dates I want to get, below says 7 days look back from today
+    # key_word = ['$NKE'] ,tickers like this
+    # most_recent_days = 7 # max is 8 for standard twitter api account
     # user_language = "en"# "zh-cn","en"
-    #####################################################################
+    '''
     def __init__(self,recent_days,user_language='en'):
 
         self.most_recent_days = recent_days # max is  8 for standard account
@@ -66,8 +67,14 @@ class RawTweet:
                     result_full_df = result_full_df[result_full_df.Created.dt.day==int(actual_date[-2:])]
                     break
 
+            except tweepy.error.RateLimitError as rle:
+                print(rle)
+                #wait for another 15 min
+                count_down.countdown(15)
+
             except:
-                count_down.countdown(16*60)
+                print('something goes wrong.')
+
                 
         print("{0} requests have been finished for date {1} with {2}".format(i,actual_date,key_word))
         result_full_df.index= range(len(result_full_df))# Rearrange index
@@ -92,7 +99,7 @@ class RawTweet:
                 idate_res.to_csv(f'{tic_path}\\{k}_{idate}.csv')
 
     
-    def get_from_news(self,savename):
+    def get_from_press(self,savename):
 
         save_path = 'data\\news\\' 
         period = self.most_recent_days
@@ -119,7 +126,7 @@ class RawTweet:
                 print(request_counter,iname,time_line[-1].created_at)
                 
                 # reach limit
-                if request_counter >= 179:
+                if request_counter >= 899:
                     count_down.countdown(16*60)
                     request_counter = 0
 

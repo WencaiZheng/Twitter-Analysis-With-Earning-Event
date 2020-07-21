@@ -1,0 +1,5 @@
+{
+    "git.ignoreLimitWarning": true,
+    "python.pythonPath": "C:\\Users\\wenca\\APP\\Anaconda\\envs\\mypy\\python.exe",
+    "python.linting.enabled": false
+}
