@@ -73,24 +73,28 @@ class TwitterPlot:
 
     def plot_senti3(self,hourly_ohlc,all_sentis):
         # plot it with plotly
-        fig = make_subplots(rows=3, cols=1,
+        fig = make_subplots(rows=4, cols=1,
                             shared_xaxes=True, 
-                            vertical_spacing=0,row_heights=[3, 1.5, 1,])
+                            vertical_spacing=0,row_heights=[1.5, 1, 1, 1])
         fig.add_trace(go.Ohlc(x=hourly_ohlc.index,
                                 open=hourly_ohlc.open, high=hourly_ohlc.high,
-                                low=hourly_ohlc.low, close=hourly_ohlc.close,name="Stock OHLC"),
+                                low=hourly_ohlc.low, close=hourly_ohlc.close,name="Intraday stock price"),
                     row=1, col=1)
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.All_counts,name="Publication count",marker_color="lightslategray"),
+        fig.add_trace(go.Bar(x=hourly_ohlc.index, y=hourly_ohlc.volume,name="Intraday volume",marker_color="lightslategray"),
                     row=2, col=1)
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.NetSentiment,name="Net Sentiment",marker_color="brown"),
-                row=2, col=1)
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive count",marker_color="green"),
+
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.All_counts,name="Publication count",marker_color="orange"),
                     row=3, col=1)
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative count",marker_color="red"),
-                    row=3, col=1)
+
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive score",marker_color="red"),
+                    row=4, col=1)
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative score",marker_color="green"),
+                    row=4, col=1)
+
         fig.update(layout_xaxis_rangeslider_visible=False)
         fig.update_layout(height=600, width=1200,
                         title_text="{0} intraday twitter sentiment and earnings info".format(self.key_word))
+
         fig.show()
         if not os.path.exists(self.saveaddr):os.mkdir(self.saveaddr)
         fig.write_image(f'{self.saveaddr}\\{self.key_word}.png')

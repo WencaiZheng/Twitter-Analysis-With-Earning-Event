@@ -13,13 +13,14 @@ def Function1(keyword_list):
     """
     # scraper
     keyword_list = ['$'+x for x in keyword_list]
-    grt.RawTweet(recent_days = 2).get_multiple_dates(keyword_list)
+    #
+    #grt.RawTweet(recent_days = 5).get_multiple_dates(keyword_list)
     # analysis parameters
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
         'is_plot' : 1, # plot the graph or not
         'is_log': 0, # log-scale or not
-        'is_earning_release' : 1, #get earning relearse date and plot it
+        'is_earning_release' : 0, #get earning relearse date and plot it
         'is_stockprice' : 1, # no stock processing would be much faster
 
         'is_preopen': 0,
@@ -47,9 +48,9 @@ def Function3():
     news_sa.get_earning_names(recent_day = 7,index_code = "RU3") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
-    keyword_list =['LMT','TSLA'] #['KO','IBM','SYF','COF','ISRG','UAL','AIR','BIIB','LMT','TSLA']
+    keyword_list =['MCD','PFE'] #['KO','IBM','SYF','COF','ISRG','UAL','AIR','BIIB','LMT','TSLA'],'TWTR','SLB',INTC
     Function1(keyword_list)
-    #Function2()
+    # Function2()
     # Function3()
 
 

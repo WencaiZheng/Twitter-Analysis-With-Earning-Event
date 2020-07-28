@@ -11,7 +11,6 @@ import visualization._plot_method as senti_ploter
 import processor._automail as automail
 import processor._senti_process as senti_process
 import statistics._twitter_stats as twitter_stats
-import processor._fix_dictionary as  mydictionary
 import processor._load_intraday as load_intraday
 
 
@@ -30,10 +29,8 @@ def analysis_ticker(keyword_list,is_save_senti,is_plot,is_log,is_earning_release
         # see all files'dates
         dates = [i[-14:-4] for i in files]
         print(f'We are observing data from {dates[0]} to {dates[-1]} for {key_word}')
-        # read the sentiment dictionary, predownloaded
-        pos_dic,neg_dic = mydictionary.TwitterDict().new_dict()
         # get all sentiment from all files, each file represent a day
-        all_sentiments  = senti_process.SentiProcess(key_word,pos_dic,neg_dic).get_all_senti(files,flr_thres,is_log,is_save_senti)
+        all_sentiments  = senti_process.SentiProcess(key_word).get_all_senti(files,flr_thres,is_log,is_save_senti)
         ###################################
         #twitter_stats.show_top(result_path,key_word,topn,is_show_topwds)
         #plot #####################################################

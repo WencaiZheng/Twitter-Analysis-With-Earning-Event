@@ -24,10 +24,10 @@ class RawTweet:
 
         self.most_recent_days = recent_days # max is  8 for standard account
         self.user_language = user_language
-        self.api = load_api.api_load()
+        self.api = load_api.TwitterAPI.api_load()
 
     # idate is the until date of search
-    def get_oneday_twitter(self,idate:str,key_word:str,max_rqst:int):
+    def get_oneday_twitter(self,idate:str,key_word:str):
         # first max_id = None
         last_min_id = None
         result_full_df =pd.DataFrame()
@@ -87,10 +87,10 @@ class RawTweet:
         for k in key_words:
             # all_results = dict()
             for idate in datelist:# add 15 min result to all
-                print("Parsing data for {0} at {1}".format(k,idate))
+                print("Retrieving data for {0} at {1}".format(k,idate))
                 # The date begins at earliest date
                 search_date = str((pd.to_datetime(idate) + datetime.timedelta(days = 1)).date())
-                idate_res = self.get_oneday_twitter(search_date,k,max_rqst=179)
+                idate_res = self.get_oneday_twitter(search_date,k)
                 #all_results[idate] = idate_res
                 #write one day before because of twitter setting
                 tic_path = f'data\\raw_twitters\\{k}'
@@ -127,7 +127,7 @@ class RawTweet:
                 
                 # reach limit
                 if request_counter >= 899:
-                    count_down.countdown(16*60)
+                    count_down.countdown(16)
                     request_counter = 0
 
         result_df = pd.DataFrame(result)

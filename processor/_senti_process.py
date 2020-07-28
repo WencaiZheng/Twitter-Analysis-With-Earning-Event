@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import processor._fix_dictionary as  mydictionary
 
 sid_obj = SentimentIntensityAnalyzer() 
 save_path = 'data\\senti_results\\'
@@ -13,10 +14,13 @@ class SentiProcess:
     then it counts the hourly positive, negative and all tweets 
     it saved the results by the keyword it was searched from sraper_main
     """
-    def __init__(self,key_w,pos,neg):
-        self.key_word = key_w
-        self.pos_dic = pos
-        self.neg_dic = neg
+    def __init__(self,key_w):
+        self.key_word = key_w     
+        # load the main dictionary
+        self.pos_dic,self.neg_dic = mydictionary.TwitterDict.new_dict()
+        # load the pre filter dictionary
+        self.pre_dic,self.pre_neg =  mydictionary.TwitterDict.pre_dict()
+ 
     
     def spliter(self,txt):
         """
@@ -46,19 +50,29 @@ class SentiProcess:
         x_effc["sText"] = list(map(self.spliter,x_effc.Text))
         return x_effc
 
-    @staticmethod
-    def get_senti(rawtxt,pos_dic,neg_dic):
+    def get_senti(self,rawtxt):
         txt_list= rawtxt.split(" ")
         pos_count,neg_count =0,0
         for i in txt_list:
-            if i in pos_dic:pos_count+=1
-            if i in neg_dic:neg_count+=1
+            if i in self.pos_dic:pos_count+=1
+            if i in self.neg_dic:neg_count+=1
         # positive
         if pos_count>neg_count:senti = 1
         elif pos_count<neg_count:senti = -1
         else: senti = 0
         return senti
     
+    def pre_filter(self,rawtxt):
+        is_pos = sum([keyw in rawtxt for keyw in self.pre_dic])
+        is_neg = sum([keyw in rawtxt for keyw in self.pre_neg])
+        # if they are both zero or both not 0, which mean it is vague
+        if not is_pos and not is_neg: return 0
+        elif is_pos and is_neg:return 0
+        # if one of them are zero one is not
+        elif is_pos and not is_neg:return 1
+        elif is_neg and not is_pos:return -1
+        
+
     def senti_count(self,idate,e_file,log_flag):
         """count how many positive or negative in a file named e_file
             log_flag: whether or not scale the count into log
@@ -70,19 +84,24 @@ class SentiProcess:
         sentis =  []
         for x in e_file.sText:
             #calculcate the compound score of each tweet first
-            vader_senti = sid_obj.polarity_scores(x)['compound']
-            dict_senti = self.get_senti(x,self.pos_dic,self.neg_dic)
-            if vader_senti==0:
-                sentis.append(dict_senti)
+            pre_senti = self.pre_filter(x)
+            # let presenti filter first, if zero, use vader
+            if pre_senti ==0:
+                vader_senti = sid_obj.polarity_scores(x)['compound']
+                if vader_senti==0:
+                    dict_senti = self.get_senti(x)
+                    sentis.append(dict_senti)
+                else:
+                    sentis.append(vader_senti)
+            # if pre filter sentiment result is not zero, use it directly
             else:
-                sentis.append(vader_senti)
+                sentis.append(pre_senti)
+
         #return the sentiment number of each tweet to tweet file
         e_file["Sentiment"] = sentis
         s_file = e_file.copy()
         s_file.index = s_file.Datetime
-        # change time zone from utc to est
-        # s_file["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in s_file.Datetime]
-        # s_file.index = list(map(lambda x:x.replace(tzinfo=None),s_file["EST"]))
+
         # add all sentis get a count 
         s_file["All_counts"] = [1]*len(s_file)
         # count the hourly negative or positive ttr 

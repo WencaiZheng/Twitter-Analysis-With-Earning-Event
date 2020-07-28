@@ -31,6 +31,12 @@ class TwitterDict:
         new_neg = np.append(neg_dic,my_neg)
         return new_pos,new_neg
 
+    @staticmethod
+    def pre_dict():
+        pre_d = pd.read_csv('dictionary\\PreDict.csv')
+        pre_pos =  pre_d.Positive.dropna().values
+        pre_neg =  pre_d.Negative.dropna().values
+        return pre_pos, pre_neg
 
 
 if __name__ == "__main__":

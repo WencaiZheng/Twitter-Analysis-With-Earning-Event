@@ -79,3 +79,20 @@ class SendEmail:
         server.sendmail(self.fromaddr, self.toaddr, text)
         server.quit()
         print(f'Email successfully sent to {self.toaddr}')
+
+
+    def send_realtime_email(self,body_):
+        
+        msg['From'] = "noven.zheng@gmail.com"
+        msg['To'] = ", ".join(self.toaddr)
+        msg['Subject'] = "[Test] Twitter real time (half) hourly trending alert"
+        body = body_
+        msg.attach(MIMEText(body, 'plain'))
+
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(self.fromaddr,self.pswd)
+        text = msg.as_string()
+        server.sendmail(self.fromaddr, self.toaddr, text)
+        server.quit()
+        print(f'Email successfully sent to {self.toaddr}')
