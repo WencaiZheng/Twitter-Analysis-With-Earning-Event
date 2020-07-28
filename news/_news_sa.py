@@ -76,11 +76,11 @@ def get_earning_names(recent_day,index_code):
         name = list(map(lambda x:x.text,soup.find_all('span',class_='ticker-name')))
         df = pd.DataFrame([tic,name,date,time]).T
         all_df = pd.concat([all_df,df],axis=0)
-        last_date = pd.to_datetime(all_df.iloc[-1,2][:-4])
+        last_date = pd.to_datetime(all_df.iloc[-1,2])
         print(last_date)
         if last_date > target_date:break
     all_df.columns=["Ticker","Name","Date","Time"]
-    all_df.Date = pd.to_datetime([i[:-4] for i in all_df.Date])
+    all_df.Date = pd.to_datetime([i for i in all_df.Date])
     all_df = all_df[all_df.Date <=  target_date]
     all_df.index = all_df.Ticker
 

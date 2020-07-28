@@ -202,7 +202,8 @@ class RealTimeTweet:
     
     @classmethod
     def send_email(cls,trendup_ticker):
-        toaddr = ['wz1298@nyu.edu',]
+        #send to some one
+        toaddr = ['wz1298@nyu.edu','rangerrod1@gmail.com']
 
         if len(trendup_ticker)==0:
             # don't send email
