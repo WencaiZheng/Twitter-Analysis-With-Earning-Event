@@ -10,6 +10,7 @@ import processor._load_api as load_api
 import processor._count_down as count_down
 import processor._senti_process as senti_process
 import processor._automail as automail
+import main.analysis_main as analysis
 
 nowdate= str(date.today())
 
@@ -24,11 +25,11 @@ class RealTimeTweet:
     # class variable api
     api = load_api.TwitterAPI.api_load()
     # the sp500 names we want to moiniter
-    names = pd.read_csv('dictionary\\SP500.csv').Symbol.values
+    #names = pd.read_csv('dictionary\\SP500.csv').Symbol.values
     # the request has limit, it should not exceed 180/15min
     request_counter = 0
     #
-    today_trend = pd.DataFrame(columns =names)
+    
 
     
 
@@ -125,16 +126,30 @@ class RealTimeTweet:
         # if the past average is zero, it just return 0
         if past == 0 or new < 10:
             return 0
-        return new >= past*1.8      
+        return new >= past*1.5     
 
 
     @classmethod
     def intrigue_warning(cls,kw,past,new):
-        """It gives earning 
+        """It add statistic data to the email body
         """
-        cls.email_body += f'For {kw}, the recent historical avergae volume is {past}.\
-            The past half hour tweets volume increases to {new}.\n'
+        cls.email_body += f'For {kw}, the recent historical avergae volume is {past}, \
+            the historical positve/negatives score is {cls.exist_pos}/{cls.exist_neg}.\
+            The new half hour tweets volume increases to {new},\
+            the new positve/negatives score is {cls.new_pos}/{cls.new_neg}.\n'
+
         pass
+
+    @classmethod
+    def get_senti(cls,kw,one_df):
+        """get the sentiment percentage for a period of time
+        """
+        senti_obj = senti_process.SentiProcess(kw)
+        e_one_df = senti_obj.effective_ttr(one_df,5)
+        isenti_hourly,itweets = senti_obj.senti_count(e_one_df,log_flag=0)
+        pos_score = sum(itweets[itweets.Sentiment>0].Sentiment)/len(one_df)*100
+        neg_score = sum(itweets[itweets.Sentiment<0].Sentiment)/len(one_df)*100
+        return np.round(pos_score,2),np.round(neg_score,2)
 
     @classmethod
     def moniter_all(cls):
@@ -172,19 +187,27 @@ class RealTimeTweet:
             # compare the curretnly twitter number is rising or not
 
             if RealTimeTweet._judge(past_avg,new_count):
+
+                # get sentiment of the trending tickers,set them as the class variables
+                cls.new_pos,cls.new_neg = cls.get_senti(kw,one_df)
+                cls.exist_pos,cls.exist_neg = cls.get_senti(kw,existed_df)
+                # get the earning to the email body
                 RealTimeTweet.intrigue_warning(kw,past_avg,new_count)
                 # exceed the past average
                 # here we only want to use ticker name, which is AAPL instead of $AAPL
                 now_trend.loc[nowtimestr,kw[1:]] = 1
            
-            #save the new file as the concated file
+            #save the new file as the concated file as raw tweets
             concated_df.to_csv(f'{save_dir}\\{kw}\\{kw}_{nowdate}.csv')
 
+        # analyze the trend tickers
         cls.analyze_trend(now_trend)
+        
         return now_trend
     
     @classmethod
     def analyze_trend(cls,now_trend):
+        #analyze the tickers
         trendup_ticker = now_trend.columns[now_trend.iloc[-1,:].values == 1]
         print(f'There are {[i for i in trendup_ticker]} trending right now')
         
@@ -199,7 +222,7 @@ class RealTimeTweet:
         # send email to target
         cls.send_email(trendup_ticker)
         pass
-    
+
     @classmethod
     def send_email(cls,trendup_ticker):
         #send to some one
@@ -217,11 +240,14 @@ class RealTimeTweet:
             cls.email_body = summary + cls.email_body
             automail.SendEmail(toaddr).send_realtime_email(cls.email_body)
 
-    @staticmethod
-    def run_main():
+    @classmethod
+    def run_main(cls,names_):
+        cls.names = names_
+        cls.today_trend = pd.DataFrame(columns = names_)
+        
         while True:
             now_min = datetime.now().minute
-            if now_min == 0 or now_min==30:
+            if now_min == 15 or now_min==30:
                 RealTimeTweet.moniter_all()
 
             elif now_min<30:
@@ -238,7 +264,7 @@ class RealTimeTweet:
 if __name__ == "__main__":
 
     # run all tickers
-    #allf = RealTimeTweet.moniter_all()
+    allf = RealTimeTweet.moniter_all()
 
     RealTimeTweet.run_main()
 

@@ -6,10 +6,12 @@ import requests
 import re
 import time
 import os
+from glob import glob
 from scipy.stats import norm
 from bs4 import BeautifulSoup
 from collections import Counter
 from bs4 import BeautifulSoup
+
 
 ##############get info from seeking alpha .com#############
 head_url_sa ="https://seekingalpha.com/"
@@ -62,7 +64,9 @@ def news_result_dict(key_url):
         news_dic[key_url[i]] = [time[0].text,info[0].text]
     return news_dic
 
-def get_earning_names(recent_day,index_code):
+def save_earning_names(recent_day,index_code):
+    """ get the names that have earning in the incoming week
+    """
     target_date = pd.to_datetime(datetime.date.today()+datetime.timedelta(days = recent_day))
     all_df =  pd.DataFrame()
     for i in range(1,30):
@@ -104,9 +108,16 @@ def get_earning_names(recent_day,index_code):
         pass
     all_df.sort_values(by="Date",inplace=True)
 
-    print(all_df)
+    all_df.to_csv(f'data\\earning_names\\{str(datetime.date.today())}.csv')
+
     return all_df
 
+def load_earning_names():
+    """get the saved earning names
+    """
+    files = glob(f'data\\earning_names\\*.csv')
+    names = pd.read_csv(files[-1],index_col=0)
+    return names.index
 
 if __name__ == "__main__":
 

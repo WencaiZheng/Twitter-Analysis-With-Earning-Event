@@ -36,9 +36,9 @@ class TwitterPlot:
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.All_counts,name="Publication count",marker_color="orange"),
                     row=3, col=1)
 
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive score",marker_color="red"),
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive score",marker_color="green"),
                     row=4, col=1)
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative score",marker_color="green"),
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative score",marker_color="red"),
                     row=4, col=1)
 
         fig.update(layout_xaxis_rangeslider_visible=False)
@@ -61,9 +61,9 @@ class TwitterPlot:
         fig.add_trace(go.Scatter(x=earning_release_within.index, y=earning_release_within.Surprise,name="Earning Event",marker_color="green"),
                 row=2, col=1)
 
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive score",marker_color="red"),
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive score",marker_color="green"),
                     row=3, col=1)
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative score",marker_color="green"),
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative score",marker_color="red"),
                     row=3, col=1)
         fig.update_layout(height=600, width=1200,
                         title_text="{0} intraday twitter sentiment".format(self.key_word))
@@ -86,9 +86,9 @@ class TwitterPlot:
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.All_counts,name="Publication count",marker_color="orange"),
                     row=3, col=1)
 
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive score",marker_color="red"),
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive score",marker_color="green"),
                     row=4, col=1)
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative score",marker_color="green"),
+        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative score",marker_color="red"),
                     row=4, col=1)
 
         fig.update(layout_xaxis_rangeslider_visible=False)
@@ -101,18 +101,16 @@ class TwitterPlot:
 
     def plot_senti4(self,all_sentis):
         # plot it with plotly
-        fig = make_subplots(rows=3, cols=1,
+        fig = make_subplots(rows=2, cols=1,
                             shared_xaxes=True, 
-                            vertical_spacing=0,row_heights=[3, 1.5, 1])
+                            vertical_spacing=0,row_heights=[1,1])
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.All_counts,name="Publication count",marker_color="lightslategray"),
                     row=1, col=1)
 
-        fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.NetSentiment,name="Net Sentiment",marker_color="brown"),
-                row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Positive,name="Positive count",marker_color="green"),
-                    row=3, col=1)
+                    row=2, col=1)
         fig.add_trace(go.Bar(x=all_sentis.index, y=all_sentis.Negative,name="Negative count",marker_color="red"),
-                    row=3, col=1)
+                    row=2, col=1)
         fig.update_layout(height=600, width=1200,
                         title_text="{0} intraday twitter sentiment".format(self.key_word))
 
@@ -130,7 +128,10 @@ class TwitterPlot:
         fig.add_trace(go.Bar(x=senti_result.index, y=senti_result.user_score,name="User Weighted Score",marker_color="lightslategray"),
                     row=1, col=1)
                     
-        fig.add_trace(go.Bar(x=senti_result.index, y=senti_result.Sentiment,name="Pure Sentiment",marker_color="red"),
+
+        fig.add_trace(go.Bar(x=senti_result.index, y=senti_result.Positive,name="Positive count",marker_color="green"),
+                    row=2, col=1)
+        fig.add_trace(go.Bar(x=senti_result.index, y=senti_result.Negative,name="Negative count",marker_color="red"),
                     row=2, col=1)
 
         fig.update_layout(height=600, width=1200,

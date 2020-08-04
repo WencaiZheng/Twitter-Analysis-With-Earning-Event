@@ -51,6 +51,8 @@ class SentiProcess:
         return x_effc
 
     def get_senti(self,rawtxt):
+        """for a sentence, it gives its sentiment
+        """
         txt_list= rawtxt.split(" ")
         pos_count,neg_count =0,0
         for i in txt_list:
@@ -73,7 +75,7 @@ class SentiProcess:
         elif is_neg and not is_pos:return -1
         
 
-    def senti_count(self,idate,e_file,log_flag):
+    def senti_count(self,e_file,log_flag):
         """count how many positive or negative in a file named e_file
             log_flag: whether or not scale the count into log
         """
@@ -86,7 +88,7 @@ class SentiProcess:
             #calculcate the compound score of each tweet first
             pre_senti = self.pre_filter(x)
             # let presenti filter first, if zero, use vader
-            if pre_senti ==0:
+            if pre_senti == 0:
                 vader_senti = sid_obj.polarity_scores(x)['compound']
                 if vader_senti==0:
                     dict_senti = self.get_senti(x)
@@ -105,11 +107,10 @@ class SentiProcess:
         # add all sentis get a count 
         s_file["All_counts"] = [1]*len(s_file)
         # count the hourly negative or positive ttr 
-        partly_count = s_file.loc[:,['Sentiment','All_counts']].resample('1H').sum()
+        hour_count = s_file.loc[:,['Sentiment','All_counts']].resample('1H').sum()
         #scale it
-        if log_flag:partly_count = np.log(partly_count+1)
-        hour_count = partly_count.copy()
-        # show negative times in nagative
+        if log_flag:hour_count = np.log(hour_count+1)
+        # show positive or negative
         hour_count['Positive'] = hour_count[hour_count.Sentiment>0].Sentiment
         hour_count['Negative'] = hour_count[hour_count.Sentiment<0].Sentiment
         hour_count=hour_count.fillna(0)
@@ -163,7 +164,7 @@ class SentiProcess:
                 print("file is empty for {0}".format(idate))
                 continue 
             # step 2
-            isenti_hourly,itweets_single = self.senti_count(idate,e_file,is_log)
+            isenti_hourly,itweets_single = self.senti_count(e_file,is_log)
             # add today's senti to all
             all_sentis = pd.concat([all_sentis,isenti_hourly])
             # all_tweets file is the file contains all individual tweets

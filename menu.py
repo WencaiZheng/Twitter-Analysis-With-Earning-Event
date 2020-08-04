@@ -14,7 +14,7 @@ def Function1(keyword_list):
     # scraper
     keyword_list = ['$'+x for x in keyword_list]
     #
-    #grt.RawTweet(recent_days = 5).get_multiple_dates(keyword_list)
+    grt.RawTweet(recent_days = 1).get_multiple_dates(keyword_list)
     # analysis parameters
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
@@ -45,11 +45,11 @@ def Function3():
     
     """ Function 3: get ticker names having earnings next few days
     """
-    news_sa.get_earning_names(recent_day = 7,index_code = "RU3") # next 5 days RU3000/SP500 list name
+    news_sa.save_earning_names(recent_day = 5,index_code = "SP5") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
-    keyword_list =['MCD','PFE'] #['KO','IBM','SYF','COF','ISRG','UAL','AIR','BIIB','LMT','TSLA'],'TWTR','SLB',INTC
-    # Function1(keyword_list)
+    keyword_list =['FB'] #['KO','IBM','SYF','COF','ISRG','UAL','AIR','BIIB','LMT','TSLA'],'TWTR','SLB',INTC
+    #Function1(keyword_list)
     # Function2()
     Function3()
 

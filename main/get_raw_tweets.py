@@ -68,10 +68,19 @@ class RawTweet:
                     break
 
             except tweepy.error.RateLimitError as rle:
-                print(rle)
-                #wait for another 15 min
-                count_down.countdown(15)
-
+                print('the api reaches limit, change to a new one')
+                self.api = load_api.TwitterAPI.change_api()
+                
+                try:
+                    load_api.TwitterAPI.api_test()
+                    #go to the next new request
+                    continue
+                # if change api does not work, just wait
+                except tweepy.error.RateLimitError:
+                    print('all apis capacity are full, wait for 15min cool down')
+                    #wait for 15 mins
+                    count_down.countdown(15)
+                    continue
             except:
                 print('something goes wrong.')
 
