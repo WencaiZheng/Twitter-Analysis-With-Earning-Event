@@ -258,8 +258,6 @@ class RealTimeTweet:
 
 
 
-    
-
 if __name__ == "__main__":
 
     # run all tickers
