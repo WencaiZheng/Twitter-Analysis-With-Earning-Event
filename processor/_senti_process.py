@@ -122,7 +122,8 @@ class SentiProcess:
     def analysis_news(kw_list,filename):
         save_path = 'data\\news\\'
         ifile = pd.read_csv(f'{save_path}{filename}.csv',index_col = 0)
-
+        """There should be index instead of Created
+        """
         ifile.index = pd.to_datetime(ifile.loc[:,'Created'])
         ifile["datehour"] = list(map(lambda x:f'{x.date()} {x.hour}',ifile.index))
         hourly_data =  ifile.groupby("datehour")['Text'].apply(lambda x: x.sum()).sort_index()
@@ -133,10 +134,9 @@ class SentiProcess:
         
         count_series = pd.Series(count,index=hourly_data.index.copy())
         all_sentis = count_series.fillna(0)
-        # change from UTC time to EDT
+        # change from UTC time to EST
         all_sentis.index = pd.to_datetime(list(map(lambda x:x+':00:00',all_sentis.index)))
-        temp = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in all_sentis.index]
-        all_sentis.index = list(map(lambda x:x.replace(tzinfo=None),temp))
+
         return all_sentis
     
     @staticmethod
@@ -145,6 +145,7 @@ class SentiProcess:
         """
         df["EST"] = [i.tz_localize('UTC').tz_convert('US/Eastern') for i in df.index]
         df.index = list(map(lambda x:x.replace(tzinfo=None),df["EST"]))
+        df = df.drop(columns=['EST'])
         return df
 
     def get_all_senti(self,files,thres,is_log,is_save_senti):
@@ -156,7 +157,7 @@ class SentiProcess:
         for i in range(len(dates)):
             idate = dates[i]
             ifile = files[i]
-            xfile=pd.read_csv(ifile)
+            xfile=pd.read_csv(ifile,)
             # step 1 filter out all the unqualified ones, if empty return none
             e_file = self.effective_ttr(xfile,thres)
             # if empty, goes to next date file
@@ -171,7 +172,8 @@ class SentiProcess:
             all_tweets = pd.concat([all_tweets,itweets_single],axis=0,sort=False)
 
         all_sentis = all_sentis.replace([np.inf,-np.inf],[np.nan,np.nan])
-        # convert all_sentis from UTC time to EST time
+        # make the index the EST time instead of original twitter UCT time
+        # all_sentis.index = pd.to_datetime(all_sentis.index)
         all_sentis = SentiProcess._utc_to_est(all_sentis)
         # if the file is empty, then raise exception
         if len(all_sentis)==0:
@@ -182,8 +184,10 @@ class SentiProcess:
             tic_path = f'{save_path}{key_word}\\'
             if not os.path.exists(tic_path):os.makedirs(tic_path)
             # transfer the time zone
-            all_df = SentiProcess._utc_to_est(all_tweets.sort_index())
-            all_df.to_csv(f'{tic_path}{key_word}_{thres}.csv')
+            # make the index the EST time instead of original twitter UCT time
+            # all_tweets.index = pd.to_datetime(all_tweets.index)
+            all_tweets = SentiProcess._utc_to_est(all_tweets)
+            all_tweets.to_csv(f'{tic_path}{key_word}_{thres}.csv')
             print("sentiment files are saved successfully")
         # all_sentis is the file that contains all HOURLY sentiment data
         return all_sentis

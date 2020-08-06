@@ -31,7 +31,6 @@ class RealTimeTweet:
     #
     
 
-    
 
     def __init__(self):
         #nothing here
@@ -94,9 +93,9 @@ class RealTimeTweet:
             records_df = pd.DataFrame(result)
             records_df.columns = ["ID","Created","User_id","User_name","User_flr","Text"]
         
+        # change from UCT to EST time zone
         records_df.index = pd.to_datetime(records_df.Created)
         records_df = senti_process.SentiProcess._utc_to_est(records_df)
-        records_df = records_df.drop(columns=['EST'])
         
         # Most updated one is at the bottom
         records_df = records_df.sort_index(ascending=True)
@@ -124,19 +123,19 @@ class RealTimeTweet:
         # The condition is that the new is larger than 1.5 times of the past average tweets
         # It is a simple condition, let's see
         # if the past average is zero, it just return 0
-        if past == 0 or new < 10:
+        if past == 0 or new < 20:
             return 0
-        return new >= past*1.5     
+        return new >= past * 1.8     
 
 
     @classmethod
     def intrigue_warning(cls,kw,past,new):
         """It add statistic data to the email body
         """
-        cls.email_body += f'For {kw}, the recent historical avergae volume is {past}, \
-            the historical positve/negatives score is {cls.exist_pos}/{cls.exist_neg}.\
-            The new half hour tweets volume increases to {new},\
-            the new positve/negatives score is {cls.new_pos}/{cls.new_neg}.\n'
+        cls.email_body += f'For {kw}, historical volume: {past}, '+\
+            f'historical positve/negatives score: {cls.exist_pos}/{cls.exist_neg}.'+\
+            f'New half hour volume: {new},'+\
+            f'positve/negatives score: {cls.new_pos}/{cls.new_neg}.\n\n'
 
         pass
 
@@ -247,7 +246,7 @@ class RealTimeTweet:
         
         while True:
             now_min = datetime.now().minute
-            if now_min == 15 or now_min==30:
+            if now_min == 0 or now_min==30:
                 RealTimeTweet.moniter_all()
 
             elif now_min<30:

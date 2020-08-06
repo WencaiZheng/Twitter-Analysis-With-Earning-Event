@@ -8,7 +8,9 @@ import matplotlib.pyplot as plt
 
 import processor._load_api as load_api
 import processor._count_down as count_down
+import processor._senti_process as senti_process
 
+#global variable for the module
 today_date = datetime.date.today()
 
 
@@ -84,9 +86,8 @@ class RawTweet:
             except:
                 print('something goes wrong.')
 
-                
+        #print info
         print("{0} requests have been finished for date {1} with {2}".format(i,actual_date,key_word))
-        result_full_df.index= range(len(result_full_df))# Rearrange index
 
         return result_full_df
 
