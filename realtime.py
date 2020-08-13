@@ -16,10 +16,8 @@ def Function4():
     rtt.RealTimeTweet.run_main(keyword_list)
     
 
-
 if __name__ == "__main__":
     
-    #Function1()
     Function4()
 
 

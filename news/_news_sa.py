@@ -115,9 +115,11 @@ def save_earning_names(recent_day,index_code):
 def load_earning_names():
     """get the saved earning names
     """
-    files = glob(f'data\\earning_names\\*.csv')
-    names = pd.read_csv(files[-1],index_col=0)
-    return names.index
+    # files = glob(f'data\\earning_names\\*.csv')
+    # enames = pd.read_csv(files[-1],index_col=0)
+    sp_names = pd.read_csv("dictionary\\SP500.csv",index_col=0)
+    # names2=pd.concat([enames,sp_names],join='inner',axis=1,sort=False)
+    return sp_names.index
 
 if __name__ == "__main__":
 
