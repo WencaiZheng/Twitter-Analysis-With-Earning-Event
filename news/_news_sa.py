@@ -117,7 +117,7 @@ def load_earning_names():
     """
     # files = glob(f'data\\earning_names\\*.csv')
     # enames = pd.read_csv(files[-1],index_col=0)
-    sp_names = pd.read_csv("dictionary\\SP500.csv",index_col=0)
+    sp_names = pd.read_csv("dictionary\\FX.csv",index_col=0)
     # names2=pd.concat([enames,sp_names],join='inner',axis=1,sort=False)
     return sp_names.index
 

@@ -15,7 +15,6 @@ def Function4():
     keyword_list = news_sa.load_earning_names()
     rtt.RealTimeTweet.run_main(keyword_list)
     
-
 if __name__ == "__main__":
     
     Function4()

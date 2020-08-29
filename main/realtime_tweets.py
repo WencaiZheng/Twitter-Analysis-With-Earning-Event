@@ -165,8 +165,9 @@ class RealTimeTweet:
         nowtimestr = str(cls.nowtime)[:16]
         # creat a array of 0 and 1 to tell if any ticker has high trend
         now_trend = pd.DataFrame([0]*len(cls.names),index =cls.names,columns=[nowtimestr]).T
-
-        keyword_list = ['$'+x for x in cls.names]
+        """>????
+        """
+        keyword_list = [x for x in cls.names]
         for kw in keyword_list:
             existed_df = cls.load_file(kw)
             one_df = cls.one_ticker(kw)
@@ -198,8 +199,10 @@ class RealTimeTweet:
                 # get the earning to the email body
                 RealTimeTweet.intrigue_warning(kw,past_avg,new_count)
                 # exceed the past average
+                """???
+                """
                 # here we only want to use ticker name, which is AAPL instead of $AAPL
-                now_trend.loc[nowtimestr,kw[1:]] = 1
+                now_trend.loc[nowtimestr,kw[:]] = 1
            
             #save the new file as the concated file as raw tweets
             concated_df.to_csv(f'{save_dir}\\{kw}\\{kw}_{nowdate}.csv')
@@ -252,6 +255,7 @@ class RealTimeTweet:
             now_min = datetime.now().minute
             if now_min == 0 or now_min==30:
                 RealTimeTweet.moniter_all(keyword_list)
+                count_down.countdown(2)
 
             elif now_min<30:
                 count_down.countdown(30-now_min)

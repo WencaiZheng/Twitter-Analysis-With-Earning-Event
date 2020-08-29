@@ -6,6 +6,7 @@ data/stock_data/
 data/news/
 data/preopen/
 data/senti_graph/
+data/twitter_trend
 
 TOKENS/
 lab/
