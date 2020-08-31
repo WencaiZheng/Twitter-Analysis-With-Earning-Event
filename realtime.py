@@ -14,10 +14,15 @@ def Function4():
     """
     keyword_list = news_sa.load_earning_names()
     rtt.RealTimeTweet.run_main(keyword_list)
-    
+
+def Function5():
+    """real time alert system for some macro indicators like FX
+    """
+    #save the tweets from the macro twitter accounts and save below
+    rtt.RealTimeTweet.run_macro()
 if __name__ == "__main__":
     
-    Function4()
+    Function5()
 
 
     pass

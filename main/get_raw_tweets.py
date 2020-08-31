@@ -12,6 +12,7 @@ import processor._senti_process as senti_process
 
 #global variable for the module
 today_date = datetime.date.today()
+today_time = datetime.datetime.today()
 
 
 class RawTweet:
@@ -109,12 +110,12 @@ class RawTweet:
                 idate_res.to_csv(f'{tic_path}\\{k}_{idate}.csv')
 
     
-    def get_from_press(self,savename):
+    def get_from_accounts(self,type,savename):
 
-        save_path = 'data\\news\\' 
+        save_path = f'data\\{type}\\' 
         period = self.most_recent_days
         request_counter = 0
-        names = pd.read_csv('dictionary\\PressName.csv').iloc[:,-1].values
+        names = pd.read_csv('dictionary\\MacroName.csv').iloc[:,0].values
         result = []
 
         for iname in names:
@@ -124,12 +125,15 @@ class RawTweet:
             while time_gap < period:
 
                 request_counter += 1
-                time_line = self.api.user_timeline(iname,max_id=last_maxid,tweet_mode="extended")
-                time_gap = (today_date - time_line[-1].created_at.date()).days
+                try:
+                    time_line = self.api.user_timeline(iname,max_id=last_maxid,tweet_mode="extended")
+                except:
+                    break
                 if len(time_line) == 0:
                     time_gap = period+1
-                    continue
-                
+                    break
+                #from utc to ets
+                time_gap = (today_time - time_line[-1].created_at + datetime.timedelta(hours=4)).total_seconds()/3600/24
                 last_maxid = time_line[-1].id
                 result += [[x.id,x.created_at,x.user.id,x.user.screen_name,x.user.followers_count,x.full_text] for x in time_line]
                 
@@ -142,6 +146,10 @@ class RawTweet:
 
         result_df = pd.DataFrame(result)
         result_df.columns = ["ID","Created","User_id","User_name","User_flr","Text"]
+        #from utc to ets
+        result_df.Created = result_df.Created - datetime.timedelta(hours=4)
+        #cut recent day*24, means how many recent hours
+        result_df = result_df[result_df.Created>today_time-datetime.timedelta(hours=self.most_recent_days*24)]
         # if path not exit, create folders
         if not os.path.exists(save_path):os.makedirs(save_path)
         result_df.to_csv(f'{save_path}\\{savename}.csv')
@@ -152,7 +160,8 @@ if __name__ == "__main__":
     ####################################
 
     key_words = ['$RAD']
-    recent_days = 7
+    recent_days = 1/24
     # get raw tweets and save them
-    RawTweet(recent_days).get_multiple_dates(key_words)
+    #RawTweet(recent_days).get_multiple_dates(key_words)
+    RawTweet(recent_days).get_from_accounts(type='macro',savename='macrotest1')
     pass

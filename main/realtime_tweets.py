@@ -12,6 +12,7 @@ import processor._senti_process as senti_process
 import processor._automail as automail
 import main.analysis_main as analysis
 import news._news_sa as news_sa
+import main.get_raw_tweets as grt
 
 nowdate= str(date.today())
 
@@ -30,7 +31,7 @@ class RealTimeTweet:
     # the request has limit, it should not exceed 180/15min
     request_counter = 0
     #
-    
+    email_body = ''
 
 
     def __init__(self):
@@ -229,11 +230,25 @@ class RealTimeTweet:
         # send email to target
         cls.send_email(trendup_ticker)
         pass
+    
+
+    @classmethod
+    def realtime_macro(cls):
+        filename = 'macrotest1'
+        grt.RawTweet(recent_days=1/24).get_from_accounts('macro',savename = filename)
+        #load the saved file to rank the name
+        top_names,top_tweets = analysis.analysis_macro(filename)
+        names = top_names[top_names!=0].index
+        for i in names:
+            cls.email_body += f'\n\n\nThere are {top_names.loc[i]} tweets about {i} and they are:\n\n'+'\n\n'.join(top_tweets[i])
+        #send the email
+        cls.send_email(names)
+
 
     @classmethod
     def send_email(cls,trendup_ticker):
         #send to some one
-        toaddr = ['wz1298@nyu.edu','rangerrod1@gmail.com']
+        toaddr = ['wz1298@nyu.edu',]#'rangerrod1@gmail.com'
 
         if len(trendup_ticker)==0:
             # don't send email
@@ -242,7 +257,7 @@ class RealTimeTweet:
             print(summary)
         else:
             summary = f'There are these tickers trending right now: {" ".join(trendup_ticker)}. '\
-                f'Detailed information:\n \n \n'
+                f'Detailed information:\n \n '
 
             cls.email_body = summary + cls.email_body
             automail.SendEmail(toaddr).send_realtime_email(cls.email_body)
@@ -262,16 +277,24 @@ class RealTimeTweet:
             
             elif now_min>30:
                 count_down.countdown(60-now_min)
-
-
+    
+    @classmethod
+    def run_macro(cls):
+        while True:
+            now_min = datetime.now().minute
+            if now_min == 0:
+                cls.realtime_macro()
+                count_down.countdown(2)
+            else:
+                count_down.countdown(60-now_min)
 
 
 if __name__ == "__main__":
 
     # run all tickers
-    keyword_list = news_sa.load_earning_names()
-    allf = RealTimeTweet.moniter_all(keyword_list)
-
+    # keyword_list = news_sa.load_earning_names()
+    allf = RealTimeTweet.realtime_macro()
+    #RealTimeTweet.run_macro()
     # RealTimeTweet.run_main()
 
 

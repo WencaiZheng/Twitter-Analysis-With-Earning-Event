@@ -1,28 +1,28 @@
-﻿PressName,UserName
-The New York Times,nytimes
-The Washington Post,washingtonpost
-Bloomberg,business
+﻿UserName,PressName
+nytimes,The New York Times
+washingtonpost,The Washington Post
+business,Bloomberg
 Reuters,Reuters
 MSNBC,MSNBC
 CNN,CNN
-Fox News,FoxNews
-First Squawk,FirstSquawk
-BBC News (World),BBCWorld
-ABC News,ABC
-CBS News,CBSNews
-The Boston Globe,BostonGlobe
-Chicago Tribune,chicagotribune
-USA TODAY,USATODAY
-Los Angeles Times,latimes
-NBC News,NBCNews
-New York Daily News,NYDailyNews
-New York Post,nypost
-Apple News,AppleNews
-The Wall Street Journal,WSJ
-Guardian news,guardiannews
-AFP news agency,AFP
-China Xinhua News,XHNews
-Global Times,globaltimesnews
-South China Morning Post,SCMPNews
-Barron's,barronsonline
+FoxNews,Fox News
+FirstSquawk,First Squawk
+BBCWorld,BBC News (World)
+ABC,ABC News
+CBSNews,CBS News
+BostonGlobe,The Boston Globe
+chicagotribune,Chicago Tribune
+USATODAY,USA TODAY
+latimes,Los Angeles Times
+NBCNews,NBC News
+NYDailyNews,New York Daily News
+nypost,New York Post
+AppleNews,Apple News
+WSJ,The Wall Street Journal
+guardiannews,Guardian news
+AFP,AFP news agency
+XHNews,China Xinhua News
+globaltimesnews,Global Times
+SCMPNews,South China Morning Post
+barronsonline,Barron's
 CNBC,CNBC

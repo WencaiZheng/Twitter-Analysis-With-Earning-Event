@@ -57,6 +57,26 @@ def analysis_news(kw_list,ticker,readname):
     senti_ploter.plot_news(hourly_ohlc,all_sentis)
     pass
 
+def analysis_macro(filename):
+    #past half tweets from those accounts
+    macro_tweet = pd.read_csv(f'data\\macro\\{filename}.csv')
+    #
+    macro_name = pd.read_csv(f'dictionary\\Macro.csv').iloc[:,0]
+    name_df=pd.DataFrame([0]*len(macro_name),index=macro_name)
+    tweet_dict = dict()
+    for i in macro_name:
+        tweet_dict[i]= []
+    # iterate each tweet
+    for it,tweet in enumerate(macro_tweet.Text):
+        # test each keyword
+        for imac in macro_name:
+            if imac in tweet:
+                name_df.loc[imac,0] += 1
+                tweet_dict[imac] += (macro_tweet.iloc[it,-3],macro_tweet.iloc[it,-5],macro_tweet.iloc[it,-1])
+
+    top_names = name_df.sort_values(by=0,ascending=False).iloc[:3,0]
+    return top_names,tweet_dict
+
 if __name__ == "__main__":
     # parameters
     key_word = '$RAD' # PLCE $LULU $PLAY $JW.A 
@@ -70,4 +90,5 @@ if __name__ == "__main__":
         'is_earning_release' : 1,
         'is_show_stock' : 1 # no stock processing would be much faster
     }
+    analysis_macro('macrotest1')
     pass

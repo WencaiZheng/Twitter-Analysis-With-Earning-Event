@@ -36,7 +36,7 @@ def Function2():
     """ Function 2: get news from specific 30 major new press twitter accounts and analyze key word
     analyze and visualize result from function3
     """
-    grt.RawTweet(recent_days=7).get_from_press(savename='corona-2020-07-21') # get recent 3 days news from all 30 major press
+    grt.RawTweet(recent_days=7).get_from_accounts('macro',savename='corona-2020-07-21') # get recent 3 days news from all 30 major press
     key_word_list = ['CORONA','COVID','PANDEMIC']
     analysis.analysis_news(key_word_list,'SPY2',readname='corona-2020-07-21')
     
