@@ -31,7 +31,7 @@ class RealTimeTweet:
     # the request has limit, it should not exceed 180/15min
     request_counter = 0
     #
-    email_body = ''
+
 
 
     def __init__(self):
@@ -166,7 +166,7 @@ class RealTimeTweet:
         nowtimestr = str(cls.nowtime)[:16]
         # creat a array of 0 and 1 to tell if any ticker has high trend
         now_trend = pd.DataFrame([0]*len(cls.names),index =cls.names,columns=[nowtimestr]).T
-        """>????
+        """['$'+x for x in cls.names]
         """
         keyword_list = [x for x in cls.names]
         for kw in keyword_list:
@@ -200,7 +200,7 @@ class RealTimeTweet:
                 # get the earning to the email body
                 RealTimeTweet.intrigue_warning(kw,past_avg,new_count)
                 # exceed the past average
-                """???
+                """now_trend.loc[nowtimestr,kw[1:]] = 1
                 """
                 # here we only want to use ticker name, which is AAPL instead of $AAPL
                 now_trend.loc[nowtimestr,kw[:]] = 1
@@ -234,11 +234,15 @@ class RealTimeTweet:
 
     @classmethod
     def realtime_macro(cls):
+        #initialize the email body
+        cls.email_body= ""
         filename = 'macrotest1'
         grt.RawTweet(recent_days=1/24).get_from_accounts('macro',savename = filename)
         #load the saved file to rank the name
         top_names,top_tweets = analysis.analysis_macro(filename)
+
         names = top_names[top_names!=0].index
+        print(names)
         for i in names:
             cls.email_body += f'\n\n\nThere are {top_names.loc[i]} tweets about {i} and they are:\n\n'+'\n\n'.join(top_tweets[i])
         #send the email
@@ -248,7 +252,7 @@ class RealTimeTweet:
     @classmethod
     def send_email(cls,trendup_ticker):
         #send to some one
-        toaddr = ['wz1298@nyu.edu',]#'rangerrod1@gmail.com'
+        toaddr = ['rangerrod1@gmail.com','wz1298@nyu.edu']#
 
         if len(trendup_ticker)==0:
             # don't send email
@@ -256,10 +260,11 @@ class RealTimeTweet:
             # dont send email if there's nothing happened
             print(summary)
         else:
-            summary = f'There are these tickers trending right now: {" ".join(trendup_ticker)}. '\
+            summary = f'There are following tickers trending right now: {" ".join(trendup_ticker)}. '\
                 f'Detailed information:\n \n '
 
             cls.email_body = summary + cls.email_body
+ 
             automail.SendEmail(toaddr).send_realtime_email(cls.email_body)
 
     @classmethod
@@ -284,7 +289,7 @@ class RealTimeTweet:
             now_min = datetime.now().minute
             if now_min == 0:
                 cls.realtime_macro()
-                count_down.countdown(2)
+                count_down.countdown(5)
             else:
                 count_down.countdown(60-now_min)
 

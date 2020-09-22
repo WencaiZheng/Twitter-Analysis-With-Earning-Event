@@ -12,7 +12,6 @@ import processor._senti_process as senti_process
 
 #global variable for the module
 today_date = datetime.date.today()
-today_time = datetime.datetime.today()
 
 
 class RawTweet:
@@ -112,10 +111,12 @@ class RawTweet:
     
     def get_from_accounts(self,type,savename):
 
+        today_time = datetime.datetime.today()
+
         save_path = f'data\\{type}\\' 
         period = self.most_recent_days
         request_counter = 0
-        names = pd.read_csv('dictionary\\MacroName.csv').iloc[:,0].values
+        names = pd.read_csv('dictionary\\MacroAccounts.csv').iloc[:,0].values
         result = []
 
         for iname in names:
@@ -137,7 +138,7 @@ class RawTweet:
                 last_maxid = time_line[-1].id
                 result += [[x.id,x.created_at,x.user.id,x.user.screen_name,x.user.followers_count,x.full_text] for x in time_line]
                 
-                print(request_counter,iname,time_line[-1].created_at)
+                #print(request_counter,iname,time_line[-1].created_at)
                 
                 # reach limit
                 if request_counter >= 899:

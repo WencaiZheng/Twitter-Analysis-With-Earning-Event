@@ -35,7 +35,7 @@ def get_earnings_info(ticker):
     earning_release = pd.DataFrame([earning_release_time,estimated_eps,reported_eps,surprise_percentage]).T
     earning_release.columns = ["EarningsDate","EstimateEPS","ReportedEPS","Surprise"]
     earning_release.set_index("EarningsDate",drop=True,inplace=True)
-    earning_release.replace("N/A",np.nan,inplace=True)
+    earning_release=earning_release.replace("N/A",np.nan).replace('-',np.nan)
     earning_release = earning_release.astype(float)
 
     if len(earning_release)==0:print("No Earning date found for {},check ticker".format(ticker))
