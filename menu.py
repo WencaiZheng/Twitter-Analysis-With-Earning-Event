@@ -48,7 +48,7 @@ def Function3():
     news_sa.save_earning_names(recent_day = 5,index_code = "RU3") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
-    keyword_list = ['NKE'] #['KO','IBM','SYF','COF','ISRG','UAL','AIR','BIIB','LMT','TSLA'],'TWTR','SLB',INTC
+    keyword_list = ['NKE','SFIX','KBH'] #['KO','IBM','SYF','COF','ISRG','UAL','AIR','BIIB','LMT','TSLA'],'TWTR','SLB',INTC
     Function1(keyword_list)
     #Function2()
     #Function3()
