@@ -109,22 +109,26 @@ class RawTweet:
                 idate_res.to_csv(f'{tic_path}\\{k}_{idate}.csv')
 
     
-    def get_from_accounts(self,type,savename):
-
+    def get_from_accounts(self,accountname,savename):
+        """
+        savename is also the macrotype name
+        for example MacroBrexit
+        """
+        #
         today_time = datetime.datetime.today()
-
-        save_path = f'data\\{type}\\' 
+        #
+        save_path = f'data\\macro\\' 
         period = self.most_recent_days
         request_counter = 0
-        names = pd.read_csv('dictionary\\MacroAccounts.csv').iloc[:,0].values
+        names = pd.read_csv(f'dictionary\\{accountname}.csv').iloc[:,0].values
         result = []
-
+        #
         for iname in names:
             last_maxid = None
             time_gap = -1
-            
+            #
             while time_gap < period:
-
+                #
                 request_counter += 1
                 try:
                     time_line = self.api.user_timeline(iname,max_id=last_maxid,tweet_mode="extended")
@@ -137,14 +141,14 @@ class RawTweet:
                 time_gap = (today_time - time_line[-1].created_at + datetime.timedelta(hours=4)).total_seconds()/3600/24
                 last_maxid = time_line[-1].id
                 result += [[x.id,x.created_at,x.user.id,x.user.screen_name,x.user.followers_count,x.full_text] for x in time_line]
-                
+                #
                 #print(request_counter,iname,time_line[-1].created_at)
-                
+                #
                 # reach limit
                 if request_counter >= 899:
                     count_down.countdown(16)
                     request_counter = 0
-
+        #
         result_df = pd.DataFrame(result)
         result_df.columns = ["ID","Created","User_id","User_name","User_flr","Text"]
         #from utc to ets
@@ -159,7 +163,7 @@ class RawTweet:
 if __name__ == "__main__":
     # standard api limit, 7days max
     ####################################
-
+    #
     key_words = ['$RAD']
     recent_days = 1/24
     # get raw tweets and save them

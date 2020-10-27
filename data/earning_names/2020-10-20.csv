@@ -1,0 +1,333 @@
+Ticker,Name,Date,Time
+ZIXI,Zix Corporation,2020-10-20,Estimated
+NWFL,Norwood Financial Corp.,2020-10-20,Estimated
+OCN,Ocwen Financial Corporation,2020-10-20,Estimated
+OVLY,Oak Valley Bancorp,2020-10-20,Estimated
+PCAR,PACCAR Inc,2020-10-20,Estimated
+CMA,Comerica Incorporated,2020-10-20,Estimated
+PEBO,Peoples Bancorp Inc.,2020-10-20,Pre-Market
+PG,The Procter & Gamble Company,2020-10-20,Estimated
+CSL,Carlisle Companies Incorporated,2020-10-20,Post-Market
+PLD,"Prologis, Inc.",2020-10-20,Estimated
+PNR,Pentair plc,2020-10-20,Pre-Market
+CBSH,"Commerce Bancshares, Inc.",2020-10-20,Pre-Market
+REXR,"Rexford Industrial Realty, Inc.",2020-10-20,Post-Market
+CATC,Cambridge Bancorp,2020-10-20,Pre-Market
+RF,Regions Financial Corporation,2020-10-20,Pre-Market
+CALX,"Calix, Inc.",2020-10-20,Post-Market
+SBNY,Signature Bank,2020-10-20,Pre-Market
+PNFP,"Pinnacle Financial Partners, Inc.",2020-10-20,Post-Market
+BUSE,First Busey Corporation,2020-10-20,Estimated
+NFLX,"Netflix, Inc.",2020-10-20,Post-Market
+MLI,"Mueller Industries, Inc.",2020-10-20,Estimated
+FULT,Fulton Financial Corporation,2020-10-20,Post-Market
+GATX,GATX Corporation,2020-10-20,Pre-Market
+GPK,Graphic Packaging Holding Company,2020-10-20,Pre-Market
+HOPE,"Hope Bancorp, Inc.",2020-10-20,Post-Market
+HWC,Hancock Whitney Corporation,2020-10-20,Post-Market
+IBKR,"Interactive Brokers Group, Inc.",2020-10-20,Estimated
+IQV,IQVIA Holdings Inc.,2020-10-20,Pre-Market
+NBHC,National Bank Holdings Corporation,2020-10-20,Post-Market
+IRBT,iRobot Corporation,2020-10-20,Post-Market
+EQBK,"Equity Bancshares, Inc.",2020-10-20,Post-Market
+ELS,"Equity LifeStyle Properties, Inc.",2020-10-20,Estimated
+LCNB,LCNB Corp.,2020-10-20,Estimated
+LMT,Lockheed Martin Corporation,2020-10-20,Pre-Market
+MAN,ManpowerGroup Inc.,2020-10-20,Pre-Market
+DOV,Dover Corporation,2020-10-20,Pre-Market
+MBWM,Mercantile Bank Corporation,2020-10-20,Estimated
+IRDM,Iridium Communications Inc.,2020-10-20,Estimated
+SFST,"Southern First Bancshares, Inc.",2020-10-20,Estimated
+PM,Philip Morris International Inc.,2020-10-20,Estimated
+FMBI,"First Midwest Bancorp, Inc.",2020-10-20,Post-Market
+TXN,Texas Instruments Incorporated,2020-10-20,Estimated
+USNA,"USANA Health Sciences, Inc.",2020-10-20,Post-Market
+TRV,"The Travelers Companies, Inc.",2020-10-20,Pre-Market
+WDFC,WD-40 Company,2020-10-20,Post-Market
+UCBI,"United Community Banks, Inc.",2020-10-20,Post-Market
+TER,"Teradyne, Inc.",2020-10-20,Post-Market
+AGR,"Avangrid, Inc.",2020-10-20,Post-Market
+TCS,"The Container Store Group, Inc.",2020-10-20,Post-Market
+SYF,Synchrony Financial,2020-10-20,Pre-Market
+THC,Tenet Healthcare Corporation,2020-10-20,Post-Market
+WRB,W. R. Berkley Corporation,2020-10-20,Post-Market
+SNV,Synovus Financial Corp.,2020-10-20,Estimated
+SMBK,"SmartFinancial, Inc.",2020-10-20,Estimated
+STXB,"Spirit of Texas Bancshares, Inc.",2020-10-20,Post-Market
+HA,"Hawaiian Holdings, Inc.",2020-10-21,Estimated
+LRCX,Lam Research Corporation,2020-10-21,Estimated
+FR,"First Industrial Realty Trust, Inc.",2020-10-21,Post-Market
+LOB,"Live Oak Bancshares, Inc.",2020-10-21,Post-Market
+UMPQ,Umpqua Holdings Corporation,2020-10-21,Post-Market
+UNF,UniFirst Corporation,2020-10-21,Pre-Market
+WTFC,Wintrust Financial Corporation,2020-10-21,Post-Market
+LAD,"Lithia Motors, Inc.",2020-10-21,Pre-Market
+KNX,Knight-Swift Transportation Holdings Inc.,2020-10-21,Pre-Market
+VMI,"Valmont Industries, Inc.",2020-10-21,Post-Market
+XLNX,"Xilinx, Inc.",2020-10-21,Estimated
+KEY,KeyCorp,2020-10-21,Pre-Market
+VZ,Verizon Communications Inc.,2020-10-21,Pre-Market
+KALU,Kaiser Aluminum Corporation,2020-10-21,Post-Market
+WGO,"Winnebago Industries, Inc.",2020-10-21,Pre-Market
+IPG,"The Interpublic Group of Companies, Inc.",2020-10-21,Estimated
+INBK,First Internet Bancorp,2020-10-21,Post-Market
+GGG,Graco Inc.,2020-10-21,Post-Market
+GSBC,"Great Southern Bancorp, Inc.",2020-10-21,Post-Market
+WHR,Whirlpool Corporation,2020-10-21,Post-Market
+WNEB,"Western New England Bancorp, Inc.",2020-10-21,Estimated
+GTY,Getty Realty Corp.,2020-10-21,Post-Market
+HLX,"Helix Energy Solutions Group, Inc.",2020-10-21,Post-Market
+HCSG,"Healthcare Services Group, Inc.",2020-10-21,Pre-Market
+WSBC,"WesBanco, Inc.",2020-10-21,Post-Market
+LSTR,"Landstar System, Inc.",2020-10-21,Post-Market
+SLGN,Silgan Holdings Inc.,2020-10-21,Pre-Market
+UFPI,"UFP Industries, Inc.",2020-10-21,Post-Market
+SEIC,SEI Investments Company,2020-10-21,Post-Market
+SCL,Stepan Company,2020-10-21,Pre-Market
+SLM,SLM Corporation,2020-10-21,Post-Market
+RUSHA,"Rush Enterprises, Inc.",2020-10-21,Post-Market
+RLI,RLI Corp.,2020-10-21,Post-Market
+STC,Stewart Information Services Corporation,2020-10-21,Post-Market
+STL,Sterling Bancorp,2020-10-21,Post-Market
+SUI,"Sun Communities, Inc.",2020-10-21,Post-Market
+PZN,"Pzena Investment Management, Inc",2020-10-21,Estimated
+PWOD,"Penns Woods Bancorp, Inc.",2020-10-21,Estimated
+TCBI,"Texas Capital Bancshares, Inc.",2020-10-21,Post-Market
+FNF,"Fidelity National Financial, Inc.",2020-10-21,Estimated
+TDY,Teledyne Technologies Incorporated,2020-10-21,Pre-Market
+TMO,Thermo Fisher Scientific Inc.,2020-10-21,Pre-Market
+TMP,Tompkins Financial Corporation,2020-10-21,Estimated
+OSBC,"Old Second Bancorp, Inc.",2020-10-21,Post-Market
+ORRF,"Orrstown Financial Services, Inc.",2020-10-21,Estimated
+TRN,"Trinity Industries, Inc.",2020-10-21,Post-Market
+TRST,TrustCo Bank Corp NY,2020-10-21,Post-Market
+NWE,NorthWestern Corporation,2020-10-21,Post-Market
+NVEC,NVE Corporation,2020-10-21,Post-Market
+NTRS,Northern Trust Corporation,2020-10-21,Pre-Market
+NTGR,"NETGEAR, Inc.",2020-10-21,Post-Market
+TSC,"TriState Capital Holdings, Inc.",2020-10-21,Post-Market
+NEE,"NextEra Energy, Inc.",2020-10-21,Pre-Market
+NDAQ,"Nasdaq, Inc.",2020-10-21,Pre-Market
+TSLA,"Tesla, Inc.",2020-10-21,Post-Market
+SLG,SL Green Realty Corp.,2020-10-21,Post-Market
+TZOO,Travelzoo,2020-10-21,Pre-Market
+LVS,Las Vegas Sands Corp.,2020-10-21,Post-Market
+MTH,Meritage Homes Corporation,2020-10-21,Post-Market
+KMI,"Kinder Morgan, Inc.",2020-10-21,Estimated
+ALGN,"Align Technology, Inc.",2020-10-21,Post-Market
+FCBP,First Choice Bancorp,2020-10-21,Estimated
+BIIB,Biogen Inc.,2020-10-21,Pre-Market
+EVR,Evercore Inc.,2020-10-21,Estimated
+EGBN,"Eagle Bancorp, Inc.",2020-10-21,Post-Market
+AVY,Avery Dennison Corporation,2020-10-21,Pre-Market
+APH,Amphenol Corporation,2020-10-21,During-Market
+EFX,Equifax Inc.,2020-10-21,Post-Market
+BDN,Brandywine Realty Trust,2020-10-21,Post-Market
+CNS,"Cohen & Steers, Inc.",2020-10-21,Post-Market
+BCOV,Brightcove Inc.,2020-10-21,Post-Market
+FBC,"Flagstar Bancorp, Inc.",2020-10-21,Pre-Market
+BANR,Banner Corporation,2020-10-21,Post-Market
+AN,"AutoNation, Inc.",2020-10-21,Estimated
+EW,Edwards Lifesciences Corporation,2020-10-21,Post-Market
+CCI,Crown Castle International Corp. (REIT),2020-10-21,Post-Market
+AFI,"Armstrong Flooring, Inc.",2020-10-21,Pre-Market
+CMG,"Chipotle Mexican Grill, Inc.",2020-10-21,Post-Market
+FCFS,"FirstCash, Inc.",2020-10-21,Estimated
+CSX,CSX Corporation,2020-10-21,Post-Market
+ABT,Abbott Laboratories,2020-10-21,Pre-Market
+BOKF,BOK Financial Corporation,2020-10-21,Pre-Market
+DFS,Discover Financial Services,2020-10-21,Post-Market
+CVBF,CVB Financial Corp.,2020-10-21,Post-Market
+AROW,Arrow Financial Corporation,2020-10-21,Estimated
+CADE,Cadence Bancorporation,2020-10-21,Pre-Market
+BPFH,"Boston Private Financial Holdings, Inc.",2020-10-21,Post-Market
+CRS,Carpenter Technology Corporation,2020-10-22,Pre-Market
+PBCT,"People's United Financial, Inc.",2020-10-22,Post-Market
+MTRN,Materion Corporation,2020-10-22,Estimated
+PAG,"Penske Automotive Group, Inc.",2020-10-22,Estimated
+OZK,Bank OZK,2020-10-22,Post-Market
+AXTA,Axalta Coating Systems Ltd.,2020-10-22,Estimated
+DECK,Deckers Outdoor Corporation,2020-10-22,Estimated
+COF,Capital One Financial Corporation,2020-10-22,Post-Market
+NOC,Northrop Grumman Corporation,2020-10-22,Pre-Market
+ORI,Old Republic International Corporation,2020-10-22,Estimated
+CTXS,"Citrix Systems, Inc.",2020-10-22,Pre-Market
+AUB,Atlantic Union Bankshares Corporation,2020-10-22,Pre-Market
+TPH,"TRI Pointe Group, Inc.",2020-10-22,Pre-Market
+NXGN,"NextGen Healthcare, Inc.",2020-10-22,Post-Market
+NUE,Nucor Corporation,2020-10-22,Estimated
+CSTR,"Capstar Financial Holdings, Inc.",2020-10-22,Post-Market
+DD,"DuPont de Nemours, Inc.",2020-10-22,Pre-Market
+AAL,American Airlines Group Inc.,2020-10-22,Estimated
+PHM,"PulteGroup, Inc.",2020-10-22,Pre-Market
+T,AT&T Inc.,2020-10-22,Pre-Market
+SHBI,"Shore Bancshares, Inc.",2020-10-22,Estimated
+BMTC,Bryn Mawr Bank Corporation,2020-10-22,Post-Market
+BOOM,DMC Global Inc.,2020-10-22,Post-Market
+SCHN,"Schnitzer Steel Industries, Inc.",2020-10-22,Estimated
+SCCO,Southern Copper Corporation,2020-10-22,Estimated
+SMBC,"Southern Missouri Bancorp, Inc.",2020-10-22,Estimated
+BY,"Byline Bancorp, Inc.",2020-10-22,Post-Market
+BJRI,"BJ's Restaurants, Inc.",2020-10-22,Post-Market
+SASR,"Sandy Spring Bancorp, Inc.",2020-10-22,Estimated
+SAM,"The Boston Beer Company, Inc.",2020-10-22,Estimated
+SAFE,Safehold Inc.,2020-10-22,Pre-Market
+SNA,Snap-on Incorporated,2020-10-22,Pre-Market
+BANC,"Banc of California, Inc.",2020-10-22,Estimated
+RS,Reliance Steel & Aluminum Co.,2020-10-22,Pre-Market
+SON,Sonoco Products Company,2020-10-22,Pre-Market
+CBNK,"Capital Bancorp, Inc.",2020-10-22,Estimated
+RBNC,"Reliant Bancorp, Inc.",2020-10-22,Post-Market
+SRCE,1st Source Corporation,2020-10-22,Post-Market
+STBA,"S&T Bancorp, Inc.",2020-10-22,Estimated
+PTEN,"Patterson-UTI Energy, Inc.",2020-10-22,Estimated
+POOL,Pool Corporation,2020-10-22,Pre-Market
+CHCO,City Holding Company,2020-10-22,Estimated
+BCML,BayCom Corp,2020-10-22,Estimated
+DGX,Quest Diagnostics Incorporated,2020-10-22,Pre-Market
+PFIS,Peoples Financial Services Corp.,2020-10-22,Estimated
+CLGX,"CoreLogic, Inc.",2020-10-22,Post-Market
+RHI,Robert Half International Inc.,2020-10-22,Estimated
+MTB,M&T Bank Corporation,2020-10-22,Pre-Market
+DHR,Danaher Corporation,2020-10-22,Pre-Market
+FAF,First American Financial Corporation,2020-10-22,Pre-Market
+MSBI,"Midland States Bancorp, Inc.",2020-10-22,Post-Market
+IIIN,"Insteel Industries, Inc.",2020-10-22,Pre-Market
+VLY,Valley National Bancorp,2020-10-22,Pre-Market
+VRSN,"VeriSign, Inc.",2020-10-22,Post-Market
+HRI,Herc Holdings Inc.,2020-10-22,Pre-Market
+ALK,"Alaska Air Group, Inc.",2020-10-22,Estimated
+HFWA,Heritage Financial Corporation,2020-10-22,Pre-Market
+WAL,Western Alliance Bancorporation,2020-10-22,Post-Market
+FBP,First BanCorp.,2020-10-22,Estimated
+HBAN,Huntington Bancshares Incorporated,2020-10-22,Pre-Market
+WBS,Webster Financial Corporation,2020-10-22,Estimated
+GWW,"W.W. Grainger, Inc.",2020-10-22,Pre-Market
+GTLS,"Chart Industries, Inc.",2020-10-22,Pre-Market
+GPC,Genuine Parts Company,2020-10-22,Estimated
+ACBI,"Atlantic Capital Bancshares, Inc.",2020-10-22,Post-Market
+WRLD,World Acceptance Corporation,2020-10-22,Estimated
+GBCI,"Glacier Bancorp, Inc.",2020-10-22,Post-Market
+FCX,Freeport-McMoRan Inc.,2020-10-22,Estimated
+FRBK,"Republic First Bancorp, Inc.",2020-10-22,Estimated
+WSFS,WSFS Financial Corporation,2020-10-22,Post-Market
+FFBC,First Financial Bancorp.,2020-10-22,Post-Market
+WSO,"Watsco, Inc.",2020-10-22,Pre-Market
+FFIN,"First Financial Bankshares, Inc.",2020-10-22,Estimated
+FMAO,"Farmers & Merchants Bancorp, Inc.",2020-10-22,Estimated
+WST,"West Pharmaceutical Services, Inc.",2020-10-22,Pre-Market
+FITB,Fifth Third Bancorp,2020-10-22,Pre-Market
+ABCB,Ameris Bancorp,2020-10-22,Post-Market
+VLO,Valero Energy Corporation,2020-10-22,Estimated
+INTC,Intel Corporation,2020-10-22,Post-Market
+SIVB,SVB Financial Group,2020-10-22,Post-Market
+VICR,Vicor Corporation,2020-10-22,Post-Market
+MANH,"Manhattan Associates, Inc.",2020-10-22,Post-Market
+DOW,Dow Inc.,2020-10-22,Pre-Market
+ARD,Ardagh Group S.A.,2020-10-22,Pre-Market
+LUV,Southwest Airlines Co.,2020-10-22,Estimated
+ARCH,"Arch Resources, Inc.",2020-10-22,Pre-Market
+LNN,Lindsay Corporation,2020-10-22,Pre-Market
+EWBC,"East West Bancorp, Inc.",2020-10-22,Pre-Market
+EHTH,"eHealth, Inc.",2020-10-22,Estimated
+LLNW,"Limelight Networks, Inc.",2020-10-22,Post-Market
+EIG,"Employers Holdings, Inc.",2020-10-22,Post-Market
+LBAI,"Lakeland Bancorp, Inc.",2020-10-22,Estimated
+MCB,Metropolitan Bank Holding Corp.,2020-10-22,Estimated
+KO,The Coca-Cola Company,2020-10-22,Pre-Market
+EQT,EQT Corporation,2020-10-22,Pre-Market
+TSCO,Tractor Supply Company,2020-10-22,Pre-Market
+KMB,Kimberly-Clark Corporation,2020-10-22,Estimated
+SIRI,Sirius XM Holdings Inc.,2020-10-22,Estimated
+UNP,Union Pacific Corporation,2020-10-22,Pre-Market
+ASB,Associated Banc-Corp,2020-10-22,Post-Market
+ALLE,Allegion plc,2020-10-22,Pre-Market
+USX,"U.S. Xpress Enterprises, Inc.",2020-10-22,Post-Market
+ENTG,"Entegris, Inc.",2020-10-22,Pre-Market
+MAT,"Mattel, Inc.",2020-10-22,Post-Market
+ATNI,"ATN International, Inc.",2020-10-23,Estimated
+ASTE,"Astec Industries, Inc.",2020-10-23,Estimated
+ARR,"ARMOUR Residential REIT, Inc.",2020-10-23,Estimated
+AIMC,Altra Industrial Motion Corp.,2020-10-23,Pre-Market
+WSBF,"Waterstone Financial, Inc.",2020-10-23,Estimated
+AXP,American Express Company,2020-10-23,Pre-Market
+BHE,"Benchmark Electronics, Inc.",2020-10-23,Estimated
+VRTS,"Virtus Investment Partners, Inc.",2020-10-23,Pre-Market
+B,Barnes Group Inc.,2020-10-23,Pre-Market
+ALKS,Alkermes plc,2020-10-23,Estimated
+UNTY,"Unity Bancorp, Inc.",2020-10-23,Estimated
+BLMN,"Bloomin' Brands, Inc.",2020-10-23,Pre-Market
+TRTN,Triton International Limited,2020-10-23,Pre-Market
+FHB,"First Hawaiian, Inc.",2020-10-23,Pre-Market
+CLF,Cleveland-Cliffs Inc.,2020-10-23,Pre-Market
+INDB,Independent Bank Corp.,2020-10-23,Estimated
+FBNC,First Bancorp,2020-10-23,Estimated
+ISTR,Investar Holding Corporation,2020-10-23,Estimated
+ITW,Illinois Tool Works Inc.,2020-10-23,Pre-Market
+FCAP,"First Capital, Inc.",2020-10-23,Estimated
+EBSB,"Meridian Bancorp, Inc.",2020-10-23,Estimated
+MHO,"M/I Homes, Inc.",2020-10-23,Estimated
+CVLY,"Codorus Valley Bancorp, Inc.",2020-10-23,Estimated
+CRI,"Carter's, Inc.",2020-10-23,Pre-Market
+OFG,OFG Bancorp,2020-10-23,Pre-Market
+GNTX,Gentex Corporation,2020-10-23,Pre-Market
+CMRE,Costamare Inc.,2020-10-23,Estimated
+FDBC,"Fidelity D & D Bancorp, Inc.",2020-10-23,Estimated
+CIVB,"Civista Bancshares, Inc.",2020-10-23,Pre-Market
+HTH,Hilltop Holdings Inc.,2020-10-23,Estimated
+CCB,Coastal Financial Corporation,2020-10-23,Estimated
+FHN,First Horizon National Corporation,2020-10-23,Pre-Market
+SBUX,Starbucks Corporation,2020-10-23,Estimated
+SBSI,"Southside Bancshares, Inc.",2020-10-23,Pre-Market
+SAVE,"Spirit Airlines, Inc.",2020-10-23,Estimated
+PTSI,"P.A.M. Transportation Services, Inc.",2020-10-23,Estimated
+CASS,"Cass Information Systems, Inc.",2020-10-23,Estimated
+MCRI,"Monarch Casino & Resort, Inc.",2020-10-24,Estimated
+DLB,"Dolby Laboratories, Inc.",2020-10-24,Estimated
+DRQ,"Dril-Quip, Inc.",2020-10-24,Estimated
+FMNB,Farmers National Banc Corp.,2020-10-24,Estimated
+CLBK,"Columbia Financial, Inc.",2020-10-24,Estimated
+FIX,"Comfort Systems USA, Inc.",2020-10-24,Estimated
+CARE,Carter Bank & Trust,2020-10-24,Estimated
+HEES,"H&E Equipment Services, Inc.",2020-10-24,Estimated
+ESSA,"ESSA Bancorp, Inc.",2020-10-24,Estimated
+ELY,Callaway Golf Company,2020-10-24,Estimated
+SJW,SJW Group,2020-10-24,Estimated
+OPBK,OP Bancorp,2020-10-24,Estimated
+MPB,"Mid Penn Bancorp, Inc.",2020-10-24,Estimated
+NFBK,"Northfield Bancorp, Inc. (Staten Island, NY)",2020-10-24,Estimated
+TR,"Tootsie Roll Industries, Inc.",2020-10-24,Estimated
+SONA,"Southern National Bancorp of Virginia, Inc.",2020-10-24,Estimated
+FCCY,1st Constitution Bancorp,2020-10-24,Estimated
+SYBT,"Stock Yards Bancorp, Inc.",2020-10-24,Estimated
+PS,"Pluralsight, Inc.",2020-10-24,Estimated
+PCSB,PCSB Financial Corporation,2020-10-24,Estimated
+CCBG,"Capital City Bank Group, Inc.",2020-10-24,Estimated
+TBNK,Territorial Bancorp Inc.,2020-10-24,Estimated
+FBMS,"The First Bancshares, Inc.",2020-10-25,Estimated
+FE,FirstEnergy Corp.,2020-10-25,Estimated
+AEP,"American Electric Power Company, Inc.",2020-10-25,Estimated
+HTBK,Heritage Commerce Corp,2020-10-25,Estimated
+FNWB,First Northwest Bancorp,2020-10-25,Estimated
+FCBC,"First Community Bankshares, Inc.",2020-10-25,Estimated
+GBX,"The Greenbrier Companies, Inc.",2020-10-25,Estimated
+GRC,The Gorman-Rupp Company,2020-10-25,Estimated
+SFE,"Safeguard Scientifics, Inc.",2020-10-25,Estimated
+IR,Ingersoll Rand Inc.,2020-10-25,Estimated
+BMRN,BioMarin Pharmaceutical Inc.,2020-10-25,Estimated
+SMMF,"Summit Financial Group, Inc.",2020-10-25,Estimated
+RVSB,"Riverview Bancorp, Inc.",2020-10-25,Estimated
+SPOK,"Spok Holdings, Inc.",2020-10-25,Estimated
+FFNW,"First Financial Northwest, Inc.",2020-10-25,Estimated
+PCB,PCB Bancorp,2020-10-25,Estimated
+AZPN,"Aspen Technology, Inc.",2020-10-25,Estimated
+OVBC,Ohio Valley Banc Corp.,2020-10-25,Estimated
+OSIS,"OSI Systems, Inc.",2020-10-25,Estimated
+TOWN,TowneBank,2020-10-25,Estimated
+ASPS,Altisource Portfolio Solutions S.A.,2020-10-25,Estimated
+UBSI,"United Bankshares, Inc.",2020-10-25,Estimated
+ESQ,"Esquire Financial Holdings, Inc.",2020-10-25,Estimated
+AMZN,"Amazon.com, Inc.",2020-10-25,Estimated
+ESXB,Community Bankers Trust Corporation,2020-10-25,Estimated
+FBIZ,"First Business Financial Services, Inc.",2020-10-25,Estimated
+MOFG,"MidWestOne Financial Group, Inc.",2020-10-25,Estimated

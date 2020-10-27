@@ -10,9 +10,11 @@ import processor._load_api as load_api
 import processor._count_down as count_down
 import processor._senti_process as senti_process
 import processor._automail as automail
+import processor._automail as automail
 import main.analysis_main as analysis
 import news._news_sa as news_sa
 import main.get_raw_tweets as grt
+import visualization._plotly_ploter as myplot
 
 nowdate= str(date.today())
 
@@ -233,22 +235,63 @@ class RealTimeTweet:
     
 
     @classmethod
-    def realtime_macro(cls):
+    def realtime_macro(cls,macro_type_):
         #initialize the email body
         cls.email_body= ""
-        filename = 'macrotest1'
-        grt.RawTweet(recent_days=1/24).get_from_accounts('macro',savename = filename)
+        # this macro type is from FX, Brexit, or Stimulus
+        filename = macro_type_
+        grt.RawTweet(recent_days=1/24).get_from_accounts('MacroAccounts', savename = filename)
         #load the saved file to rank the name
         top_names,top_tweets = analysis.analysis_macro(filename)
-
+        #
         names = top_names[top_names!=0].index
         print(names)
         for i in names:
-            cls.email_body += f'\n\n\nThere are {top_names.loc[i]} tweets about {i} and they are:\n\n'+'\n\n'.join(top_tweets[i])
+            if top_names.loc[i] <= 3:
+                print(f'Not enough tweets related, only {top_names.loc[i]}.')
+                return 0
+            cls.email_body += f'\n\n\nThere are {top_names.loc[i]} tweet(s) about {i} and they are:\n\n'+'\n'.join(top_tweets[i])
         #send the email
         cls.send_email(names)
-
-
+    #
+    @classmethod
+    def analysis_topics(cls):
+        #initialize the email body
+        cls.email_body= ""
+        # this macro type is from FX, Brexit, or Stimulus
+        filename = 'all_topics'
+        #grt.RawTweet(recent_days=5).get_from_accounts('MacroAccounts', savename = filename)
+        #load the saved file to rank the name
+        top_topic = analysis.analysis_topics(filename)
+        # it counts how many times it is mentioned in half hour
+        top_num = pd.get_dummies(top_topic.TOPIC, prefix='TOPIC')
+        # get half hour tweet count
+        new_half = top_num.resample('1H').sum()
+        print(top_num.columns)
+        # merge with EXISTED form
+        existed = pd.read_csv('data\\macro\\TopicCounts.csv',index_col=0)
+        existed.index = pd.to_datetime(existed.index)
+        new_file = pd.concat([existed,new_half],axis=0).fillna(0)
+        #drop duplicates
+        new_file = new_file[~new_file.index.duplicated(keep='last')]
+        #save file
+        #new_file.to_csv('data\\macro\\TopicCounts.csv')
+        # whether to alert
+        send_name = []
+        for i in new_file.columns:
+            # get this topic
+            itop = new_file[i]
+            # if trend is there: new tweet number are above the 75% persentile
+            if itop.iloc[-1]+itop.iloc[-2] >= itop.quantile(0.75) and itop.iloc[-1]+itop.iloc[-2]>5 or 1==1:
+                # if meet trending up standard
+                myplot.TwitterPlot.plot_topics(i,itop)
+                #
+                send_name.append(i)
+            else:
+                print(f'Not enough tweets related {i}, only {itop.iloc[-1]+itop.iloc[-2]}.')
+        #send the email
+        cls.send_email(send_name)
+    #
     @classmethod
     def send_email(cls,trendup_ticker):
         #send to some one
@@ -256,15 +299,15 @@ class RealTimeTweet:
 
         if len(trendup_ticker)==0:
             # don't send email
-            summary = f'There is no ticker in the past half hour trending up.\n'
+            summary = f'There is no ticker/topic(s) in the past half hour trending up.\n'
             # dont send email if there's nothing happened
             print(summary)
         else:
-            summary = f'There are following tickers trending right now: {" ".join(trendup_ticker)}. '\
+            summary = f'There are following ticker/topic(s) trending right now: {" ".join(trendup_ticker)}. '\
                 f'Detailed information:\n \n '
-
+            #
             cls.email_body = summary + cls.email_body
- 
+            #
             automail.SendEmail(toaddr).send_realtime_email(cls.email_body)
 
     @classmethod
@@ -284,11 +327,14 @@ class RealTimeTweet:
                 count_down.countdown(60-now_min)
     
     @classmethod
-    def run_macro(cls):
+    def run_macro(cls,macro_type_):
+        # choose macro type, the type decides monitor keywords, it is file name
+        # for example: Brexit or timulus, FX
+        cls.macro_type = macro_type_
         while True:
             now_min = datetime.now().minute
             if now_min == 0:
-                cls.realtime_macro()
+                cls.realtime_macro(macro_type_)
                 count_down.countdown(5)
             else:
                 count_down.countdown(60-now_min)
@@ -298,7 +344,8 @@ if __name__ == "__main__":
 
     # run all tickers
     # keyword_list = news_sa.load_earning_names()
-    allf = RealTimeTweet.realtime_macro()
+    RealTimeTweet.analysis_topics()
+    #allf = RealTimeTweet.realtime_macro('Stimulus')
     #RealTimeTweet.run_macro()
     # RealTimeTweet.run_main()
 

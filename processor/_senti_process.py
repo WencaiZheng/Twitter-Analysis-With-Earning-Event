@@ -1,8 +1,18 @@
 import os
-import pandas as pd
+import re
+import gensim
+import nltk
 import numpy as np
+import pandas as pd
+from gensim.parsing.preprocessing import STOPWORDS
+from gensim.utils import simple_preprocess
+from nltk.stem import SnowballStemmer, WordNetLemmatizer
+from nltk.stem.porter import *
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-import processor._fix_dictionary as  mydictionary
+
+import processor._fix_dictionary as mydictionary
+
+nltk.download('wordnet')
 
 sid_obj = SentimentIntensityAnalyzer() 
 save_path = 'data\\senti_results\\'
@@ -147,6 +157,27 @@ class SentiProcess:
         df.index = list(map(lambda x:x.replace(tzinfo=None),df["EST"]))
         df = df.drop(columns=['EST'])
         return df
+    
+    @staticmethod
+    def _stemmer(text):
+        '''
+        get out all the stop words
+        stem the word
+        '''
+        stemmer = PorterStemmer()
+        result = []
+        for token in gensim.utils.simple_preprocess(text):
+            if token not in gensim.parsing.preprocessing.STOPWORDS:
+                stemmed = stemmer.stem(WordNetLemmatizer().lemmatize(token, pos='v'))
+                result.append(stemmed)
+        return result
+
+    @staticmethod
+    def _only_letter(text):
+        '''
+        get only letter, no punctuation
+        '''
+        return re.sub('[^a-zA-Z]+', ' ', text).split(' ')
 
     def get_all_senti(self,files,thres,is_log,is_save_senti):
         key_word = self.key_word

@@ -14,7 +14,7 @@ def Function1(keyword_list):
     # scraper
     keyword_list = ['$'+x for x in keyword_list] #'$'+
     #
-    #grt.RawTweet(recent_days = 7).get_multiple_dates(keyword_list)
+    #grt.RawTweet(recent_days = 6).get_multiple_dates(keyword_list)
     # analysis parameters
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
@@ -48,9 +48,9 @@ def Function3():
     news_sa.save_earning_names(recent_day = 5,index_code = "RU3") # next 5 days RU3000/SP500 list name
 
 if __name__ == "__main__":
-    keyword_list = ['NKE','SFIX','KBH'] #['KO','IBM','SYF','COF','ISRG','UAL','AIR','BIIB','LMT','TSLA'],'TWTR','SLB',INTC
+    keyword_list = ['PFE' ,'SWK' ,'SHW', 'RTX', 'SPGI']#['DAL','JPM','C','FAST','BLK','JNJ']
     Function1(keyword_list)
-    #Function2()
+    #Function2()    
     #Function3()
 
 

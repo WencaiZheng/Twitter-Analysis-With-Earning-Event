@@ -3,6 +3,7 @@ import pandas as pd
 from plotly.subplots import make_subplots
 from datetime import timedelta,datetime,date
 import plotly.graph_objects as go
+import plotly.express as px
 
 
 import processor._load_intraday as load_intraday
@@ -38,6 +39,7 @@ class TwitterPlot:
             
             name="Intraday stock price"),
                     row=1, col=1)
+
         fig.add_trace(go.Bar(
             x=hourly_ohlc.index, 
             y=hourly_ohlc.volume,
@@ -502,6 +504,57 @@ class TwitterPlot:
         if not os.path.exists(saveaddr):os.mkdir(saveaddr)
         fig.write_image(f'{saveaddr}\\{self.key_word}.png')
 
+    @staticmethod
+    def plot_topics(topic,topic_heat):
+        '''
+        want to plot the line plot for topic which is being discussed alot 
+        that break its historical quantile
+        '''
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(x=topic_heat.index, y=topic_heat.values,
+                    mode='lines',
+                    name='Topic Mentioned Times',
+                    line=dict(color='black', width=1)))
+
+        ## add horizontal quantile line
+        fig.add_shape(type="line",name='25th Percentile',
+        x0=topic_heat.index[0], y0=topic_heat.quantile(0.25), 
+        x1=topic_heat.index[-1], y1=topic_heat.quantile(0.25),
+        line=dict(
+        color="LightSeaGreen",
+        width=2,
+        dash="dashdot",
+            )
+        )
+        # add 75% line
+        fig.add_shape(type="line",name='75th Percentile',
+        x0=topic_heat.index[0], y0=topic_heat.quantile(0.75), 
+        x1=topic_heat.index[-1], y1=topic_heat.quantile(0.75),
+        line=dict(
+        color="LightSeaGreen",
+        width=2,
+        dash="dashdot",
+            )
+        )
+        
+        # add median
+        fig.add_shape(type="line",name='Median',
+        x0=topic_heat.index[0], y0=topic_heat.quantile(0.5), 
+        x1=topic_heat.index[-1], y1=topic_heat.quantile(0.5),
+        line=dict(
+        color="lightslategray",
+        width=2,
+        dash="dashdot",
+            )
+        )
+        
+        #title
+        fig.update_layout(height=600, width=1200,
+                        title_text=f"Topic: {topic}")
+        fig.update_layout(showlegend=True)
+        fig.show()
+        # save plot
+        fig.write_image(f'data\\macro\\visual\\topic{topic}.png')
 
     @staticmethod
     def get_earning_within(ticker,all_sentiments):
@@ -515,10 +568,9 @@ class TwitterPlot:
         
         for edate in earning_release.index:
 
-
             if edate < (all_sentiments.index[-1] + timedelta(days = 7))  and edate > all_sentiments.index[0]:
                 if edate.hour==0:
-                    edate = pd.to_datetime(str(edate.date()-timedelta(days = 1))+' 16:00:00')
+                    edate = pd.to_datetime(str(edate.date())+' 16:00:00')
                 else:
                     edate = pd.to_datetime(str(edate.date())+' 16:05:00')
                 earning_release_within.loc[edate,:] = [0,0,0]
@@ -553,6 +605,6 @@ class TwitterPlot:
 
 if __name__ == "__main__":
     #TwitterPlot.get_earning_within('NFLX','.')
-    earning_release_within = pd.DataFrame({pd.to_datetime('2020-02-02 16:00:00'):0})
+    TwitterPlot.plot_topics('kk',pd.read_csv('data\\macro\\TopicCounts.csv',index_col=0).iloc[:,-2])
     #TwitterPlot.mark_weekend([pd.to_datetime('2020-09-25')])
     pass
