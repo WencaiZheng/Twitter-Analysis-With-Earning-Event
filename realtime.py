@@ -20,7 +20,13 @@ def Function5():
     """real time alert system for some macro indicators like FX
     """
     #save the tweets from the macro twitter accounts and save below
-    rtt.RealTimeTweet.run_macro('Stimulus')
+    rtt.RealTimeTweet.run_macro('Stimulus',recentday=1/24))
+
+def Function6():
+    """keyword index for some macro indicators like covid
+    """
+    #
+    rtt.RealTimeTweet.analysis_topics(recentday=2)
     
 if __name__ == "__main__":
     

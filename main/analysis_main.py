@@ -112,7 +112,7 @@ def analysis_topics(filename):
     topic_dict = dict()
     for tp in topic_names:
         #
-        topic_dict[tp] = [[tp]+senti_process.SentiProcess._stemmer(x) for x in topic_kw[tp].dropna()]
+        topic_dict[tp] = [senti_process.SentiProcess._stemmer(tp)+senti_process.SentiProcess._stemmer(x) for x in topic_kw[tp].dropna()]+[senti_process.SentiProcess._stemmer(tp)]
     # iterate each tweet
     for it,tt in enumerate(got_tweets.cText):
         # drop the https links
@@ -133,6 +133,28 @@ def analysis_topics(filename):
     got_tweets.index = pd.to_datetime(got_tweets.Created)
     return got_tweets.dropna()
 
+
+def analysis_accounts(kw):
+    """
+    Get top n accounts that focus on one specific topic
+    """
+    ####set path
+    kw = kw[0]
+    keyword_path = f"data\\raw_twitters\\{kw}\\" # where the raw twitters are stored
+    #
+    # read all files
+    files=glob(f'{keyword_path}*{kw}*')
+    # see all files'dates
+    dates = [i[-14:-4] for i in files]
+    print(f'We are observing data from {dates[0]} to {dates[-1]} for {kw}')
+    # get all sentiment from all files, each file represent a day
+    all_accounts  = senti_process.SentiProcess(kw).get_accountsinfo(files)
+    # save the accounts info to dictionary
+    all_accounts.to_csv(f'data\\macro\\accountinfo_{kw}.csv')
+    ###################################
+
+
+    return all_accounts
 if __name__ == "__main__":
     # parameters
     key_word = '$RAD' # PLCE $LULU $PLAY $JW.A 
@@ -148,3 +170,5 @@ if __name__ == "__main__":
     }
     analysis_macro('macrotest1')
     pass
+
+ 

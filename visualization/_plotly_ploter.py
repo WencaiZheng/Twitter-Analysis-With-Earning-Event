@@ -136,22 +136,22 @@ class TwitterPlot:
                     line_width=0,
                     ),
                     
-                # last weekends in all dates we have
-                dict(
-                    type="rect",
-                    # x-reference is assigned to the x-values
-                    xref="x",
-                    # y-reference is assigned to the plot paper [0,1]
-                    yref="paper",
-                    x0=wkds_list[-1][0],
-                    y0=0,
-                    x1=wkds_list[-1][1],
-                    y1=1,
-                    fillcolor="LightSalmon",
-                    opacity=0.5,
-                    layer="below",
-                    line_width=0,
-                    ),
+                #last weekends in all dates we have
+                # dict(
+                #     type="rect",
+                #     # x-reference is assigned to the x-values
+                #     xref="x",
+                #     # y-reference is assigned to the plot paper [0,1]
+                #     yref="paper",
+                #     x0=wkds_list[-1][0],
+                #     y0=0,
+                #     x1=wkds_list[-1][1],
+                #     y1=1,
+                #     fillcolor="LightSalmon",
+                #     opacity=0.5,
+                #     layer="below",
+                #     line_width=0,
+                #     ),
                 
             ]
         
@@ -555,6 +555,40 @@ class TwitterPlot:
         fig.show()
         # save plot
         fig.write_image(f'data\\macro\\visual\\topic{topic}.png')
+
+    def plot_topicswprice(topic,topic_heat,pricer):
+        '''
+        want to plot the line plot for topic which is being discussed alot 
+        that break its historical quantile with price inside
+        '''
+        fig = make_subplots(rows=2, cols=1,
+                            shared_xaxes=True, 
+                            vertical_spacing=0,row_heights=[ 1, 1])
+
+
+        fig.add_trace(go.Scatter(x=topic_heat.index, y=topic_heat.values,
+                    mode='lines',
+                    name='Topic Mentioned Times',
+                    line=dict(color='red', width=1),
+                    ),
+                    row=1, col=1)  
+        
+        fig.add_trace(go.Scatter(x=pricer.index, y=pricer.values,
+                    mode='lines',
+                    name='QQQ/IWM',
+                    line=dict(color='black', width=1),
+                    ),
+                    row=2, col=1)        
+        #title
+        fig.update_layout(height=600, width=1200,
+                        title_text=f"Topic: {topic}")
+        #
+        fig.update_layout(showlegend=True)
+
+        fig.show()
+        # save plot
+        fig.write_image(f'data\\macro\\visual\\topic{topic}.png')
+
 
     @staticmethod
     def get_earning_within(ticker,all_sentiments):

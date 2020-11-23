@@ -14,7 +14,7 @@ def Function1(keyword_list):
     # scraper
     keyword_list = ['$'+x for x in keyword_list] #'$'+
     #
-    #grt.RawTweet(recent_days = 6).get_multiple_dates(keyword_list)
+    #grt.RawTweet(recent_days = 3).get_multiple_dates(keyword_list)
     # analysis parameters
     flag_paras = {
         'is_save_senti' : 1 ,# whether or not to save the result
@@ -47,12 +47,18 @@ def Function3():
     """
     news_sa.save_earning_names(recent_day = 5,index_code = "RU3") # next 5 days RU3000/SP500 list name
 
+def Function4(keyword):
+    """ Get the accounts that focus on one topic
+    For example: COVID is the input, then outputs should be the twitter accounts that are interested in this topic
+    """
+    grt.RawTweet(recent_days = 1).get_multiple_dates(keyword)
+    analysis.analysis_accounts(keyword)
+
 if __name__ == "__main__":
-    keyword_list = ['PFE' ,'SWK' ,'SHW', 'RTX', 'SPGI']#['DAL','JPM','C','FAST','BLK','JNJ']
+    keyword_list = ['ROST','MAXN','FL','HIBB']#['DAL','JPM','C','FAST','BLK','JNJ']['FB','SBUX','GOOGL','AMZN','AAPL','UAA',]
     Function1(keyword_list)
     #Function2()    
     #Function3()
-
 
     pass
 

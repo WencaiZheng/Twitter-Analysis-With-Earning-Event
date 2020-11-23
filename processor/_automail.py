@@ -117,3 +117,25 @@ Subject: [Test] Twitter real time (half) hourly trending alert
                 server.sendmail(sender_email, receiver, message)
                 
             print(f'Email successfully sent to {receiver}')
+    
+    def send_election_email(self,body_):
+        import smtplib, ssl
+
+        port = 465  # For SSL
+        smtp_server = "smtp.gmail.com"
+        sender_email = self.fromaddr  # Enter your address
+        receiver_email = self.toaddr  # Enter receiver address
+        password = self.pswd
+        message = f"""\
+Subject: Election half-hour updates
+
+{body_}"""
+
+        context = ssl.create_default_context()
+        # send to multiple emails
+        for receiver in receiver_email:
+            with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+                server.login(sender_email, password)
+                server.sendmail(sender_email, receiver, message)
+                
+            print(f'Email successfully sent to {receiver}')

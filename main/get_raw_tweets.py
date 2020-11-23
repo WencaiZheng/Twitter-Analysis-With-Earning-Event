@@ -120,10 +120,12 @@ class RawTweet:
         save_path = f'data\\macro\\' 
         period = self.most_recent_days
         request_counter = 0
-        names = pd.read_csv(f'dictionary\\{accountname}.csv').iloc[:,0].values
+        # choose from accounts, 0 is macro only, 1 is vaccine related，2 is state account
+        names = pd.read_csv(f'dictionary\\{accountname}.csv').iloc[:,2].values
         result = []
         #
         for iname in names:
+            print(iname)
             last_maxid = None
             time_gap = -1
             #
@@ -145,10 +147,10 @@ class RawTweet:
                 #print(request_counter,iname,time_line[-1].created_at)
                 #
                 # reach limit
-                if request_counter >= 899:
-                    count_down.countdown(16)
-                    request_counter = 0
-        #
+                if request_counter >= 1899:
+                    print('the api reaches limit, change to a new one')
+                    self.api = load_api.TwitterAPI.change_api()
+        
         result_df = pd.DataFrame(result)
         result_df.columns = ["ID","Created","User_id","User_name","User_flr","Text"]
         #from utc to ets

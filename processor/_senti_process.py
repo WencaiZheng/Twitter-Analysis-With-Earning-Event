@@ -222,3 +222,36 @@ class SentiProcess:
             print("sentiment files are saved successfully")
         # all_sentis is the file that contains all HOURLY sentiment data
         return all_sentis
+
+    
+    def get_accountsinfo(self,files):
+        """
+        read the raw tweets return the accounts that are interested in this topic
+        """
+        key_word = self.key_word
+        #make other functions use these variables
+        dates = [i[-14:-4] for i in files]
+        # count sentiments 
+        all_sentis,all_tweets = pd.DataFrame(),pd.DataFrame()
+        for i in range(len(dates)):
+            idate = dates[i]
+            ifile = files[i]
+            xfile=pd.read_csv(ifile,)
+            # step 1 filter out all the unqualified ones, if empty return none
+            e_file = xfile.groupby('User_name').count().sort_values('User_flr',ascending=False)
+            all_tweets = pd.concat([all_tweets,xfile],axis=0)
+        #
+        all_accounts = all_tweets.groupby('User_name').count().ID
+        # add the followers info
+        all_flr = all_tweets.groupby('User_name').sum().User_flr
+        # if the file is empty, then raise exception
+        all_info = pd.concat([all_accounts,all_flr],axis=1)
+        # 
+        all_info.columns = ['Freq','Score']
+        all_info['Flr'] = all_info.Score/all_info.Freq
+        #
+        all_info.sort_values('Freq', ascending=False, inplace=True)
+        if len(all_info)==0:
+            raise Exception('There are not enough sentiments to show.')
+        #
+        return all_info
