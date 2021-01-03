@@ -1,0 +1,433 @@
+Ticker,Name,Date,Time
+ASNA,"Ascena Retail Group, Inc.",12/14/2020,Estimated
+TRC,Tejon Ranch Co.,12/14/2020,Estimated
+UBA,Urstadt Biddle Properties Inc.,12/14/2020,Estimated
+VNCE,Vince Holding Corp.,12/14/2020,Pre-Market
+RICK,"RCI Hospitality Holdings, Inc.",12/14/2020,Estimated
+NDSN,Nordson Corporation,12/15/2020,Post-Market
+MTSC,MTS Systems Corporation,12/15/2020,Pre-Market
+MLHR,"Herman Miller, Inc.",12/16/2020,Post-Market
+TTC,The Toro Company,12/16/2020,Estimated
+LEN,Lennar Corporation,12/16/2020,Post-Market
+BLBD,Blue Bird Corporation,12/16/2020,Estimated
+RFL,"Rafael Holdings, Inc.",12/16/2020,Estimated
+CVM,CEL-SCI Corporation,12/16/2020,Estimated
+ABM,ABM Industries Incorporated,12/16/2020,Post-Market
+NAV,Navistar International Corporation,12/17/2020,Estimated
+IMKTA,"Ingles Markets, Incorporated",12/17/2020,Estimated
+SCS,Steelcase Inc.,12/17/2020,Post-Market
+LDOS,"Leidos Holdings, Inc.",12/17/2020,Estimated
+GIS,"General Mills, Inc.",12/17/2020,Estimated
+CAMP,CalAmp Corp.,12/17/2020,Pre-Market
+RAD,Rite Aid Corporation,12/17/2020,Estimated
+ACN,Accenture plc,12/17/2020,Estimated
+SAFM,"Sanderson Farms, Inc.",12/17/2020,Estimated
+JBL,Jabil Inc.,12/17/2020,Pre-Market
+WOR,"Worthington Industries, Inc.",12/17/2020,Pre-Market
+AIR,AAR Corp.,12/17/2020,Post-Market
+SCHL,Scholastic Corporation,12/17/2020,Post-Market
+FDX,FedEx Corporation,12/17/2020,Post-Market
+REVG,"REV Group, Inc.",12/18/2020,Estimated
+PGR,The Progressive Corporation,12/18/2020,Estimated
+NKE,"NIKE, Inc.",12/18/2020,Post-Market
+KALV,"KalVista Pharmaceuticals, Inc.",12/18/2020,Estimated
+AVXL,Anavex Life Sciences Corp.,12/18/2020,Estimated
+CCL,Carnival Corporation & Plc,12/18/2020,Estimated
+APOG,"Apogee Enterprises, Inc.",12/18/2020,Pre-Market
+YCBD,"cbdMD, Inc.",12/18/2020,Estimated
+WGO,"Winnebago Industries, Inc.",12/18/2020,Pre-Market
+EBF,"Ennis, Inc.",12/18/2020,Estimated
+DRI,"Darden Restaurants, Inc.",12/18/2020,Pre-Market
+DJCO,Daily Journal Corporation,12/18/2020,Estimated
+VALU,"Value Line, Inc.",12/18/2020,Estimated
+FDS,FactSet Research Systems Inc.,12/21/2020,Estimated
+HEI,HEICO Corporation,12/21/2020,Post-Market
+CVGW,"Calavo Growers, Inc.",12/21/2020,Post-Market
+NEOG,Neogen Corporation,12/22/2020,Estimated
+CTAS,Cintas Corporation,12/22/2020,Pre-Market
+KMX,"CarMax, Inc.",12/22/2020,Pre-Market
+PAYX,"Paychex, Inc.",12/23/2020,Pre-Market
+HURC,"Hurco Companies, Inc.",1/1/2021,Estimated
+SGH,"SMART Global Holdings, Inc.",1/5/2021,Post-Market
+MSM,"MSC Industrial Direct Co., Inc.",1/6/2021,Estimated
+RPM,RPM International Inc.,1/6/2021,Pre-Market
+SMPL,The Simply Good Foods Company,1/6/2021,Pre-Market
+CCF,Chase Corporation,1/6/2021,Estimated
+FC,Franklin Covey Co.,1/6/2021,Estimated
+WDFC,WD-40 Company,1/7/2021,Post-Market
+PCYO,Pure Cycle Corporation,1/7/2021,Estimated
+CAG,"Conagra Brands, Inc.",1/7/2021,Pre-Market
+MU,"Micron Technology, Inc.",1/7/2021,Estimated
+STZ,"Constellation Brands, Inc.",1/7/2021,Pre-Market
+BBBY,Bed Bath & Beyond Inc.,1/7/2021,Pre-Market
+PSMT,"PriceSmart, Inc.",1/7/2021,Post-Market
+LW,"Lamb Weston Holdings, Inc.",1/7/2021,Estimated
+ANGO,"AngioDynamics, Inc.",1/7/2021,Pre-Market
+AYI,"Acuity Brands, Inc.",1/7/2021,Estimated
+WBA,"Walgreens Boots Alliance, Inc.",1/7/2021,Pre-Market
+SNX,SYNNEX Corporation,1/8/2021,Estimated
+AZZ,AZZ Inc.,1/8/2021,Estimated
+SLP,"Simulations Plus, Inc.",1/8/2021,Estimated
+KBH,KB Home,1/8/2021,Estimated
+AXP,American Express Company,1/11/2021,Estimated
+LMNR,Limoneira Company,1/11/2021,Estimated
+CMC,Commercial Metals Company,1/11/2021,Estimated
+CNBKA,"Century Bancorp, Inc.",1/12/2021,Estimated
+CSX,CSX Corporation,1/12/2021,Estimated
+WAFD,"Washington Federal, Inc.",1/13/2021,Estimated
+MS,Morgan Stanley,1/13/2021,Estimated
+BBCP,"Concrete Pumping Holdings, Inc.",1/14/2021,Estimated
+GS,"The Goldman Sachs Group, Inc.",1/14/2021,Estimated
+PNFP,"Pinnacle Financial Partners, Inc.",1/14/2021,Estimated
+HOMB,"Home Bancshares, Inc. (Conway, AR)",1/14/2021,Estimated
+HWC,Hancock Whitney Corporation,1/15/2021,Estimated
+KMI,"Kinder Morgan, Inc.",1/15/2021,Estimated
+FISV,"Fiserv, Inc.",1/15/2021,Estimated
+MTG,MGIC Investment Corporation,1/15/2021,Estimated
+EGBN,"Eagle Bancorp, Inc.",1/15/2021,Estimated
+CTBI,"Community Trust Bancorp, Inc.",1/15/2021,Estimated
+NFLX,"Netflix, Inc.",1/15/2021,Estimated
+CVLY,"Codorus Valley Bancorp, Inc.",1/15/2021,Estimated
+INFO,IHS Markit Ltd.,1/15/2021,Estimated
+JPM,JPMorgan Chase & Co.,1/15/2021,Pre-Market
+AA,Alcoa Corporation,1/15/2021,Estimated
+WFC,Wells Fargo & Company,1/15/2021,Estimated
+BANF,BancFirst Corporation,1/15/2021,Estimated
+SBNY,Signature Bank,1/15/2021,Estimated
+BMTC,Bryn Mawr Bank Corporation,1/15/2021,Estimated
+SCHW,The Charles Schwab Corporation,1/15/2021,Estimated
+TEAM,Atlassian Corporation Plc,1/15/2021,Estimated
+C,Citigroup Inc.,1/15/2021,Pre-Market
+BRID,Bridgford Foods Corporation,1/15/2021,Estimated
+PNC,"The PNC Financial Services Group, Inc.",1/15/2021,Pre-Market
+CBSH,"Commerce Bancshares, Inc.",1/15/2021,Estimated
+UNB,"Union Bankshares, Inc.",1/15/2021,Estimated
+PRGS,Progress Software Corporation,1/15/2021,Estimated
+HBMD,"Howard Bancorp, Inc.",1/18/2021,Estimated
+MCBC,Macatawa Bank Corporation,1/18/2021,Estimated
+NCBS,"Nicolet Bankshares, Inc.",1/18/2021,Estimated
+PEBK,"Peoples Bancorp of North Carolina, Inc.",1/18/2021,Estimated
+WTFC,Wintrust Financial Corporation,1/18/2021,Estimated
+ZION,"Zions Bancorporation, National Association",1/19/2021,Post-Market
+STT,State Street Corporation,1/19/2021,Estimated
+GCBC,"Greene County Bancorp, Inc.",1/19/2021,Estimated
+BAC,Bank of America Corporation,1/19/2021,Pre-Market
+TESS,TESSCO Technologies Incorporated,1/19/2021,Estimated
+HAL,Halliburton Company,1/19/2021,Estimated
+SLM,SLM Corporation,1/19/2021,Estimated
+VFC,V.F. Corporation,1/19/2021,Estimated
+SNV,Synovus Financial Corp.,1/19/2021,Estimated
+PBIP,"Prudential Bancorp, Inc.",1/19/2021,Estimated
+CMA,Comerica Incorporated,1/19/2021,Estimated
+SFBS,"ServisFirst Bancshares, Inc.",1/20/2021,Estimated
+USB,U.S. Bancorp,1/20/2021,Estimated
+EFSC,Enterprise Financial Services Corp,1/20/2021,Estimated
+CFG,"Citizens Financial Group, Inc.",1/20/2021,Estimated
+UCBI,"United Community Banks, Inc.",1/20/2021,Estimated
+FFIV,"F5 Networks, Inc.",1/20/2021,Estimated
+RES,"RPC, Inc.",1/20/2021,Estimated
+ABT,Abbott Laboratories,1/20/2021,Estimated
+SYF,Synchrony Financial,1/20/2021,Estimated
+BPFH,"Boston Private Financial Holdings, Inc.",1/20/2021,Estimated
+APD,"Air Products and Chemicals, Inc.",1/20/2021,Estimated
+ROL,"Rollins, Inc.",1/20/2021,Estimated
+GD,General Dynamics Corporation,1/20/2021,Estimated
+FAST,Fastenal Company,1/20/2021,Pre-Market
+CNS,"Cohen & Steers, Inc.",1/20/2021,Estimated
+ATI,Allegheny Technologies Incorporated,1/20/2021,Estimated
+CTXS,"Citrix Systems, Inc.",1/20/2021,Estimated
+LLY,Eli Lilly and Company,1/20/2021,Estimated
+BK,The Bank of New York Mellon Corporation,1/20/2021,Pre-Market
+WSFS,WSFS Financial Corporation,1/20/2021,Estimated
+FNLC,"The First Bancorp, Inc.",1/20/2021,Estimated
+FNB,F.N.B. Corporation,1/21/2021,Estimated
+WTBA,"West Bancorporation, Inc.",1/21/2021,Estimated
+FITB,Fifth Third Bancorp,1/21/2021,Pre-Market
+GATX,GATX Corporation,1/21/2021,Estimated
+PBCT,"People's United Financial, Inc.",1/21/2021,Estimated
+HOPE,"Hope Bancorp, Inc.",1/21/2021,Estimated
+TRV,"The Travelers Companies, Inc.",1/21/2021,Estimated
+IBM,International Business Machines Corporation,1/21/2021,Estimated
+INTC,Intel Corporation,1/21/2021,Post-Market
+STL,Sterling Bancorp,1/21/2021,Estimated
+SRCE,1st Source Corporation,1/21/2021,Post-Market
+NTRS,Northern Trust Corporation,1/21/2021,Estimated
+SMBC,"Southern Missouri Bancorp, Inc.",1/21/2021,Estimated
+SIVB,SVB Financial Group,1/21/2021,Estimated
+KEY,KeyCorp,1/21/2021,Pre-Market
+SFNC,Simmons First National Corporation,1/21/2021,Estimated
+LOB,"Live Oak Bancshares, Inc.",1/21/2021,Estimated
+RLI,RLI Corp.,1/21/2021,Estimated
+MTB,M&T Bank Corporation,1/21/2021,Pre-Market
+HMST,"HomeStreet, Inc.",1/21/2021,Estimated
+PLD,"Prologis, Inc.",1/21/2021,Estimated
+INBK,First Internet Bancorp,1/21/2021,Estimated
+CBU,"Community Bank System, Inc.",1/21/2021,Estimated
+BFIN,BankFinancial Corporation,1/21/2021,Estimated
+BCBP,"BCB Bancorp, Inc.",1/21/2021,Estimated
+ALLY,Ally Financial Inc.,1/21/2021,Estimated
+ALK,"Alaska Air Group, Inc.",1/21/2021,Estimated
+BMY,Bristol-Myers Squibb Company,1/21/2021,Estimated
+ASB,Associated Banc-Corp,1/21/2021,Estimated
+CATY,Cathay General Bancorp,1/21/2021,Estimated
+CASH,"Meta Financial Group, Inc.",1/21/2021,Estimated
+COLB,"Columbia Banking System, Inc.",1/21/2021,Estimated
+BSET,"Bassett Furniture Industries, Incorporated",1/21/2021,Estimated
+BXS,BancorpSouth Bank,1/22/2021,Estimated
+RBNC,"Reliant Bancorp, Inc.",1/22/2021,Estimated
+RF,Regions Financial Corporation,1/22/2021,Pre-Market
+BPOP,"Popular, Inc.",1/22/2021,Estimated
+RMD,ResMed Inc.,1/22/2021,Estimated
+SBCF,Seacoast Banking Corporation of Florida,1/22/2021,Estimated
+BKU,"BankUnited, Inc.",1/22/2021,Estimated
+CLFD,"Clearfield, Inc.",1/22/2021,Estimated
+BHLB,"Berkshire Hills Bancorp, Inc.",1/22/2021,Estimated
+BFST,"Business First Bancshares, Inc.",1/22/2021,Estimated
+ISTR,Investar Holding Corporation,1/22/2021,Estimated
+CVBF,CVB Financial Corp.,1/22/2021,Estimated
+PKBK,"Parke Bancorp, Inc.",1/22/2021,Estimated
+CADE,Cadence Bancorporation,1/22/2021,Estimated
+CLF,Cleveland-Cliffs Inc.,1/22/2021,Estimated
+MKC,"McCormick & Company, Incorporated",1/22/2021,Estimated
+CHMG,Chemung Financial Corporation,1/22/2021,Estimated
+NBHC,National Bank Holdings Corporation,1/22/2021,Estimated
+MCB,Metropolitan Bank Holding Corp.,1/22/2021,Estimated
+CHCO,City Holding Company,1/22/2021,Estimated
+CCI,Crown Castle International Corp. (REIT),1/22/2021,Estimated
+NVR,"NVR, Inc.",1/22/2021,Estimated
+NWBI,"Northwest Bancshares, Inc.",1/22/2021,Estimated
+NXGN,"NextGen Healthcare, Inc.",1/22/2021,Estimated
+OSBC,"Old Second Bancorp, Inc.",1/22/2021,Estimated
+PCSB,PCSB Financial Corporation,1/22/2021,Estimated
+CBNK,"Capital Bancorp, Inc.",1/22/2021,Estimated
+LBC,Luther Burbank Corporation,1/22/2021,Estimated
+CAT,Caterpillar Inc.,1/22/2021,Estimated
+CSTR,"Capstar Financial Holdings, Inc.",1/22/2021,Estimated
+EBTC,"Enterprise Bancorp, Inc.",1/22/2021,Estimated
+SBUX,Starbucks Corporation,1/22/2021,Estimated
+HTH,Hilltop Holdings Inc.,1/22/2021,Estimated
+AMNB,American National Bankshares Inc.,1/22/2021,Estimated
+TOWN,TowneBank,1/22/2021,Estimated
+EWBC,"East West Bancorp, Inc.",1/22/2021,Estimated
+URI,"United Rentals, Inc.",1/22/2021,Estimated
+FCAP,"First Capital, Inc.",1/22/2021,Estimated
+FUL,H.B. Fuller Company,1/22/2021,Estimated
+AIT,"Applied Industrial Technologies, Inc.",1/22/2021,Estimated
+FNCB,"FNCB Bancorp, Inc.",1/22/2021,Estimated
+AGYS,"Agilysys, Inc.",1/22/2021,Estimated
+WAL,Western Alliance Bancorporation,1/22/2021,Estimated
+FMBH,"First Mid Bancshares, Inc.",1/22/2021,Estimated
+AEP,"American Electric Power Company, Inc.",1/22/2021,Estimated
+ABCB,Ameris Bancorp,1/22/2021,Estimated
+XLNX,"Xilinx, Inc.",1/22/2021,Estimated
+FHB,"First Hawaiian, Inc.",1/22/2021,Estimated
+TER,"Teradyne, Inc.",1/22/2021,Estimated
+TBBK,"The Bancorp, Inc.",1/22/2021,Estimated
+CMCSA,Comcast Corporation,1/22/2021,Estimated
+BANR,Banner Corporation,1/22/2021,Estimated
+AZPN,"Aspen Technology, Inc.",1/22/2021,Estimated
+AVT,"Avnet, Inc.",1/22/2021,Estimated
+ESXB,Community Bankers Trust Corporation,1/22/2021,Estimated
+SONA,"Southern National Bancorp of Virginia, Inc.",1/22/2021,Estimated
+HTBK,Heritage Commerce Corp,1/22/2021,Estimated
+SLB,Schlumberger Limited,1/22/2021,Estimated
+FCF,First Commonwealth Financial Corporation,1/25/2021,Estimated
+CCB,Coastal Financial Corporation,1/25/2021,Estimated
+ETN,Eaton Corporation plc,1/25/2021,Estimated
+LKFN,Lakeland Financial Corporation,1/25/2021,Estimated
+SHBI,"Shore Bancshares, Inc.",1/25/2021,Estimated
+FCNCA,"First Citizens BancShares, Inc.",1/25/2021,Estimated
+BOH,Bank of Hawaii Corporation,1/25/2021,Estimated
+ESSA,"ESSA Bancorp, Inc.",1/25/2021,Estimated
+HTLF,"Heartland Financial USA, Inc.",1/25/2021,Estimated
+KMB,Kimberly-Clark Corporation,1/25/2021,Estimated
+JBSS,"John B. Sanfilippo & Son, Inc.",1/25/2021,Estimated
+PRK,Park National Corporation,1/25/2021,Estimated
+BRO,"Brown & Brown, Inc.",1/25/2021,Estimated
+GSBC,"Great Southern Bancorp, Inc.",1/25/2021,Post-Market
+FBMS,"The First Bancshares, Inc.",1/25/2021,Estimated
+CR,Crane Co.,1/25/2021,Estimated
+MXIM,"Maxim Integrated Products, Inc.",1/26/2021,Estimated
+CHD,"Church & Dwight Co., Inc.",1/26/2021,Estimated
+SKY,Skyline Champion Corporation,1/26/2021,Estimated
+STBA,"S&T Bancorp, Inc.",1/26/2021,Estimated
+CE,Celanese Corporation,1/26/2021,Estimated
+AVY,Avery Dennison Corporation,1/26/2021,Estimated
+VZ,Verizon Communications Inc.,1/26/2021,Estimated
+PCAR,PACCAR Inc,1/26/2021,Estimated
+VBTX,"Veritex Holdings, Inc.",1/26/2021,Estimated
+BOKF,BOK Financial Corporation,1/26/2021,Estimated
+ROK,"Rockwell Automation, Inc.",1/26/2021,Estimated
+NBN,Northeast Bank,1/26/2021,Estimated
+TSC,"TriState Capital Holdings, Inc.",1/26/2021,Estimated
+ZYXI,"Zynex, Inc.",1/26/2021,Estimated
+FLXS,"Flexsteel Industries, Inc.",1/26/2021,Estimated
+CPF,Central Pacific Financial Corp.,1/26/2021,Estimated
+CREE,"Cree, Inc.",1/26/2021,Estimated
+JNJ,Johnson & Johnson,1/26/2021,Estimated
+IBTX,"Independent Bank Group, Inc.",1/26/2021,Estimated
+MMM,3M Company,1/26/2021,Estimated
+CVLT,"Commvault Systems, Inc.",1/26/2021,Estimated
+EAT,"Brinker International, Inc.",1/27/2021,Estimated
+PB,"Prosperity Bancshares, Inc.",1/27/2021,Estimated
+COP,ConocoPhillips,1/27/2021,Estimated
+ADS,Alliance Data Systems Corporation,1/27/2021,Estimated
+T,AT&T Inc.,1/27/2021,Estimated
+LAZ,Lazard Ltd,1/27/2021,Estimated
+APH,Amphenol Corporation,1/27/2021,Estimated
+PMBC,Pacific Mercantile Bancorp,1/27/2021,Estimated
+CRUS,"Cirrus Logic, Inc.",1/27/2021,Estimated
+CACI,CACI International Inc,1/27/2021,Estimated
+SMG,The Scotts Miracle-Gro Company,1/27/2021,Estimated
+BWFG,"Bankwell Financial Group, Inc.",1/27/2021,Estimated
+AMG,"Affiliated Managers Group, Inc.",1/27/2021,Estimated
+RJF,"Raymond James Financial, Inc.",1/27/2021,Estimated
+LSTR,"Landstar System, Inc.",1/27/2021,Post-Market
+ISBC,"Investors Bancorp, Inc.",1/27/2021,Estimated
+FNWB,First Northwest Bancorp,1/27/2021,Estimated
+DOV,Dover Corporation,1/27/2021,Estimated
+SBT,"Sterling Bancorp, Inc. (Southfield, MI)",1/27/2021,Estimated
+HES,Hess Corporation,1/27/2021,Estimated
+ASH,Ashland Global Holdings Inc.,1/27/2021,Estimated
+WASH,"Washington Trust Bancorp, Inc.",1/27/2021,Estimated
+LVS,Las Vegas Sands Corp.,1/27/2021,Estimated
+GNTX,Gentex Corporation,1/27/2021,Estimated
+WNEB,"Western New England Bancorp, Inc.",1/27/2021,Estimated
+NATI,National Instruments Corporation,1/27/2021,Estimated
+NG,NovaGold Resources Inc.,1/27/2021,Post-Market
+FLWS,"1-800-FLOWERS.COM, Inc.",1/27/2021,Estimated
+CDNS,"Cadence Design Systems, Inc.",1/27/2021,Estimated
+WYNN,"Wynn Resorts, Limited",1/28/2021,Estimated
+ALGN,"Align Technology, Inc.",1/28/2021,Estimated
+IBCP,Independent Bank Corporation,1/28/2021,Pre-Market
+DOW,Dow Inc.,1/28/2021,Pre-Market
+FRAF,Franklin Financial Services Corporation,1/28/2021,Estimated
+LUV,Southwest Airlines Co.,1/28/2021,Estimated
+SC,Santander Consumer USA Holdings Inc.,1/28/2021,Estimated
+ABBV,AbbVie Inc.,1/28/2021,Estimated
+AJG,Arthur J. Gallagher & Co.,1/28/2021,Estimated
+IEX,IDEX Corporation,1/28/2021,Estimated
+CNX,CNX Resources Corporation,1/28/2021,Estimated
+MTX,Minerals Technologies Inc.,1/28/2021,Estimated
+BCML,BayCom Corp,1/28/2021,Estimated
+SHW,The Sherwin-Williams Company,1/28/2021,Estimated
+HP,"Helmerich & Payne, Inc.",1/28/2021,Estimated
+DHR,Danaher Corporation,1/28/2021,Estimated
+UFI,"Unifi, Inc.",1/28/2021,Estimated
+MKSI,"MKS Instruments, Inc.",1/28/2021,Estimated
+TTEK,"Tetra Tech, Inc.",1/28/2021,Estimated
+AMD,"Advanced Micro Devices, Inc.",1/28/2021,Estimated
+CMO,Capstead Mortgage Corporation,1/28/2021,Estimated
+MSFT,Microsoft Corporation,1/28/2021,Estimated
+HCA,"HCA Healthcare, Inc.",1/28/2021,Estimated
+AROW,Arrow Financial Corporation,1/28/2021,Estimated
+TROW,"T. Rowe Price Group, Inc.",1/28/2021,Estimated
+GLW,Corning Incorporated,1/28/2021,Estimated
+AOS,A. O. Smith Corporation,1/28/2021,Estimated
+SYK,Stryker Corporation,1/28/2021,Estimated
+HA,"Hawaiian Holdings, Inc.",1/28/2021,Estimated
+BC,Brunswick Corporation,1/28/2021,Estimated
+ROP,"Roper Technologies, Inc.",1/28/2021,Estimated
+ILMN,"Illumina, Inc.",1/28/2021,Estimated
+WRB,W. R. Berkley Corporation,1/28/2021,Estimated
+PFPT,"Proofpoint, Inc.",1/28/2021,Estimated
+PCH,PotlatchDeltic Corporation,1/28/2021,Estimated
+MAA,"Mid-America Apartment Communities, Inc.",1/28/2021,Estimated
+PKG,Packaging Corporation of America,1/28/2021,Estimated
+NOC,Northrop Grumman Corporation,1/28/2021,Estimated
+ACNB,ACNB Corporation,1/28/2021,Estimated
+WHR,Whirlpool Corporation,1/28/2021,Estimated
+CFFN,"Capitol Federal Financial, Inc.",1/28/2021,Estimated
+WNC,Wabash National Corporation,1/28/2021,Estimated
+PFG,"Principal Financial Group, Inc.",1/28/2021,Post-Market
+WDC,Western Digital Corporation,1/28/2021,Estimated
+KAMN,Kaman Corporation,1/28/2021,Estimated
+PFE,Pfizer Inc.,1/28/2021,Estimated
+PWOD,"Penns Woods Bancorp, Inc.",1/28/2021,Estimated
+CVCO,"Cavco Industries, Inc.",1/28/2021,Estimated
+MDLZ,"Mondelez International, Inc.",1/28/2021,Estimated
+WRK,WestRock Company,1/28/2021,Pre-Market
+CNMD,CONMED Corporation,1/28/2021,Estimated
+NUE,Nucor Corporation,1/28/2021,Estimated
+JJSF,J & J Snack Foods Corp.,1/28/2021,Estimated
+WCC,"WESCO International, Inc.",1/28/2021,Estimated
+CODA,"Coda Octopus Group, Inc.",1/28/2021,Estimated
+MA,Mastercard Incorporated,1/28/2021,Estimated
+WETF,"WisdomTree Investments, Inc.",1/29/2021,Estimated
+ZBH,"Zimmer Biomet Holdings, Inc.",1/29/2021,Estimated
+FCFS,"FirstCash, Inc.",1/29/2021,Estimated
+ADP,"Automatic Data Processing, Inc.",1/29/2021,Estimated
+TMO,Thermo Fisher Scientific Inc.,1/29/2021,Estimated
+AMGN,Amgen Inc.,1/29/2021,Estimated
+AAPL,Apple Inc.,1/29/2021,Estimated
+GHM,Graham Corporation,1/29/2021,Estimated
+FCCY,1st Constitution Bancorp,1/29/2021,Estimated
+UPS,"United Parcel Service, Inc.",1/29/2021,Estimated
+GFF,Griffon Corporation,1/29/2021,Estimated
+GE,General Electric Company,1/29/2021,Estimated
+FN,Fabrinet,1/29/2021,Estimated
+AEIS,"Advanced Energy Industries, Inc.",1/29/2021,Estimated
+EXP,Eagle Materials Inc.,1/29/2021,Estimated
+ALGT,Allegiant Travel Company,1/29/2021,Estimated
+USLM,"United States Lime & Minerals, Inc.",1/29/2021,Estimated
+XEL,Xcel Energy Inc.,1/29/2021,Estimated
+THG,"The Hanover Insurance Group, Inc.",1/29/2021,Estimated
+WRLD,World Acceptance Corporation,1/29/2021,Estimated
+FMNB,Farmers National Banc Corp.,1/29/2021,Estimated
+ABMD,"Abiomed, Inc.",1/29/2021,Estimated
+VRTS,"Virtus Investment Partners, Inc.",1/29/2021,Estimated
+WSBF,"Waterstone Financial, Inc.",1/29/2021,Estimated
+ALXN,"Alexion Pharmaceuticals, Inc.",1/29/2021,Estimated
+MNRO,"Monro, Inc.",1/29/2021,Estimated
+SF,Stifel Financial Corp.,1/29/2021,Estimated
+AMZN,"Amazon.com, Inc.",1/29/2021,Estimated
+BZH,"Beazer Homes USA, Inc.",1/29/2021,Estimated
+CACC,Credit Acceptance Corporation,1/29/2021,Estimated
+CRS,Carpenter Technology Corporation,1/29/2021,Estimated
+LCNB,LCNB Corp.,1/29/2021,Estimated
+LHX,"L3Harris Technologies, Inc.",1/29/2021,Estimated
+CBTX,"CBTX, Inc.",1/29/2021,Estimated
+PBI,Pitney Bowes Inc.,1/29/2021,Estimated
+FFIC,Flushing Financial Corporation,1/29/2021,Estimated
+NKSH,"National Bankshares, Inc.",1/29/2021,Estimated
+CENT,Central Garden & Pet Company,1/29/2021,Estimated
+JOUT,Johnson Outdoors Inc.,1/29/2021,Estimated
+MAN,ManpowerGroup Inc.,1/29/2021,Estimated
+MDC,"M.D.C. Holdings, Inc.",1/29/2021,Estimated
+NATH,"Nathan's Famous, Inc.",1/29/2021,Estimated
+MFNC,Mackinac Financial Corporation,1/29/2021,Estimated
+CHTR,"Charter Communications, Inc.",1/29/2021,Estimated
+MTOR,"Meritor, Inc.",1/29/2021,Estimated
+MTH,Meritage Homes Corporation,1/29/2021,Estimated
+CL,Colgate-Palmolive Company,1/29/2021,Pre-Market
+MMC,"Marsh & McLennan Companies, Inc.",1/29/2021,Estimated
+MPC,Marathon Petroleum Corporation,1/29/2021,Estimated
+MO,"Altria Group, Inc.",1/29/2021,Estimated
+MBIN,Merchants Bancorp,1/29/2021,Estimated
+EVR,Evercore Inc.,1/29/2021,Estimated
+BSVN,Bank7 Corp.,1/29/2021,Estimated
+CVX,Chevron Corporation,1/29/2021,Estimated
+SXI,Standex International Corporation,1/29/2021,Estimated
+APTV,Aptiv PLC,1/29/2021,Estimated
+ARCB,ArcBest Corporation,1/29/2021,Estimated
+HAYN,"Haynes International, Inc.",1/29/2021,Estimated
+SPR,"Spirit AeroSystems Holdings, Inc.",1/29/2021,Estimated
+SPG,"Simon Property Group, Inc.",1/29/2021,Estimated
+SNDR,"Schneider National, Inc.",1/29/2021,Estimated
+HLI,"Houlihan Lokey, Inc.",1/29/2021,Estimated
+EPAY,"Bottomline Technologies (de), Inc.",1/29/2021,Estimated
+EGP,"EastGroup Properties, Inc.",1/29/2021,Estimated
+JCI,Johnson Controls International plc,1/29/2021,Estimated
+EGOV,NIC Inc.,1/29/2021,Estimated
+HRC,"Hill-Rom Holdings, Inc.",1/29/2021,Estimated
+SIGI,"Selective Insurance Group, Inc.",1/29/2021,Estimated
+HSY,The Hershey Company,1/29/2021,Estimated
+HWBK,"Hawthorn Bancshares, Inc.",1/29/2021,Estimated
+SEIC,SEI Investments Company,1/29/2021,Estimated
+BKH,Black Hills Corporation,1/29/2021,Estimated
+SBSI,"Southside Bancshares, Inc.",1/29/2021,Estimated
+RXN,Rexnord Corporation,1/29/2021,Estimated
+RRBI,"Red River Bancshares, Inc.",1/29/2021,Estimated
+DD,"DuPont de Nemours, Inc.",1/29/2021,Estimated
+SKYW,"SkyWest, Inc.",1/29/2021,Estimated
+FDBC,"Fidelity D & D Bancorp, Inc.",1/29/2021,Estimated
